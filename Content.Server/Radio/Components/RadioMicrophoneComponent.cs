@@ -48,3 +48,4 @@ public sealed partial class RadioMicrophoneComponent : Component
     [DataField]
     public int Frequency = 1459; // Common channel frequency
 }
+

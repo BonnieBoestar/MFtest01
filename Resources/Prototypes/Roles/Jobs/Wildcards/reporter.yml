@@ -12,6 +12,7 @@
   - Theatre # DeltaV - Add Theatre access
   - Reporter # DeltaV - Add Reporter access
   setPreference: false
+  - Journalism # goob
 
 - type: startingGear
   id: ReporterGear
