@@ -11,8 +11,8 @@
   - Maintenance
   - Theatre # DeltaV - Add Theatre access
   - Reporter # DeltaV - Add Reporter access
-  setPreference: false
   - Journalism # goob
+  setPreference: false
 
 - type: startingGear
   id: ReporterGear

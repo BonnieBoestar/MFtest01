@@ -11,7 +11,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Timing;
 
-namespace Content.Goobstation.Client.TapeRecorder.UI;
+namespace Content.Client._Goobstation.TapeRecorder.UI;
 
 [GenerateTypedNameReferences]
 public sealed partial class TapeRecorderWindow : FancyWindow

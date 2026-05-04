@@ -42,10 +42,10 @@
     speakNormally: true
     enabled: true
     channels:
-    - RadioShow
+    - Bazaar
   - type: Speech
     speechVerb: Robotic
   - type: ActiveRadio
     channels:
-    - RadioShow
+    - Bazaar
   - type: StationRadioReceiver

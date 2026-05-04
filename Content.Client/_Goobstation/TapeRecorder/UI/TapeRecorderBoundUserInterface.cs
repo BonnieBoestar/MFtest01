@@ -8,7 +8,7 @@ using Content.Goobstation.Shared.TapeRecorder;
 using Robust.Client.UserInterface;
 using Robust.Shared.Timing;
 
-namespace Content.Goobstation.Client.TapeRecorder.UI;
+namespace Content.Client._Goobstation.TapeRecorder.UI;
 
 public sealed class TapeRecorderBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {

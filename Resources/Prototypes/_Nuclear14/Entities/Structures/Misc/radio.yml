@@ -99,6 +99,7 @@
     - PBS
     enabled: true
     toggleOnInteract: true
+    speakNormally: true
     IsSpeaker: true
   - type: Tag
     tags:
@@ -113,6 +114,11 @@
     toggleOnInteract: false
     frequency: 1667
   - type: TTS # Forge-Change
+  - type: Machine
+    board: StationRadioCircuitboard
+  - type: StationRadioReceiver
+  - type: Anchorable
+  - type: Rotatable
 
 - type: entity # Prototype for radio receivers
   name: standing microphone

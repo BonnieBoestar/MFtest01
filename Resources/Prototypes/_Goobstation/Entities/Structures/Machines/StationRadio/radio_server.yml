@@ -20,8 +20,9 @@
     board: StationRadioServerCircuitboard
   - type: TelecomExempt
   - type: RadioMicrophone
+    broadcastChannel: Bazaar
+    frequency: 6996
     powerRequired: true
-    broadcastChannel: RadioShow
 
 - type: entity
   id: StationRadioRig

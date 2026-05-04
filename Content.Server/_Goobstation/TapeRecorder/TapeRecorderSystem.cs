@@ -14,6 +14,7 @@ using Content.Shared.Speech;
 using Content.Goobstation.Shared.TapeRecorder;
 using Robust.Shared.Prototypes;
 using System.Text;
+using Content.Server.Paper;
 
 namespace Content.Goobstation.Server.TapeRecorder;
 
@@ -127,7 +128,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
         text.AppendLine();
         text.Append(Loc.GetString("tape-recorder-print-end-text"));
 
-        _paper.SetContent((paper, paperComp), text.ToString());
+        _paper.SetContent(paper, text.ToString()); // Misfits Fix
 
         comp.CooldownEndTime = Timing.CurTime + comp.PrintCooldown;
     }
