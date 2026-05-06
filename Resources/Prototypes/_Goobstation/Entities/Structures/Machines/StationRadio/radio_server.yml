@@ -39,6 +39,30 @@
     frequency: 1225
 
 - type: entity
+  id: StationRadioServerBazaar
+  name: station radio server
+  parent: StationRadioServer
+  suffix: Bazaar
+  components:
+  - type: RadioMicrophone
+    frequency: 6996
+  - type: DeviceNetwork
+    receiveFrequency: 6996
+    transmitFrequency: 6996
+
+- type: entity
+  id: StationRadioServerWasteland
+  name: station radio server
+  parent: StationRadioServer
+  suffix: Wasteland
+  components:
+  - type: RadioMicrophone
+    frequency: 1728
+  - type: DeviceNetwork
+    receiveFrequency: 1728
+    transmitFrequency: 1728
+
+- type: entity
   id: StationRadioRig
   parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: station radio rig
@@ -65,3 +89,21 @@
   - type: ActiveRadio
     channels:
     - PBS
+
+- type: entity
+  id: StationRadioRigBazaar
+  name: station radio server
+  parent: StationRadioRig
+  suffix: Bazaar
+  components:
+  - type: RadioMicrophone
+    frequency: 6996
+
+- type: entity
+  id: StationRadioRigrWasteland
+  name: station radio server
+  parent: StationRadioRig
+  suffix: Wasteland
+  components:
+  - type: RadioMicrophone
+    frequency: 1728

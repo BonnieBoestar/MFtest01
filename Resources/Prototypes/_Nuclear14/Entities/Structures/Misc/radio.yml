@@ -78,7 +78,7 @@
 - type: entity # Prototype for radio receivers
   name: table radio
   description: A simple tabletop radio
-  parent: BaseStructure
+  parent: [ BaseStructure, ConstructibleMachine ]
   id: N14RadioTable
   components:
   - type: Sprite #states aren't quite working, will need to address, would like to have it toggle state when you turn on and off the radio
@@ -94,7 +94,30 @@
         shader: unshaded
       - state: off
         map: [ "disabled" ]
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.10,-0.10,0.10,0.10"
+        density: 500
+        mask:
+        - TabletopMachineMask
+        layer:
+        - BulletImpassable
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: RadioSpeaker
+    powerRequired: true
     channels:
     - PBS
     enabled: true
@@ -110,15 +133,24 @@
     channels:
     - PBS
   - type: RadioMicrophone
+    powerRequired: true
     broadcastChannel: PBS
     toggleOnInteract: false
     frequency: 1667
-  - type: TTS # Forge-Change
+  - type: TTS
   - type: Machine
     board: StationRadioCircuitboard
+  - type: DeviceNetwork
+    receiveAll: true
+    deviceNetId: Wireless
+    receiveFrequencyId: StationRadio # Default value, can be changed
+  - type: DeviceCustomFrequency
+    frequencyChange: true
+  - type: UserInterface
+    interfaces:
+      enum.DeviceCustomFrequencyUiKey.Key:
+        type: DeviceCustomFrequencyBoundUserInterface
   - type: StationRadioReceiver
-  - type: Anchorable
-  - type: Rotatable
 
 - type: entity # Prototype for radio receivers
   name: standing microphone

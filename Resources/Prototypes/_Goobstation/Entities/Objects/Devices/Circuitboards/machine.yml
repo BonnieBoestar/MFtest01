@@ -9,75 +9,6 @@
 
 - type: entity
   parent: BaseMachineCircuitboard
-  id: RoboticArmCircuitboard
-  name: robotic arm machine board
-  description: A machine printed circuit board for a robotic arm.
-  components:
-  - type: Sprite
-    state: engineering
-  - type: MachineBoard
-    prototype: RoboticArm
-    stackRequirements:
-      Manipulator: 4
-      Steel: 6
-      Cable: 5
-    tagRequirements:
-      BorgArm:
-        amount: 2
-        defaultPrototype: LeftArmBorg
-
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: ConstructorCircuitboard
-  name: constructor machine board
-  description: A machine printed circuit board for a constructor.
-  components:
-  - type: Sprite
-    state: engineering
-  - type: MachineBoard
-    prototype: Constructor
-    stackRequirements:
-      Manipulator: 5
-      Steel: 10
-      Cable: 5
-    tagRequirements:
-      BorgArm:
-        amount: 4
-        defaultPrototype: LeftArmBorg
-
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: StorageBinCircuitboard
-  name: storage bin machine board
-  description: A machine printed circuit board for a storage bin.
-  components:
-  - type: MachineBoard
-    prototype: StorageBin
-    stackRequirements:
-      Manipulator: 4
-      Steel: 1
-
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: InteractorCircuitboard
-  name: interactor machine board
-  description: A machine printed circuit board for an interactor.
-  components:
-  - type: Sprite
-    state: engineering
-  - type: MachineBoard
-    prototype: Interactor
-    stackRequirements:
-      Manipulator: 4
-      Plastic: 4
-      Cable: 5
-    tagRequirements:
-      BorgArm:
-        amount: 1
-        defaultPrototype: LeftArmBorg
-
-- type: entity
-  parent: BaseMachineCircuitboard
   id: VinylPlayerCircuitboard
   name: vinyl player machine board
   description: A machine printed circuit board for a vinyl player.
@@ -86,10 +17,19 @@
     state: service
   - type: MachineBoard
     prototype: VinylPlayer
-    stackRequirements:
-      Manipulator: 1
+    tagRequirements:
+      N14Diode:
+        ExamineName: diode
+        DefaultPrototype: N14JunkComponentDiode1
+        Amount: 1
+      N14Fuse:
+        ExamineName: fuse
+        DefaultPrototype: N14JunkComponentFuse1
+        Amount: 1
+    materialRequirements:
       Steel: 1
       WoodPlank: 3
+      Cable: 2
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -101,10 +41,19 @@
     state: service
   - type: MachineBoard
     prototype: TapeDeck
-    stackRequirements:
-      Manipulator: 2
+    tagRequirements:
+      N14Capacitor:
+        ExamineName: capacitor
+        DefaultPrototype: N14JunkComponentCapacitor1
+        Amount: 2
+      N14Fuse: 
+        ExamineName: fuse
+        DefaultPrototype: N14JunkComponentFuse1
+        Amount: 1
+    materialRequirements:
       Plastic: 3
       WoodPlank: 5
+      Cable: 4
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -116,12 +65,23 @@
     state: service
   - type: MachineBoard
     prototype: StationRadioServer
-    stackRequirements:
-      Manipulator: 1
+    materialRequirements:
       Steel: 10
       Plastic: 10
-      Plasma: 5
-      CableHV: 4
+      Cable: 5
+    tagRequirements: 
+      N14Capacitor:
+        ExamineName: capacitor
+        DefaultPrototype: N14JunkComponentCapacitor1
+        Amount: 2
+      N14Diode:
+        ExamineName: diode
+        DefaultPrototype: N14JunkComponentDiode1
+        Amount: 1
+      N14Fuse: 
+        ExamineName: fuse
+        DefaultPrototype: N14JunkComponentFuse1
+        Amount: 2
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -133,11 +93,19 @@
     state: service
   - type: MachineBoard
     prototype: StationRadioRig
-    stackRequirements:
-      Manipulator: 3
+    materialRequirements:
       Steel: 5
       Glass: 5
-      Cable: 2
+      Cable: 3
+    tagRequirements: 
+      N14Capacitor:
+        ExamineName: capacitor
+        DefaultPrototype: N14JunkComponentCapacitor1
+        Amount: 1
+      N14Fuse: 
+        ExamineName: fuse
+        DefaultPrototype: N14JunkComponentFuse1
+        Amount: 1
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -148,19 +116,13 @@
   - type: Sprite
     state: service
   - type: MachineBoard
-    prototype: StationRadioReceiver
-    stackRequirements:
-      Manipulator: 1
+    prototype: N14RadioTable #Misfits
+    materialRequirements:
       Cable: 2
-
-- type: entity
-  id: VirologyServerMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: virology server machine board
-  description: A machine printed circuit board for a virology server.
-  components:
-    - type: MachineBoard
-      prototype: VirologyServer
-      stackRequirements:
-        Steel: 1
-        Cable: 2
+      WoodPlank: 3
+      Plastic: 2
+    tagRequirements:
+      N14Fuse: 
+        ExamineName: fuse
+        DefaultPrototype: N14JunkComponentFuse1
+        Amount: 1
