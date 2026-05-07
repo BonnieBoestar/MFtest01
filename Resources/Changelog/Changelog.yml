@@ -4647,3 +4647,12 @@ Entries:
   id: 5840
   time: '2026-05-07T14:44:21.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/440
+- author: HungryCuban
+  changes:
+    - type: Fix
+      message: >-
+        Loadouts customs items didn't save on low points (Fix made by
+        @VMSolidus)
+  id: 5841
+  time: '2026-05-07T20:20:44.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/444
