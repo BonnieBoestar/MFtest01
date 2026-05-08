@@ -406,7 +406,7 @@
     shoes: ClothingSuperMutantGladiatorBoots
     gloves: SupermutantFollowerGloves
     neck: ClothingNeckStethoscope
-    id: N14IDDoctorFollower
+    id: N14IDFollowerDoctor
     ears: N14ClothingHeadsetFollowers
     pocket1: N14HandheldHealthAnalyzer
     pocket2: SurgicalSterilanSpray

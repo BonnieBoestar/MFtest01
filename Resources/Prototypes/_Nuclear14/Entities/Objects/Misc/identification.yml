@@ -157,6 +157,11 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: doctor
+  - type: Access
+    tags:
+    - FotA
+    - FotADoctor 
+
 
 # #Misfits Change - BoS Midwest holotags commented out.
 # Consolidated to _Misfits/Entities/Objects/Misc/bos_identification.yml
@@ -691,16 +696,58 @@
   - type: ClothingAddFaction
     faction: Tribal
 
-# Fun / Misc
+# Followers
 - type: entity
   parent: N14IDDoctor
-  id: N14IDDoctorFollower
+  id: N14IDDoctorFollower # specifically so the yml linter stops crying
   name: followers ID
   description: An ID card worn by the Followers of the Apocalypse.
   components:
   - type: Tag
     tags:
     - IdCardFollowers
+
+- type: entity
+  parent: N14IDDoctor
+  id: N14IDFollowerVolunteer
+  name: followers (volunteer) ID
+  description: An ID card worn by the Followers of the Apocalypse.
+  components:
+  - type: Tag
+    tags:
+    - IdCardFollowers
+  - type: Access
+    tags:
+    - FotA
+
+- type: entity
+  parent: N14IDDoctor
+  id: N14IDFollowerDoctor
+  name: followers (doctor) ID
+  description: An ID card worn by the Followers of the Apocalypse.
+  components:
+  - type: Tag
+    tags:
+    - IdCardFollowers
+  - type: Access
+    tags:
+    - FotA
+    - FotADoctor
+
+- type: entity
+  parent: N14IDDoctor
+  id: N14IDFollowerHead
+  name: followers (head) ID
+  description: An ID card worn by the Followers of the Apocalypse.
+  components:
+  - type: Tag
+    tags:
+    - IdCardFollowers
+  - type: Access
+    tags:
+    - FotA
+    - FotADoctor
+    - FotAHead
 
 #MARK: Keys
 

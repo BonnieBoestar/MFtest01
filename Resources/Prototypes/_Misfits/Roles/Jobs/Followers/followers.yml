@@ -71,7 +71,7 @@
     back: ClothingBackpackDuffelSurgeryFilled
     shoes: N14ClothingBootsLeather
     neck: ClothingNeckStethoscope
-    id: N14IDDoctorFollower
+    id: N14IDFollowerHead
     ears: N14ClothingHeadsetFollowers
     outerClothing: N14ClothingOuterCoatFollowerLab
     belt: N14ClothingBeltMedicalFilled
@@ -143,7 +143,7 @@
     back: ClothingBackpackDuffelSurgeryFilled
     shoes: N14ClothingBootsLeather
     neck: ClothingNeckStethoscope
-    id: N14IDDoctorFollower
+    id: N14IDFollowerDoctor
     ears: N14ClothingHeadsetFollowers
     outerClothing: N14ClothingOuterCoatFollowerLab
     belt: N14ClothingBeltMedicalFilled
@@ -208,7 +208,7 @@
     jumpsuit: N14ClothingUniformJumpsuitFollowers
     shoes: N14ClothingBootsLeather
     neck: ClothingNeckStethoscope
-    id: N14IDDoctorFollower
+    id: N14IDFollowerVolunteer
     ears: N14ClothingHeadsetFollowers
     belt: ClothingBeltMedicalFilled
     pocket1: N14HandheldHealthAnalyzer
