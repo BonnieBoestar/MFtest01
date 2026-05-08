@@ -271,17 +271,17 @@
           damage:
             types:
               # #Misfits Fix - PassiveDamage group healing is split across member types; direct types make burn regeneration visible.
-              Blunt: -0.5
-              Slash: -0.5
-              Piercing: -0.5
-              Heat: -0.5
-              Shock: -0.5
-              Cold: -0.5
-              Caustic: -0.5
-              Asphyxiation: -0.5
-              Bloodloss: -0.5
-              Poison: -0.25
-              Radiation: -0.25
+              Blunt: -0.2
+              Slash: -0.2
+              Piercing: -0.2
+              Heat: -0.2
+              Shock: -0.2
+              Cold: -0.2
+              Caustic: -0.2
+              Asphyxiation: -0.1
+              Bloodloss: -0.1
+              Poison: -0.1
+              Radiation: -0.1
 
 - type: trait
   id: N14WorldChampion
