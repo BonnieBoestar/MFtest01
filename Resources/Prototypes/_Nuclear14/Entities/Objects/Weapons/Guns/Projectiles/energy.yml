@@ -72,8 +72,9 @@
     impactEffect: BulletPlasmaImpactEffect
     damage:
       types:
-        Heat: 24
-        Radiation: 6
+        Heat: 45
+        Radiation: 10
+        Structural: 100
     soundHit:
       path: "/Audio/Weapons/Guns/Hits/energy_meat1.ogg"
 
@@ -112,7 +113,7 @@
     soundHit:
       collection: MeatLaserImpact
 
-- type: entity 
+- type: entity
   name: recharger laser
   id: BulletRechargerLaser
   parent: BaseBullet

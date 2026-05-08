@@ -1111,18 +1111,18 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PlasmaCartridge
+        startingItem: N14PlasmaShell
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PlasmaCartridge
+            - N14PlasmaShell
   - type: Gun
     minAngle: 2
     maxAngle: 12
     angleIncrease: 4
     angleDecay: 12
-    fireRate: 4
+    fireRate: 2
     soundGunshot:
       collection: N14PlasmaCasterGunshot
     selectedMode: FullAuto

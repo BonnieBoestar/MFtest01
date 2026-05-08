@@ -5,9 +5,6 @@
   parent: MagazineBox10mm
   id: N14AmmoBox10mm
 
-- type: entity
-  parent: N14PlasmaCartridge
-  id: N14PlasmaCartridgeSmall
 
 - type: entity
   parent: MagazineBox44

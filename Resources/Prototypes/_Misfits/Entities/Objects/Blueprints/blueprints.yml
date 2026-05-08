@@ -599,7 +599,7 @@
   - type: Blueprint
     recipes:
     # #Misfits Change - MFC/ECP recipes removed; consolidated to single generic cells at T1
-    - N14BPBoSAmmoPlasmaCell
+    - N14BPBoSAmmoPlasmaCartridge
 
 - type: entity
   parent: N14BlueprintBase
@@ -610,7 +610,8 @@
   - type: Blueprint
     recipes:
     # #Misfits Change - MFC/ECP recipes removed; consolidated to single generic cells at T1
-    - N14BPBoSAmmoPlasmaCartridge
+    - N14BPBoSAmmoPlasmaShell
+    - N14BPBoSAmmoPlasmaCartridgeMultiplas
 
 - type: entity
   parent: N14BlueprintBase

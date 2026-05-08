@@ -723,21 +723,21 @@
 #   category: N14BlueprintBoSAmmoT2
 
 - type: latheRecipe
-  id: N14BPBoSAmmoPlasmaCell
-  result: N14PlasmaCartridgeSmall
-  category: N14BlueprintBoSAmmoT2
-  completetime: 8
+  id: N14BPBoSAmmoPlasmaCartridge
+  result: N14PlasmaCartridge
+  category: N14BlueprintBoSAmmoT3
+  completetime: 10
   requiresBlueprint: true
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 250
+    Glass: 400
 
     Circuitry: 100
 
     ScrapElectronic: 100
 
-    Lead: 250
+    Lead: 400
 
 
 # --- BoS Tier 3 Ammo ---
@@ -753,8 +753,8 @@
 #   category: N14BlueprintBoSAmmoT3
 
 - type: latheRecipe
-  id: N14BPBoSAmmoPlasmaCartridge
-  result: N14PlasmaCartridge
+  id: N14BPBoSAmmoPlasmaShell
+  result: N14PlasmaShell
   category: N14BlueprintBoSAmmoT3
   completetime: 10
   requiresBlueprint: true

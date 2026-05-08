@@ -416,33 +416,33 @@
 #     proto: BulletLightPlasma
 #     fireCost: 50
 
-# - type: entity
-#   name: plasma shell
-#   description: A big green glowing shell, commonly used as ammo for heavy plasma weapons.
-#   id: N14PlasmaShell
-#   suffix: Full
-#   parent: N14BasePlasmaCell
-#   components:
-#   - type: Sprite
-#     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/plasma_big.rsi
-#     layers:
-#       - map: [ "enum.PowerCellVisualLayers.Base" ]
-#         state: empty
-#       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-#         state: o2
-#         shader: unshaded
-#   - type: Item
-#     size: Normal
-#     shape:
-#     - 0,0,1,1
-#     - 0,1,0,1
-#   - type: Tag
-#     tags:
-#       - N14PlasmaShell
-#       - N14AmmoCell
-#   - type: Battery
-#     maxCharge: 5000
-#     startingCharge: 5000
-#   - type: ProjectileBatteryAmmoProvider
-#     proto: BulletBigPlasma
-#     fireCost: 50
+- type: entity
+  name: plasma shell
+  description: A big green glowing shell, commonly used as ammo for heavy plasma weapons.
+  id: N14PlasmaShell
+  suffix: Full
+  parent: N14BasePlasmaCell
+  components:
+   - type: Sprite
+     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/plasma_big.rsi
+     layers:
+       - map: [ "enum.PowerCellVisualLayers.Base" ]
+         state: empty
+       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+         state: o2
+         shader: unshaded
+   - type: Item
+     size: Normal
+     shape:
+     - 0,0,1,1
+     - 0,1,0,1
+   - type: Tag
+     tags:
+       - N14PlasmaShell
+       - N14AmmoCell
+   - type: Battery
+     maxCharge: 5000
+     startingCharge: 5000
+   - type: ProjectileBatteryAmmoProvider
+     proto: BulletBigPlasma
+     fireCost: 500
