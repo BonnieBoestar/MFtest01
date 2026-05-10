@@ -21,6 +21,63 @@
     - ClothingSuperMutantGladiatorLoincloth
 
 - type: loadout
+  id: ClothingSuperMutantZootSuit
+  category: Uniform
+  cost: 6 # The zoot suit is costly
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - SuperMutant
+        - Nightkin
+        - SuperMutantGladiator
+        - SuperMutantRanger
+        - SuperMutantTrooper
+        - SuperMutantNCRRanger
+        - SuperMutantNCRTrooper
+        - SuperMutantTribal
+  items:
+    - ClothingSuperMutantZootSuit
+
+- type: loadout
+  id: ClothingSuperMutantZootHat
+  category: Head
+  cost: 4 # The zoot hat is costly
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - SuperMutant
+        - Nightkin
+        - SuperMutantGladiator
+        - SuperMutantRanger
+        - SuperMutantTrooper
+        - SuperMutantNCRRanger
+        - SuperMutantNCRTrooper
+        - SuperMutantTribal
+  items:
+    - ClothingSuperMutantZootHat
+
+- type: loadout
+  id: ClothingSuperMutantZootBoot
+  category: Shoes
+  cost: 4 # The zoot boot is costly
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - SuperMutant
+        - Nightkin
+        - SuperMutantGladiator
+        - SuperMutantRanger
+        - SuperMutantTrooper
+        - SuperMutantNCRRanger
+        - SuperMutantNCRTrooper
+        - SuperMutantTribal
+  items:
+    - ClothingSuperMutantZootBoot
+
+- type: loadout
   id: MisfitsLoadoutSuperMutantVaultSuit
   category: Uniform
   cost: 1

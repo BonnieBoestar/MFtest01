@@ -4775,3 +4775,18 @@ Entries:
   id: 5853
   time: '2026-05-10T07:25:11.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/454
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added Supermutant Zoot Suit
+    - type: Add
+      message: Added Supermutant Ranger Gasmask
+    - type: Add
+      message: Added Supermutant Ranger Helmet
+    - type: Add
+      message: Added new Yao-Guai cloak sprites
+    - type: Add
+      message: Added new comabt jumpsuit sprites
+  id: 5854
+  time: '2026-05-10T08:53:51.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/465
