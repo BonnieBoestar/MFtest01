@@ -262,6 +262,20 @@
         Slash: 0.75
         Piercing: 0.80
 
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingSuperMutantTrooperHelmet
+  name: super mutant trooper helmet
+  description: A steel helmet fitted for a Supermutant.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/SuperMutant/trooper_helmet.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/SuperMutant/trooper_helmet.rsi
+  - type: Tag
+    tags:
+    - SuperMutantWearable
+
 # #Misfits Add - Extra supermutant outer outfit (outfit C) — spawnable standalone wearable.
 - type: entity
   parent: ClothingOuterBase
@@ -340,7 +354,7 @@
     tags:
     - SuperMutantWearable
 
-    # Misfits Add - Follower Supermutant sprites.
+# Misfits Add - Follower Supermutant sprites.
 - type: entity
   parent: ClothingHandsBase
   id: SupermutantFollowerGloves
