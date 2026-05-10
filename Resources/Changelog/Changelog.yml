@@ -4752,3 +4752,19 @@ Entries:
   id: 5851
   time: '2026-05-10T07:07:44.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/463
+- author: Sirius
+  changes:
+    - type: Add
+      message: Added floors where there were none before.
+    - type: Add
+      message: Added the actual job spawns to the new Follower's base.
+    - type: Add
+      message: Gave the Followers their shovel back.
+    - type: Tweak
+      message: >-
+        Shifted some entities in the Followers utility shed to make it more
+        accessible, as the shelf containing body bags and other useful items
+        itself was not able to be accessed before. 
+  id: 5852
+  time: '2026-05-10T07:24:49.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/464
