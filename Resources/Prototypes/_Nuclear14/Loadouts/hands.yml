@@ -127,17 +127,3 @@
     - N14ClothingHandsPowerFistGoliath
 
 
-- type: loadout
-  id: N14GoliathFist
-  category: Hands
-  cost: 8
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutHands    
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - CaesarLegion
-        - Tribal
-  items:
-    - N14ClothingHandsPowerFistGoliath
-
