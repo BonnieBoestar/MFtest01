@@ -20,6 +20,9 @@
     - !type:CharacterPlaytimeRequirement # #Misfits Tweak - Require 8h as Paladin before Senior Paladin (matches Knight/Scribe pattern)
       tracker: BoSPaladin
       min: 28800 # 8 hours as Paladin
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSMidSquire
+      min: 36000 # 10 hours
   startingGear: BoSMidPaladinGear
   alwaysUseSpawner: true
   icon: "JobIconBosMPaladin" # Corvax-Change

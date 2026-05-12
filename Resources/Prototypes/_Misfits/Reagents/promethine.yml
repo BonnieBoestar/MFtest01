@@ -14,4 +14,7 @@
     Medicine:
       metabolismRate: 0.5
       effects:
-      - !type:GhoulReversalEffect
+        - !type:GhoulReversalEffect
+          conditions:
+            - !type:ReagentThreshold
+              min: 5

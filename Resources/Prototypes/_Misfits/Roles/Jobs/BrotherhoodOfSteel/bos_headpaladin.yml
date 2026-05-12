@@ -21,6 +21,9 @@
     - !type:CharacterPlaytimeRequirement # #Misfits Tweak - Require 8h as Senior Paladin before Head Paladin
       tracker: BoSMidPaladin
       min: 28800 # 8 hours as Senior Paladin
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSMidSquire
+      min: 36000 # 10 hours
   startingGear: BoSMidPaladinCommanderGear
   alwaysUseSpawner: true
   icon: "JobIconBosMCommander" # Corvax-Change
