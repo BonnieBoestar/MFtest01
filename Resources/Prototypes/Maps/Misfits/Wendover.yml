@@ -103,10 +103,10 @@
           BoSInitiate: [ 3, 3 ]  #Misfits Change /Add/
           # BoSWashingtonInitiate: [ 3, 3 ] #Misfits Change /Comment-out/: Washington BoS removed
           Overseer: [ 1, 1 ]
-          VaultDoctor: [ 2, 2 ]
-          VaultDweller: [ 4, 4 ]
-          VaultEngineer: [ 1, 1 ]
-          VaultSecurity: [ 2, 2 ]
+          VaultDoctor: [ 2, 3 ]
+          VaultDweller: [ 8, 10 ]
+          VaultEngineer: [ 2, 3 ]
+          VaultSecurity: [ 2, 5 ]
           CaesarLegionLegate: [ 1, 0 ] # Forge-Legion # #Misfits Tweak - 0 active slots (admin-notify role)
           CaesarLegionCenturion: [ 1, 1 ] # Forge-Legion
           CaesarLegionVeteranDecanus: [ 1, 1 ] # Forge-Legion
