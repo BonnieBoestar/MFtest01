@@ -55,7 +55,7 @@
     wideAnimation: WeaponArcBite
     damage:
       types:
-        Slash: 65
+        Slash: 55
         Blunt: 15
 
   # ── Movement ───────────────────────────────────────────────────────────────
