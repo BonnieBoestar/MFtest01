@@ -32,6 +32,9 @@
           tags:
           - Knife
           - Sidearm
+  - type: Tag
+    tags:
+    - SuperMutantWearable
 
 - type: entity
   parent: N14ClothingPABoots
@@ -42,6 +45,10 @@
   components:
   - type: Sprite
     sprite: _Nuclear14/Clothing/Shoes/PowerBoots/dark.rsi
+  - type: Tag
+    tags:
+    - SuperMutantWearable
+
 
 - type: entity
   parent: N14ClothingPABoots
@@ -52,3 +59,6 @@
   components:
   - type: Sprite
     sprite: _Nuclear14/Clothing/Shoes/PowerBoots/midwest.rsi
+  - type: Tag
+    tags:
+    - SuperMutantWearable
