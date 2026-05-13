@@ -129,12 +129,15 @@ public sealed class IdentitySystem : SharedIdentitySystem
 
     private string GetIdentityName(EntityUid target, IdentityRepresentation representation)
     {
+        if (representation.PresumedName != null)
+            return representation.PresumedName;
+
         var ev = new SeeIdentityAttemptEvent();
 
         RaiseLocalEvent(target, ev);
+
         // #Misfits Change - No-ID policy: without an ID name, identity is always descriptive and never a personal name.
-        var canRevealPersonalName = !ev.Cancelled && representation.PresumedName != null;
-        return representation.ToStringKnown(canRevealPersonalName);
+        return representation.ToStringUnknown();
     }
 
     /// <summary>
