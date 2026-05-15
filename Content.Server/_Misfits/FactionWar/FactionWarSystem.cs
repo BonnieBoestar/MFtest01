@@ -2,6 +2,7 @@
 // Handles GUI form submissions from clients (declare/ceasefire/warjoin) and the admin /forcewar command.
 // Active war state is maintained here and broadcast to all clients on every change.
 // Wars go through a 5-minute Pending phase (during which /warjoin is open) before becoming Active.
+// Acceptance is optional - wars auto-activate after the Pending phase regardless of whether the target accepts.
 // A war is a pair of NetUserIds: Player1 (who declared) and Player2 (who was declared on).
 // All joins must be manual via /warjoin; there is no auto-enlistment.
 // Only original 2 players can participate in raids during the war.
@@ -27,6 +28,7 @@ namespace Content.Server._Misfits.FactionWar;
 /// Rules enforced here (all game-logic stays server-side):
 ///   - Any two different players can declare war on each other.
 ///   - Wars enter a 5-minute Pending phase before becoming Active (during which /warjoin is open).
+///   - Acceptance is optional - wars auto-activate regardless of whether the target accepts.
 ///   - During Pending, any player may /warjoin on either side (except the original 2).
 ///   - Once Active, /warjoin is closed.
 ///   - Raids require both participants to be part of the original 2 players in the war.
@@ -45,14 +47,11 @@ public sealed class FactionWarSystem : EntitySystem
 
     /// <summary>Minimum elapsed round time before war can be declared.</summary>
     /// <summary>Minimum elapsed round time before war can be declared.</summary>
-    private static readonly TimeSpan WarCooldownAfterRoundStart = TimeSpan.FromMinutes(30);
+    private static readonly TimeSpan WarCooldownAfterRoundStart = TimeSpan.FromMinutes(0);
 
     /// <summary>How long a war stays in Pending before becoming Active.</summary>
     /// <summary>How long a war stays in Pending before becoming Active.</summary>
     private static readonly TimeSpan WarPrepDuration = TimeSpan.FromMinutes(5);
-
-    /// <summary>How long target player has to accept war before prompt times out.</summary>
-    private static readonly TimeSpan WarAcceptanceTimeout = TimeSpan.FromMinutes(5);
 
     /// <summary>Minimum word count for war reason/casus belli.</summary>
     private const int MinReasonWords = 5;
@@ -166,41 +165,6 @@ public sealed class FactionWarSystem : EntitySystem
         _warUpdateAccumulator -= WarUpdateInterval;
 
         var now = _gameTiming.CurTime;
-
-        // ── War acceptance prompt timeouts ───────────────────────────────
-        if (_pendingAcceptancePrompts.Count > 0)
-        {
-            List<string>? expiredKeys = null;
-            foreach (var (key, prompt) in _pendingAcceptancePrompts)
-            {
-                if (now >= prompt.ExpiresAt)
-                {
-                    expiredKeys ??= new List<string>();
-                    expiredKeys.Add(key);
-                }
-            }
-            if (expiredKeys != null)
-            {
-                foreach (var key in expiredKeys)
-                {
-                    var prompt = _pendingAcceptancePrompts[key];
-                    _pendingAcceptancePrompts.Remove(key);
-
-                    // Auto-reject: remove the pending war
-                    var war = _activeWars.Values.FirstOrDefault(w => w.WarKey == key);
-                    if (war != null)
-                    {
-                        _activeWars.Remove(key);
-                        _warActivationTimes.Remove(key);
-                        _chat.DispatchServerAnnouncement(
-                            $"WAR DECLARATION EXPIRED\n" +
-                            $"The war declared by {prompt.DeclaredByCharacterName} was not accepted within 5 minutes.",
-                            Color.Gray);
-                    }
-                }
-                BroadcastWarState();
-            }
-        }
 
         // ── Ceasefire proposal timeouts ──────────────────────────────────
         if (_pendingCeasefireProposals.Count > 0)
@@ -401,7 +365,20 @@ public sealed class FactionWarSystem : EntitySystem
             return;
         }
 
-        // Check if either player is already in a war
+        // Check if player or target is already in a war (as original or joinee)
+        if (_warParticipants.ContainsKey(player.UserId))
+        {
+            SendResult(player, false, "You are already in a war.");
+            return;
+        }
+
+        if (_warParticipants.ContainsKey(msg.TargetPlayer))
+        {
+            SendResult(player, false, "Target player is already in a war.");
+            return;
+        }
+
+        // Check if either player is already in a war (as original declarer/target)
         foreach (var war in _activeWars.Values)
         {
             if ((war.DeclaredByPlayer == player.UserId || war.DeclaredAgainstPlayer == player.UserId) ||
@@ -448,10 +425,10 @@ public sealed class FactionWarSystem : EntitySystem
         var warKey = warEntry.WarKey;
         _activeWars[warKey] = warEntry;
 
-        // Set activation time
+        // Set activation time - war will auto-activate after Pending phase
         _warActivationTimes[warKey] = now + WarPrepDuration;
 
-        // Send acceptance prompt to target
+        // Send acceptance prompt to target (optional - allows them to name their side)
         RaiseNetworkEvent(
             new WarAcceptancePromptEvent
             {
@@ -462,10 +439,10 @@ public sealed class FactionWarSystem : EntitySystem
             },
             targetSession);
 
-        // Track acceptance prompt timeout
+        // Track the prompt for reference (but no timeout - war will activate regardless)
         _pendingAcceptancePrompts[warKey] = new WarAcceptancePrompt
         {
-            ExpiresAt = now + WarAcceptanceTimeout,
+            ExpiresAt = now + WarPrepDuration,
             DeclaredByCharacterName = warEntry.DeclaredByCharacterName,
             DeclaredByPlayer = player.UserId,
         };
@@ -477,10 +454,10 @@ public sealed class FactionWarSystem : EntitySystem
             $"WAR DECLARED\n" +
             $"{warEntry.DeclaredByCharacterName} has declared war on {warEntry.DeclaredAgainstCharacterName}!\n" +
             $"Reason: \"{reason}\"\n\n" +
-            $"War begins in 5 minutes. {warEntry.DeclaredAgainstCharacterName} /warjoin to pick a side (MANDATORY TO BE APART OF WAR). ",
+            $"War begins in 5 minutes. Use /warjoin to pick a side.",
             Color.OrangeRed);
 
-        SendResult(player, true, $"War declared. Awaiting {warEntry.DeclaredAgainstCharacterName}'s response (5 min timeout).");
+        SendResult(player, true, $"War declared. Begins in 5 minutes.");
     }
 
     // ── War acceptance/rejection ───────────────────────────────────────────
@@ -534,12 +511,12 @@ public sealed class FactionWarSystem : EntitySystem
 
         _chat.DispatchServerAnnouncement(
             $"WAR ACCEPTED\n" +
-            $"{Name(player.AttachedEntity ?? EntityUid.Invalid)} has accepted the war declaration!\n" +
+            $"{Name(player.AttachedEntity ?? EntityUid.Invalid)} has accepted the war and named their side!\n" +
             $"{war.SideName1} vs {war.SideName2}\n\n" +
             $"War begins in 5 minutes. Use (/warjoin) to choose a side.",
             Color.OrangeRed);
 
-        SendResult(player, true, "War accepted. War begins in 5 minutes.");
+        SendResult(player, true, "Side named. War begins in 5 minutes.");
     }
 
     private void OnRejectWar(PlayerWarRejectEvent msg, EntitySessionEventArgs args)
