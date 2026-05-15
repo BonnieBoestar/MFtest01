@@ -5110,3 +5110,10 @@ Entries:
   id: 5889
   time: '2026-05-15T00:41:36.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/518
+- author: Dpellowski
+  changes:
+    - type: Fix
+      message: war
+  id: 5890
+  time: '2026-05-15T01:52:51.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/520
