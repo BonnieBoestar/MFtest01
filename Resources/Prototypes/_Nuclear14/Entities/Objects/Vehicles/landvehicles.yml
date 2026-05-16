@@ -219,7 +219,6 @@
       params:
         variation: 0.125
   - type: MovementSpeedModifier
-  - type: MovementSpeedModifier
     acceleration: 6
     friction: 0.1
     baseWalkSpeed: 4
