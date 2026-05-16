@@ -5145,3 +5145,12 @@ Entries:
   id: 5894
   time: '2026-05-16T01:40:08.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/522
+- author: Oli
+  changes:
+    - type: Add
+      message: 'NCR Harness to loadout '
+    - type: Tweak
+      message: antler skull appearing in game hopefully
+  id: 5895
+  time: '2026-05-16T01:42:19.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/527
