@@ -17,7 +17,6 @@
       species:
       - Human
       - Ghoul
-      - SuperMutant
     - !type:CharacterDepartmentTimeRequirement
       department: Enclave
       min: 57600 # 16 hours

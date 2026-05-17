@@ -18,7 +18,6 @@
       species:
       - Human
       - Ghoul
-      - SuperMutant
     - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T5 faction timelock (16h Enclave)
       department: Enclave
       min: 57600 # 16 hours

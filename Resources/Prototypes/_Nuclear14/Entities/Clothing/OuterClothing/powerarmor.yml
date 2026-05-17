@@ -132,8 +132,8 @@
 - type: entity
   parent: N14ClothingOuterPowerArmorT45
   id: MisfitsEnclavePowerArmor
-  name: Supermutant Enclave Power Armor
-  description: A set of power armor fitted for a supermutant.
+  name: Experimental X-01 Power Armor
+  description: A set of X-01 Power Armor made to fit a Supermutant, In exchange its less durable then a normal X-01
   components:
   - type: PowerArmorIntegrity
     brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply

@@ -69,8 +69,8 @@
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
   id: MisfitsEnclavePowerArmorHelmet
-  name: Supermutant Enclave Power Armor Helmet
-  description: A matching helment to the enclave's supermutant power armor.
+  name: Experimental X-01 Power Armor Helmet
+  description: A matching helmet to the enclave's supermutant power armor.
   components:
   - type: Sprite
     netsync: false
@@ -134,6 +134,21 @@
     - HidesHair
     - HidesBeard
     - SuperMutantWearable
+  # #Misfits Change - Enclave tactical HUD
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Enclave Tactical HUD
+    # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Enclave
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+  # End Misfits Change
 
 # #Misfits Add - BOS-issue T-45 helmet with Brotherhood tactical HUD.
 # Used by N14ClothingOuterPowerArmorT45 so BOS initiates/knights can access the shared map feed.

@@ -31,6 +31,7 @@
   # #Misfits Removed - generic variants hidden from department; NCR-specific ones take their place
   # - SuperMutantRanger
   # - SuperMutantTrooper
+  # - SuperMutantEnclave
 
 # #Misfits Add - Enclave department is job-whitelist-only and sorted below other special departments.
 # #Misfits Change - Expanded from 3 roles to 8 (5 military + 3 science).
@@ -51,6 +52,7 @@
   - EnclaveJuniorScientist
   - EnclaveNCO
   - EnclaveEnlisted
+  - SuperMutantEnclave
 
 # #Misfits Add — Caesar's Legion department. Groups all Legion roles for the
 # character-creation screen and for department-based requirements/lookups.
