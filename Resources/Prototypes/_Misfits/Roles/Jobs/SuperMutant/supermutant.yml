@@ -41,7 +41,7 @@
     jumpsuit: ClothingSuperMutantVaultSuit
     id: N14ClothingNeckDogtags # #Misfits Change - wastelander supermutants get dogtag IDs
     ears: MisfitsClothingHeadsetWastelandScrap
-    
+
 # #Misfits Add - Nightkin variant with its own whitelist entry.
 - type: job
   id: Nightkin
@@ -390,10 +390,6 @@
   playTimeTracker: SuperMutantFollowerDoctor
   icon: JobIconBorg
   supervisors: job-supervisors-follower-head
-  accessGroups:
-  - FollowersApocalypse
-  - FotADoctor
-  - FotA
   canBeAntag: false
   setPreference: true
   overrideConsoleVisibility: true
@@ -431,3 +427,46 @@
     pocket2: SurgicalSterilanSpray
 - type: playTimeTracker
   id: SuperMutantFollowerDoctor
+
+# Enclave Supermutant.
+
+- type: job
+  id: SuperMutantEnclave
+  jobWhitelistBypassesRoleTimers: true
+  name: Enclave Supermutant
+  description: A Supermutant working for the United States. Service Guarantees Citizenship!
+  playTimeTracker: SuperMutantEnclave
+  icon: "JobIconEnclaveEnlisted"
+  supervisors: job-supervisors-enclave
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  spawnLoadout: true
+  applyTraits: true
+  startingGear: SuperMutantEnclaveGear
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+        - SuperMutant
+  special:
+    - !type:AddComponentSpecial
+      components:
+        - type: NpcFactionMember
+          factions:
+            - PlayerSuperMutant
+            - Enclave
+            - Wastelander
+        - type: PowerArmorProficiency
+- type: startingGear
+  id: SuperMutantEnclaveGear
+  equipment:
+    outerClothing: MisfitsEnclavePowerArmor
+    jumpsuit: ClothingSuperMutantLabcoat
+    ears: N14ClothingHeadsetEnclave
+    id: N14IDEnclaveTrooper
+    belt: ClothingBeltMilitary
+    pocket1: EnclaveSoldierloadoutkits
+- type: playTimeTracker
+  id: SuperMutantEnclave
