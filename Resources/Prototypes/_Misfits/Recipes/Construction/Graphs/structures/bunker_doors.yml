@@ -74,7 +74,7 @@
       conditions:
       - !type:EntityAnchored {}
       steps:
-      - material: ReinforcedGlass
+      - material: Glass
         amount: 1
         doAfter: 2
     - to: n14wired
@@ -95,7 +95,7 @@
       conditions:
       - !type:EntityAnchored {}
       steps:
-      - material: ReinforcedGlass
+      - material: Glass
         amount: 1
         doAfter: 2
       - tool: Screwing
@@ -108,7 +108,7 @@
         pickup: true
         emptyAtUser: true
       - !type:SpawnPrototype
-        prototype: SheetRGlass1
+        prototype: SheetGlass
         amount: 1
       steps:
       - tool: Prying
