@@ -2057,7 +2057,7 @@
       path: /Audio/Voice/Human/peterpro.ogg
   - type: EmitSoundOnLand
     sound:
-      path: /Audio/Machines/Nuke/nuke_alarm.ogg
+      path: /Audio/Voice/Human/malescream_3.ogg
   - type: EmitSoundOnActivate
     sound:
       path: /Audio/Voice/Human/peterpro.ogg
