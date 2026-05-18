@@ -5272,3 +5272,12 @@ Entries:
   id: 5905
   time: '2026-05-18T15:25:06.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/550
+- author: Ruzter7319
+  changes:
+    - type: Fix
+      message: >-
+        reduce mirelurk size so it do not get stuck everywhere and add the
+        ability to drag.
+  id: 5906
+  time: '2026-05-18T15:27:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/544
