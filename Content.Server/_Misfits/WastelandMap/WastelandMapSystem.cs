@@ -6,6 +6,7 @@ using Content.Server.Chat.Managers; // #Misfits Add - faction death alert chat d
 using Content.Server._Misfits.Group; // #Misfits Add - group blip injection
 using Content.Server._Misfits.TribalHunt;
 using Content.Shared.Access.Components;
+using Content.Shared.Humanoid; // #Misfits Add - Followers casualty filter for humanoid player bodies only
 using Content.Shared.Mind; // #Misfits Add - MindComponent (OriginalOwnerUserId player check)
 using Content.Shared.Mind.Components; // #Misfits Add - MindContainerComponent
 using Content.Shared.Mobs; // #Misfits Add - MobState, MobStateChangedEvent
@@ -66,7 +67,7 @@ public sealed class WastelandMapSystem : EntitySystem
         SubscribeLocalEvent<WastelandMapComponent, WastelandMapAddAnnotationMessage>(OnAddAnnotationMessage);
         SubscribeLocalEvent<WastelandMapComponent, WastelandMapRemoveAnnotationMessage>(OnRemoveAnnotationMessage);
         SubscribeLocalEvent<WastelandMapComponent, WastelandMapClearAnnotationsMessage>(OnClearAnnotationsMessage);
-        // #Misfits Add - notify Followers players when any player-controlled entity dies
+        // #Misfits Add - notify Followers players when a player humanoid dies
         SubscribeLocalEvent<MindContainerComponent, MobStateChangedEvent>(OnMindedEntityMobStateChanged);
     }
 
@@ -327,7 +328,7 @@ public sealed class WastelandMapSystem : EntitySystem
             case WastelandMapTacticalFeedKind.Legion:
                 AppendIdCardBlips(buffer, mapId, bounds, "IdCardLegion");
                 break;
-            // #Misfits Add - Followers feed shows all dead player-controlled entities
+            // #Misfits Add - Followers feed shows dead player humanoids
             case WastelandMapTacticalFeedKind.Followers:
                 AppendDeadBodyBlips(buffer, mapId, bounds);
                 break;
@@ -414,8 +415,7 @@ public sealed class WastelandMapSystem : EntitySystem
         }
     }
 
-    // #Misfits Add - Blips for dead player-controlled entities; used by the Followers tac-map feed.
-    // Only shows bodies whose OriginalMind was a real player (OriginalOwnerUserId set), filtering out NPCs.
+    // #Misfits Add - Blips for dead player humanoids; used by the Followers tac-map feed.
     private void AppendDeadBodyBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds)
     {
         var query = EntityQueryEnumerator<MindContainerComponent, MobStateComponent, TransformComponent>();
@@ -424,11 +424,7 @@ public sealed class WastelandMapSystem : EntitySystem
             if (!_mobState.IsDead(uid, mobState))
                 continue;
 
-            // Require the entity to have had a real player mind at some point.
-            if (mindContainer.OriginalMind == null)
-                continue;
-            if (!TryComp<MindComponent>(mindContainer.OriginalMind.Value, out var mindComp)
-                || mindComp.OriginalOwnerUserId == null)
+            if (!IsFollowersTrackableCasualty(uid, mindContainer))
                 continue;
 
             var mapCoords = _transform.GetMapCoordinates(uid, xform);
@@ -443,6 +439,20 @@ public sealed class WastelandMapSystem : EntitySystem
         }
     }
 
+    private bool IsFollowersTrackableCasualty(EntityUid uid, MindContainerComponent mindContainer)
+    {
+        // Some non-humanoid entities can temporarily have a player mind, e.g. controlled
+        // creatures or ghost roles. Followers rescue alerts are only for humanoid characters.
+        if (!HasComp<HumanoidAppearanceComponent>(uid))
+            return false;
+
+        if (mindContainer.OriginalMind == null)
+            return false;
+
+        return TryComp<MindComponent>(mindContainer.OriginalMind.Value, out var mindComp)
+            && mindComp.OriginalOwnerUserId != null;
+    }
+
     // #Misfits Add - Notify Followers on player death and immediately refresh maps on revival.
     private void OnMindedEntityMobStateChanged(EntityUid uid, MindContainerComponent comp, MobStateChangedEvent args)
     {
@@ -452,11 +462,8 @@ public sealed class WastelandMapSystem : EntitySystem
         if (!wasDead && !isDead)
             return;
 
-        // Ignore NPCs — only act on real player characters.
-        if (comp.OriginalMind == null)
-            return;
-        if (!TryComp<MindComponent>(comp.OriginalMind.Value, out var mindComp)
-            || mindComp.OriginalOwnerUserId == null)
+        // Ignore NPCs and controlled creatures; only act on real humanoid player characters.
+        if (!IsFollowersTrackableCasualty(uid, comp))
             return;
 
         if (isDead)
