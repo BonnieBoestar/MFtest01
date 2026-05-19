@@ -1,7 +1,7 @@
 - type: loadout
   id: N14ClothingBackpackSatchelTrekker
   category: Satchel
-  cost: 2
+  cost: 0
   exclusive: true
   customName: false
   customDescription: false
@@ -23,7 +23,7 @@
 - type: loadout
   id: N14ClothingBackpackSatchelExplorer
   category: Satchel
-  cost: 2
+  cost: 0
   exclusive: true
   customName: false
   customDescription: false
@@ -45,7 +45,7 @@
 - type: loadout
   id: N14ClothingBackpackSatchelTribal
   category: Satchel
-  cost: 2
+  cost: 0
   exclusive: true
   customName: false
   customDescription: false
@@ -64,7 +64,7 @@
 - type: loadout
   id: N14ClothingBackpackSatchelMilitary
   category: Satchel
-  cost: 2
+  cost: 0
   exclusive: true
   customName: false
   customDescription: false
