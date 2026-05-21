@@ -335,7 +335,7 @@
       - id: N14ClothingBeltMedicalFilled
       - id: N14ClothingHandsGlovesNitrile
       - id: ClothingMaskSterile
-      - id: N14ClothingBackpackSurgeryFilled
+      - id: ClothingBackpackDuffelSurgeryFilled
       - id: N14WeaponPistol45Colt
       - id: N14BaseMagazine45Pistol
         amount: 2
