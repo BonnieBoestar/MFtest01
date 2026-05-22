@@ -1,4 +1,5 @@
 using Content.Client.Rotation;
+using Content.Shared.Vehicles;
 using Content.Shared.Buckle;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Movement.Systems;
@@ -85,6 +86,9 @@ internal sealed class BuckleSystem : SharedBuckleSystem
 
             if (!TryComp<SpriteComponent>(buckledEntity, out var buckledSprite))
                 continue;
+
+            if (HasComp<VehicleComponent>(uid)) // let vehicle handle drawdepth
+                return;
 
             if (isNorth)
             {

@@ -328,7 +328,7 @@
   id: N14LMGMagazine556Rifle
 
 # Forge-Add-Start
-- type: Tag 
+- type: Tag
   id: Magazine556Rifle30
 # Forge-Add-End
 
@@ -481,3 +481,12 @@
 
 - type: Tag
   id: NightstalkerPelt
+
+- type: Tag
+  id: VehicleKey
+
+- type: Tag
+  id: JanicartKeys
+
+- type: Tag
+  id: MotorbikeKeys

@@ -3,7 +3,6 @@
   id: N14VehicleBikeRust1
   name: rusted bike
   description: Cool bike if it wasn't rusted and missing wheels.
-  suffix: Mapping
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Vehicles/bikesbuggy.rsi
@@ -43,9 +42,9 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           SheetSteel1:
-            min: 18
-            max: 30
-
+            min: 1
+            max: 2
+            
 - type: entity
   parent: N14VehicleBikeRust1
   id: N14VehicleCarWreck

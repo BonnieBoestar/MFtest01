@@ -87,6 +87,10 @@
       "name": "bike_flamy1",
       "directions": 4
     },
+        {
+      "name": "bike_flamy1_overlay",
+      "directions": 4
+    },
     {
       "name": "bike_flamy2",
       "directions": 4,
@@ -115,6 +119,10 @@
     },
     {
       "name": "bike_scrambler1",
+      "directions": 4
+    },
+    {
+      "name": "bike_scrambler1_overlay",
       "directions": 4
     },
     {
