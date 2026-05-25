@@ -29,6 +29,8 @@
     - N14BPC27HelmetMediumGeneric
     - N14BPC27ArmorHeavyGeneric
     - N14BPC27HelmetHeavyGeneric
+    - N14BPC27ArmorCombatGeneric
+    - N14BPC27HelmetCombatGeneric
 
 - type: entity
   parent: N14BlueprintBase

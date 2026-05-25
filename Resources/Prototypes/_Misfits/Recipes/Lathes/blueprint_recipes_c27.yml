@@ -186,3 +186,31 @@
     Cloth: 100
     Thread: 65
     Plastic: 60
+
+# =====================================================================
+# C-27 Combat armor set
+# =====================================================================
+
+- type: latheRecipe
+  id: N14BPC27ArmorCombatGeneric
+  result: ClothingC27ArmorCombatGeneric
+  category: N14BlueprintC27CombatGeneric
+  completetime: 10
+  requiresBlueprint: true
+  materials:
+    Steel: 15000
+    Cloth: 200
+    Thread: 150
+    Plastic: 1050
+
+- type: latheRecipe
+  id: N14BPC27HelmetCombatGeneric
+  result: ClothingC27HelmetCombatGeneric
+  category: N14BlueprintC27CombatGeneric
+  completetime: 6
+  requiresBlueprint: true
+  materials:
+    Steel: 2000
+    Cloth: 500
+    Thread: 45
+    Plastic: 30

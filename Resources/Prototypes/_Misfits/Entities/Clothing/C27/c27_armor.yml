@@ -93,6 +93,29 @@
   - type: ExplosionResistance
     damageCoefficient: 0.15 # #Misfits Tweak - 85% explosion reduction
 
+- type: entity
+  abstract: true
+  parent: BaseC27Armor
+  id: BaseC27ArmorCombat
+  components:
+  - type: Armor
+    modifiers:
+      coefficients: # #Misfits these vaules Should render this amor effective for ballistics , while being very weak to Energy, an side-grade for medium
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.50
+        Heat: 0.85
+  - type: Reflect
+    reflects:
+    - SmallCaliber
+    - MediumCaliber
+    reflectProb: 0.20
+    innate: true
+    spread: 90
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.85
+
 # === Concrete: Light tier ===
 
 - type: entity
@@ -197,3 +220,15 @@
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_heavy_bos.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_heavy_bos.rsi
+
+# === Concrete: Combat Set ===
+- type: entity
+  parent: BaseC27ArmorCombat
+  id: ClothingC27ArmorCombatGeneric
+  name: c-27 combat armor plating
+  description: Following the development of modern combat armor, this adapted composite plating package was produced for C-27 units, improving ballistic protection while retaining some battlefield mobility.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/c27_combat_generic.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/c27_combat_generic.rsi
