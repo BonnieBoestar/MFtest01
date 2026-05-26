@@ -23,11 +23,10 @@ public sealed class SpecialStrengthSystem : EntitySystem
             return;
 
         var tuning = _special.GetTuning();
-        var modifier = _special.GetCurvedEffectScale(
+        var modifier = _special.GetCurvedEffectModifier(
             args.User,
             SpecialStat.Strength,
-            -tuning.StrengthCarryPullSpeedPenaltyAtOne,
-            tuning.StrengthCarryPullSpeedBonusAtTen,
+            tuning.StrengthCarryPullSpeedMultiplierPerPoint,
             special);
         var multiplier = MathF.Max(0.1f, 1f + modifier);
 

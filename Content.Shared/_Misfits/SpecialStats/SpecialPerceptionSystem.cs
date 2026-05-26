@@ -28,11 +28,10 @@ public sealed class SpecialPerceptionSystem : EntitySystem
             return;
 
         var tuning = _special.GetTuning();
-        var modifier = _special.GetCurvedEffectScale(
+        var modifier = _special.GetCurvedEffectModifier(
             holder,
             SpecialStat.Perception,
-            tuning.PerceptionSpreadPenaltyAtOne,
-            -tuning.PerceptionSpreadReductionAtTen,
+            -tuning.PerceptionSpreadMultiplierPerPoint,
             special);
         var keepFraction = Math.Clamp(1.0 + modifier, 0.5, 2.0);
 
@@ -56,11 +55,10 @@ public sealed class SpecialPerceptionSystem : EntitySystem
             return;
 
         var tuning = _special.GetTuning();
-        var modifier = _special.GetCurvedEffectScale(
+        var modifier = _special.GetCurvedEffectModifier(
             holder,
             SpecialStat.Perception,
-            tuning.PerceptionHeavyGunPenaltyAtOne,
-            -tuning.PerceptionHeavyGunReductionAtTen,
+            -tuning.PerceptionHeavyGunMultiplierPerPoint,
             special);
         var keepFraction = Math.Clamp(1.0 + modifier, 0.70, 1.40);
 
@@ -73,11 +71,10 @@ public sealed class SpecialPerceptionSystem : EntitySystem
     private float GetFireDelayMultiplier(EntityUid uid, SpecialComponent special)
     {
         var tuning = _special.GetTuning();
-        var modifier = _special.GetCurvedEffectScale(
+        var modifier = _special.GetCurvedEffectModifier(
             uid,
             SpecialStat.Perception,
-            tuning.PerceptionFireDelayPenaltyAtOne,
-            -tuning.PerceptionFireDelayReductionAtTen,
+            -tuning.PerceptionFireDelayMultiplierPerPoint,
             special);
 
         return MathF.Max(0.1f, 1f + modifier);
