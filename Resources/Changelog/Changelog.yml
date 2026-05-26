@@ -5889,3 +5889,10 @@ Entries:
   id: 5964
   time: '2026-05-26T21:50:03.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/612
+- author: HungryCuban
+  changes:
+    - type: Tweak
+      message: Gutsy in accuracy debuff removed
+  id: 5965
+  time: '2026-05-26T21:51:24.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/611
