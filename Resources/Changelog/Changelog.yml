@@ -5859,3 +5859,26 @@ Entries:
   id: 5962
   time: '2026-05-26T20:47:50.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/610
+- author: Squagg
+  changes:
+    - type: Add
+      message: >-
+        Added the hidden Fireman Carry trait for Followers of the Apocalypse
+        roles.
+    - type: Add
+      message: Added a 10 Intelligence medical HUD effect.
+    - type: Add
+      message: Added rarity-based lucky junk pile rewards, including Pip Boys.
+    - type: Add
+      message: Added useful ammo rewards to the lucky loot table.
+    - type: Tweak
+      message: >-
+        Heavy gun spread and recoil now scale with Perception instead of
+        Strength.
+    - type: Fix
+      message: Lucky junk pile rewards now spawn inside the pile inventory.
+    - type: Tweak
+      message: Lucky junk pile reward chance now scales up to 50% at 10 Luck.
+  id: 5963
+  time: '2026-05-26T21:34:04.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/606
