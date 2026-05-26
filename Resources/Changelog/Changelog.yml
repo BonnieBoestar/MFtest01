@@ -5810,3 +5810,10 @@ Entries:
   id: 5957
   time: '2026-05-26T14:05:10.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/604
+- author: Dpellowski
+  changes:
+    - type: Remove
+      message: MHELP
+  id: 5958
+  time: '2026-05-26T16:41:51.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/609
