@@ -126,8 +126,6 @@
     id: N14IDLegionaryBadgeSlave # Gladiator serves under Legion authority
     back: N14ClothingBackpackMilitary # #Misfits Add - backslot for storing a secondary weapon
     suitstorage: N14WastelandTribalSpear # #Misfits Add - back holster slot; starts with a spear stowed on the back
-  inhand:
-    - N14WastelandTribalSpear # Starts with a tribal spear for close-combat
 
 - type: playTimeTracker
   id: SuperMutantGladiator
@@ -436,6 +434,7 @@
   id: SuperMutantFollowerDoctorGear
   equipment:
     jumpsuit: ClothingSuperMutantLabcoat
+    outerClothing: MisfitsFOTASuperMutantArmoredLabcoat
     mask: ClothingSuperMutantSterileMask
     back: ClothingBackpackDuffelSurgeryFilled
     belt: N14ClothingBeltMedicalFilled
