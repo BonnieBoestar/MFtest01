@@ -1,6 +1,6 @@
 ﻿- type: entity
   parent: N14DoorWoodSlanted
-  id: N14DoorWoodSecureLocked80s
+  id: MisfitsDoorWoodSecureLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -10,7 +10,7 @@
 
 - type: entity
   parent: N14DoorWoodSlanted
-  id: N14DoorWoodSecureLocked80sHead
+  id: MisfitsDoorWoodSecureLocked80sHead
   suffix: 80s, Locked, Head
   components:
   - type: AccessReader
@@ -20,7 +20,17 @@
 
 - type: entity
   parent: N14DoorMetalBlueSlanted
-  id: N14DoorMetalSlantedLocked80s
+  id: MisfitsDoorMetalSlantedLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMetalBarSlanted
+  id: MisfitsDoorCellSlantedLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -40,7 +50,7 @@
 
 - type: entity
   parent: N14DoorCell
-  id: N14DoorCellLocked80s
+  id: MisfitsDoorCellLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -60,7 +70,7 @@
 
 - type: entity
   parent: N14DoorWoodWhiteSlanted
-  id: N14DoorWoodSlantedWhiteLocked80s
+  id: MisfitsDoorWoodSlantedWhiteLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -70,7 +80,7 @@
 
 - type: entity
   parent: N14DoorWoodRedSlanted
-  id: N14DoorWoodSlantedRedLocked80s
+  id: MisfitsDoorWoodSlantedRedLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -80,7 +90,7 @@
 
 - type: entity
   parent: FenceMetalGate
-  id: N14DoorFenceMetalGateLocked80s
+  id: MisfitsDoorFenceMetalGateLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -89,7 +99,7 @@
     layoutId: AirlockCargo
 
 - type: entity
-  id: 80sGarageDoor
+  id: Misfits80sGarageDoor
   parent: BaseShutter
   name: 80s garage door
   description: fancy paint mate.
