@@ -6037,3 +6037,16 @@ Entries:
   id: 5979
   time: '2026-05-28T23:04:09.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/629
+- author: paige404
+  changes:
+    - type: Add
+      message: >-
+        Added a new perk, Bloody Mess. It lets others turn you into a bloody
+        mess. Don't take this if you care about keeping your limbs.
+    - type: Tweak
+      message: >-
+        Made arms and legs butcherable for human meat. Now a hungry cannibal can
+        eat their own leg.
+  id: 5980
+  time: '2026-05-29T01:49:22.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/630
