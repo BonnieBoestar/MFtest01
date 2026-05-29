@@ -29,8 +29,8 @@
     layoutId: AirlockCargo
 
 - type: entity
-  parent: N14DoorMetalBarSlanted
-  id: MisfitsDoorCellSlantedLocked80s
+  parent: N14DoorCellMetal
+  id: MisfitsDoorCellMetalLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
