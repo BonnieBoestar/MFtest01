@@ -6171,3 +6171,13 @@ Entries:
   id: 5993
   time: '2026-05-31T22:08:06.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/650
+- author: pierow
+  changes:
+    - type: Add
+      message: >-
+        Ghostrole and NPC Robots Languages for
+        Eyebots/Gutsys/Mr.Handy's/Assaultrons/etc...They can now speak
+        Brotherhood Code, Binary, English, Latin, and Chinese! Wow!
+  id: 5994
+  time: '2026-05-31T22:09:13.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/647
