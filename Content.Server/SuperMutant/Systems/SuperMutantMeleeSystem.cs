@@ -1,5 +1,6 @@
 using Content.Shared.Humanoid;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Wieldable.Components;
 
 namespace Content.Server.SuperMutant.Systems;
 
@@ -20,6 +21,10 @@ public sealed class SuperMutantMeleeSystem : EntitySystem
             return;
 
         if (appearance.Species != "SuperMutant")
+            return;
+
+        if (!TryComp<WieldableComponent>(args.Weapon, out var wieldable) ||
+            !wieldable.Wielded)
             return;
 
         var baseDamage = args.Damage.GetTotal().Float();
