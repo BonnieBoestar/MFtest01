@@ -6330,3 +6330,10 @@ Entries:
   id: 6003
   time: '2026-06-01T20:18:57.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/657
+- author: pierow
+  changes:
+    - type: Fix
+      message: Fixes Greasegun Wielding/Backslot Sprites (Thanks, Wassuy. You pro!)
+  id: 6004
+  time: '2026-06-01T20:24:22.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/658
