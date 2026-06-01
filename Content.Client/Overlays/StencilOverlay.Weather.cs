@@ -20,6 +20,12 @@ public sealed partial class StencilOverlay
         var worldAABB = args.WorldAABB;
         var worldBounds = args.WorldBounds;
         var position = args.Viewport.Eye?.Position.Position ?? Vector2.Zero;
+        var viewport = args.Viewport;
+        var renderScale = viewport.RenderScale.X;
+        var viewportSize = viewport.Size;
+        var hasEye = viewport.Eye != null;
+        var eyePosition = viewport.Eye?.Position.Position ?? Vector2.Zero;
+        var eyeZoom = viewport.Eye?.Zoom ?? Vector2.One;
 
         // Cut out the irrelevant bits via stencil
         // This is why we don't just use parallax; we might want specific tiles to get drawn over
@@ -53,7 +59,6 @@ public sealed partial class StencilOverlay
                     worldHandle.DrawRect(gridTile, Color.White);
                 }
             }
-
         }, Color.Transparent);
 
         worldHandle.SetTransform(Matrix3x2.Identity);
@@ -63,7 +68,27 @@ public sealed partial class StencilOverlay
         var sprite = _sprite.GetFrame(weatherProto.Sprite, curTime);
 
         // Draw the rain
-        worldHandle.UseShader(_protoManager.Index<ShaderPrototype>("StencilDraw").Instance());
+        if (weatherProto.VisibilityClearRadius > 0f && hasEye)
+        {
+            var length = eyeZoom.X;
+            var pixelCenter = Vector2.Transform(eyePosition, invMatrix);
+            var pixelMaxRange = weatherProto.VisibilityClearRadius * renderScale / length * EyeManager.PixelsPerMeter;
+            var pixelBufferRange = MathF.Max(1f, weatherProto.VisibilityClearBuffer * renderScale / length * EyeManager.PixelsPerMeter);
+            var pixelMinRange = MathF.Max(0f, pixelMaxRange - pixelBufferRange);
+
+            _weatherVisibilityShader.SetParameter("position", new Vector2(pixelCenter.X, viewportSize.Y - pixelCenter.Y));
+            _weatherVisibilityShader.SetParameter("maxRange", pixelMaxRange);
+            _weatherVisibilityShader.SetParameter("minRange", pixelMinRange);
+            _weatherVisibilityShader.SetParameter("bufferRange", pixelBufferRange);
+            _weatherVisibilityShader.SetParameter("gradient", 0.80f);
+
+            worldHandle.UseShader(_weatherVisibilityShader);
+        }
+        else
+        {
+            worldHandle.UseShader(_protoManager.Index<ShaderPrototype>("StencilDraw").Instance());
+        }
+
         _parallax.DrawParallax(worldHandle, worldAABB, sprite, curTime, position, Vector2.Zero, modulate: (weatherProto.Color ?? Color.White).WithAlpha(alpha));
 
         worldHandle.SetTransform(Matrix3x2.Identity);

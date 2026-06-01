@@ -48,7 +48,7 @@
 - type: weather
   id: Default
   duration: 3600 # Misfits: increased from 1200 to keep calm periods much longer
-  chance: 50 # Misfits: increased from 15 to heavily favour no-weather
+  chance: 0 # Misfits: calm periods are handled by WeatherSystem's random delay
   message: weather-default
 
 # - type: weather
@@ -95,7 +95,7 @@
       loop: true
       volume: -6
   temperature: 300
-  duration: 250
+  duration: 600
   chance: 1 # Misfits: reduced from 2
   message: weather-rain
   # Misfits Change Add: Rain puddle spawning. Puddles grow silently on open outdoor tiles
@@ -210,7 +210,7 @@
       loop: true
       volume: -6
   temperature: 310
-  duration: 250
+  duration: 600
   showMessage: true
   chance: 1
   sender: weather-announcement

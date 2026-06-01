@@ -33,6 +33,7 @@ public sealed partial class StencilOverlay : Overlay
     private IRenderTexture? _blep;
 
     private readonly ShaderInstance _shader;
+    private readonly ShaderInstance _weatherVisibilityShader;
 
     public StencilOverlay(ParallaxSystem parallax, SharedTransformSystem transform, SpriteSystem sprite, WeatherSystem weather)
     {
@@ -43,6 +44,7 @@ public sealed partial class StencilOverlay : Overlay
         _weather = weather;
         IoCManager.InjectDependencies(this);
         _shader = _protoManager.Index<ShaderPrototype>("WorldGradientCircle").InstanceUnique();
+        _weatherVisibilityShader = _protoManager.Index<ShaderPrototype>("WeatherVisibilityDraw").InstanceUnique();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
