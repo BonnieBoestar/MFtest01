@@ -6380,3 +6380,10 @@ Entries:
   id: 6009
   time: '2026-06-02T20:09:47.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/662
+- author: pierow
+  changes:
+    - type: Add
+      message: French Accent under Perks -> Speech
+  id: 6010
+  time: '2026-06-02T20:14:41.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/655
