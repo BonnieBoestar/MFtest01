@@ -6413,3 +6413,10 @@ Entries:
   id: 6012
   time: '2026-06-03T20:30:58.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/679
+- author: NajaTheNaja
+  changes:
+    - type: Tweak
+      message: made medx and healing powder suppress chronic pain for 20 or 5 minutes
+  id: 6013
+  time: '2026-06-03T23:46:57.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/682
