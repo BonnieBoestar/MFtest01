@@ -137,7 +137,7 @@
   components:
   - type: PowerArmorIntegrity
     brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
-    maxIntegrity: 480 # #Misfits Tweak: By Bill, 480 durability.
+    maxIntegrity: 960 # #Misfits Tweak: By Bill, 960 durability.
   - type: Sprite
     sprite: _Misfits/Clothing/OuterClothing/PowerArmor/Mutant_PA.rsi
   - type: Clothing
@@ -255,7 +255,7 @@
   components:
   - type: PowerArmorIntegrity
     brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply
-    maxIntegrity: 460 # #Misfits Tweak: By Bill, 460 a little better than T60 but not T51.
+    maxIntegrity: 920 # #Misfits Tweak: By Bill, 920 a little better than T60 but not T51.
   - type: Sprite
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/advanced1.rsi
   - type: Clothing

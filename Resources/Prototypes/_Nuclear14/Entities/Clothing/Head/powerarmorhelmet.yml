@@ -126,6 +126,12 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: NightVision
+    isEquipment: true
+  - type: ThermalVision
+    isEquipment: true
+    pulseTime: 2
+    toggleAction: PulseThermalVision
   - type: BreathMask # Misfits Change
   - type: GasFilterMask # Misfits Change
   - type: IngestionBlocker # Misfits Change
@@ -391,6 +397,12 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: NightVision
+    isEquipment: true
+  - type: ThermalVision
+    isEquipment: true
+    pulseTime: 2
+    toggleAction: PulseThermalVision
   - type: BreathMask # Misfits Change
   - type: GasFilterMask # Misfits Change
   - type: IngestionBlocker # Misfits Change
