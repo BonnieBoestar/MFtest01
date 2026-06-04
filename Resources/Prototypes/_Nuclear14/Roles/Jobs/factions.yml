@@ -134,6 +134,7 @@
   - TribalShaman # #Misfits Change - renamed from TribalHealer
   - TribalFarmer
   - Tribal
+  - SyntheticProtectronTribal # Misfits Change
 
 - type: department
   id: Vault

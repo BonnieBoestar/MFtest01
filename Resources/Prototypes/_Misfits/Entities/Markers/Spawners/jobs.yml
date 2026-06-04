@@ -704,6 +704,14 @@
     job_id: SyntheticProtectron
 
 - type: entity
+  parent: MisfitsSpawnPointSyntheticProtectron
+  id: MisfitsSpawnPointSyntheticProtectronTribal
+  name: Protectron Spirit-Tender
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticProtectronTribal
+
+- type: entity
   parent: MisfitsSpawnPointSyntheticMrHandy
   id: MisfitsSpawnPointSyntheticMrGutsy
   name: Synthetic Mr. Gutsy
@@ -1045,7 +1053,7 @@
     sprite: Corvax/Markers/jobs.rsi
     layers:
       - state: green
-  
+
 
 - type: entity
   parent: SpawnPointJobBase

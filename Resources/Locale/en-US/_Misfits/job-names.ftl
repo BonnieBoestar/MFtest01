@@ -152,4 +152,6 @@ undecided-loadout-category-misfits-pal-wattz-description =
     2 12.7mm pistol magazines, 1 roll of gauze, 1 stimpak,
     and 1 K ration MRE.
 
-
+# Tribal Robot
+job-name-synthetic-protectron-tribal = Protectron Spirit-Tender
+job-description-synthetic-protectron-tribal = An agricultural robot that has been adopted by the local tribe and modified over decades or centuries.
