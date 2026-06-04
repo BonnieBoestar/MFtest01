@@ -43,4 +43,7 @@ public sealed partial class RequisitionsAccountComponent : Component
 
     [DataField]
     public Dictionary<string, int> Storage = new();
+
+    [DataField]
+    public int StorageLimit = 2000;
 }

@@ -1,0 +1,95 @@
+- type: entity
+  id: N14ASRSAccountNCR
+  parent: N14ASRSAccount
+  name: NCR requisitions account
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RequisitionsAccount
+    group: NCR
+    startingBalance: 8000
+    gain: 120
+
+- type: entity
+  parent: N14BaseCargoElevator
+  id: N14CargoElevatorNCR
+  suffix: NCR, Lowered
+  components:
+  - type: RequisitionsElevator
+    group: NCR
+    accountProto: N14ASRSAccountNCR
+
+- type: entity
+  parent: N14BaseRequisitionsConsole
+  id: N14ASRSConsoleNCR
+  name: NCR requisitions terminal
+  suffix: NCR
+  components:
+  - type: AccessReader
+    access: [ [ "NCR" ] ]
+  - type: RequisitionsComputer
+    group: NCR
+    accountProto: N14ASRSAccountNCR
+    acceptedCurrency: NCRDollars
+    categories:
+    - name: n14-requisitions-category-medical
+      entries:
+      - cost: 600
+        crate: N14CrateRequisitionsNCRMedical
+    - name: n14-requisitions-category-ammunition
+      entries:
+      - cost: 800
+        crate: N14CrateRequisitionsNCRAmmo
+    - name: n14-requisitions-category-supplies
+      entries:
+      - cost: 400
+        crate: N14CrateRequisitionsNCRSupplies
+      - cost: 2000
+        crate: N14CrateRequisitionsNCRCaps
+
+- type: entity
+  parent: N14CrateRequisitions
+  id: N14CrateRequisitionsNCRMedical
+  name: NCR medical crate
+  components:
+  - type: RequisitionsCrate
+    reward: 150
+  - type: StorageFill
+    contents:
+    - id: N14Stimpak
+      amount: 5
+    - id: DrinkWaterBottleFull
+      amount: 3
+
+- type: entity
+  parent: N14CrateRequisitions
+  id: N14CrateRequisitionsNCRAmmo
+  name: NCR ammunition crate
+  components:
+  - type: RequisitionsCrate
+    reward: 150
+  - type: StorageFill
+    contents:
+    - id: N14MagazinePistol9mm
+      amount: 6
+
+- type: entity
+  parent: N14CrateRequisitions
+  id: N14CrateRequisitionsNCRSupplies
+  name: NCR supply crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: MaterialCloth1
+      amount: 10
+
+- type: entity
+  parent: N14CrateRequisitions
+  id: N14CrateRequisitionsNCRCaps
+  name: caps crate
+  components:
+  - type: RequisitionsCrate
+    reward: 0
+  - type: StorageFill
+    contents:
+    - id: N14CurrencyCap100
+      amount: 5

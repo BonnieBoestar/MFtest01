@@ -1,0 +1,80 @@
+- type: entity
+  id: N14ASRSAccountBoS
+  parent: N14ASRSAccount
+  name: Brotherhood requisitions account
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RequisitionsAccount
+    group: BoS
+    startingBalance: 12000
+    gain: 150
+
+- type: entity
+  parent: N14BaseCargoElevator
+  id: N14CargoElevatorBoS
+  suffix: BoS, Lowered
+  components:
+  - type: RequisitionsElevator
+    group: BoS
+    accountProto: N14ASRSAccountBoS
+
+- type: entity
+  parent: N14BaseRequisitionsConsole
+  id: N14ASRSConsoleBoS
+  name: Brotherhood requisitions terminal
+  suffix: BoS
+  components:
+  - type: AccessReader
+    access: [ [ "BoSMidwest" ] ]
+  - type: RequisitionsComputer
+    group: BoS
+    accountProto: N14ASRSAccountBoS
+    categories:
+    - name: n14-requisitions-category-medical
+      entries:
+      - cost: 500
+        crate: N14CrateRequisitionsBoSMedical
+    - name: n14-requisitions-category-ammunition
+      entries:
+      - cost: 700
+        crate: N14CrateRequisitionsBoSAmmo
+    - name: n14-requisitions-category-supplies
+      entries:
+      - cost: 350
+        crate: N14CrateRequisitionsBoSSupplies
+
+- type: entity
+  parent: N14CrateRequisitions
+  id: N14CrateRequisitionsBoSMedical
+  name: Brotherhood medical crate
+  components:
+  - type: RequisitionsCrate
+    reward: 150
+  - type: StorageFill
+    contents:
+    - id: N14Stimpak
+      amount: 5
+    - id: N14RadAwayBloodbag
+      amount: 3
+
+- type: entity
+  parent: N14CrateRequisitions
+  id: N14CrateRequisitionsBoSAmmo
+  name: Brotherhood ammunition crate
+  components:
+  - type: RequisitionsCrate
+    reward: 150
+  - type: StorageFill
+    contents:
+    - id: N14MagazinePistol9mm
+      amount: 6
+
+- type: entity
+  parent: N14CrateRequisitions
+  id: N14CrateRequisitionsBoSSupplies
+  name: Brotherhood supply crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: MaterialCloth1
+      amount: 10

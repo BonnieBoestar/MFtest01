@@ -71,4 +71,7 @@ public sealed partial class RequisitionsBounty
 
     [DataField]
     public EntProtoId? RewardCrate;
+
+    [DataField]
+    public bool Repeatable;
 }

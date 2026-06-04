@@ -139,7 +139,10 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             return;
 
         if (elevator.Comp.Orders.Count >= GetElevatorCapacity(elevator))
+        {
+            _popup.PopupEntity(Loc.GetString("n14-requisition-platform-full"), computer, args.Actor);
             return;
+        }
 
         var contents = new Dictionary<string, int>();
         if (args.Proto is { } requested)
@@ -179,12 +182,17 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             orders.Add(new RequisitionsEntry { Crate = StorageCrate, Cost = 0, Contents = loose });
 
         if (elevator.Comp.Orders.Count + orders.Count > GetElevatorCapacity(elevator))
+        {
+            _popup.PopupEntity(Loc.GetString("n14-requisition-platform-full"), computer, args.Actor);
             return;
+        }
 
         elevator.Comp.Orders.AddRange(orders);
 
+        var withdrawn = 0;
         foreach (var (proto, amount) in contents)
         {
+            withdrawn += amount;
             var remaining = account.Storage.GetValueOrDefault(proto) - amount;
             if (remaining > 0)
                 account.Storage[proto] = remaining;
@@ -196,6 +204,9 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
         Dirty(elevator);
         _audio.PlayPvs(computer.Comp.IncomingSurplus, computer);
         SendUIStateAll();
+
+        _adminLogs.Add(LogType.Action,
+            $"{ToPrettyString(args.Actor):actor} withdrew {withdrawn} item(s) from requisitions storage {computer.Comp.Group}");
     }
 
     private void OnPrintHistory(Entity<RequisitionsComputerComponent> computer, ref RequisitionsPrintHistoryMsg args)
@@ -251,7 +262,10 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
 
         var remainingCapacity = GetElevatorCapacity(elevator) - elevator.Comp.Orders.Count;
         if (remainingCapacity <= 0)
+        {
+            _popup.PopupEntity(Loc.GetString("n14-requisition-platform-full"), computer, actor);
             return;
+        }
 
         if (computer.Comp.Account is not { } accountUid ||
             !TryComp(accountUid, out RequisitionsAccountComponent? account))
@@ -306,7 +320,10 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             totalAmount += item.Amount;
 
             if (totalAmount > remainingCapacity)
+            {
+                _popup.PopupEntity(Loc.GetString("n14-requisition-platform-full"), computer, actor);
                 return;
+            }
 
             history.Add(new RequisitionsHistoryEntry(buyerName, order.Crate.Id, item.Amount, order.Cost * item.Amount));
 
@@ -317,7 +334,10 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
         }
 
         if (account.Balance < totalCost)
+        {
+            _popup.PopupEntity(Loc.GetString("n14-requisition-insufficient-funds"), computer, actor);
             return;
+        }
 
         account.Balance -= totalCost;
         foreach (var (crateId, amount) in pendingStock)
@@ -533,11 +553,9 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             var coordinates = _transform.GetMoverCoordinates(elevator);
             var xOffset = comp.Radius;
             var yOffset = comp.Radius;
-            int remainingDeliveries = GetElevatorCapacity(elevator);
             foreach (var order in comp.Orders)
             {
                 var crate = SpawnAtPosition(order.Crate, coordinates.Offset(new Vector2(xOffset, yOffset)));
-                remainingDeliveries--;
 
                 foreach (var prototype in order.Entities)
                 {
@@ -580,30 +598,6 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             }
 
             comp.Orders.Clear();
-
-            var query = EntityQueryEnumerator<RequisitionsCustomDeliveryComponent>();
-
-            while (query.MoveNext(out var entityUid, out _))
-            {
-                if (remainingDeliveries <= 0)
-                    break;
-
-                RemCompDeferred<RequisitionsCustomDeliveryComponent>(entityUid);
-
-                _transform.SetCoordinates(entityUid, coordinates.Offset(new Vector2(xOffset, yOffset)));
-                remainingDeliveries--; // Decrement available delivery slots count.
-
-                // Update the next spot to teleport to.
-                yOffset--;
-                if (yOffset < -comp.Radius)
-                {
-                    yOffset = comp.Radius;
-                    xOffset--;
-                }
-
-                if (xOffset < -comp.Radius)
-                    xOffset = comp.Radius;
-            }
         }
     }
 
@@ -619,13 +613,7 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
         var soldLog = new Dictionary<string, (int Count, int Value)>();
         foreach (var entity in entities)
         {
-            if (entity == elevator.Comp.Audio)
-                continue;
-
-            if (HasComp<CargoSellBlacklistComponent>(entity))
-                continue;
-
-            if (HasComp<MobStateComponent>(entity))
+            if (!IsSellableEntity(elevator, entity))
                 continue;
 
             var proto = MatchKey(entity);
@@ -633,26 +621,16 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             if (proto != null)
                 delivered[proto] = delivered.GetValueOrDefault(proto) + qty;
 
-            if (TryGetSellEntry(sellEntries, entity, out var sellEntry))
+            var (value, exchange, matched) = AppraiseSale(entity, qty, sellEntries);
+            rewards += value;
+
+            for (var i = 0; i < qty; i++)
+                exchanged.AddRange(exchange);
+
+            if (matched || value > 0)
             {
-                var value = sellEntry.Value * qty;
-                rewards += value;
-                for (var i = 0; i < qty; i++)
-                    exchanged.AddRange(sellEntry.Exchange);
                 soldAny = true;
                 LogSold(soldLog, proto, qty, value);
-                QueueDel(entity);
-                continue;
-            }
-
-            rewards += SubmitInvoices(entity);
-
-            var price = SellValue(entity);
-            if (price > 0)
-            {
-                rewards += price;
-                soldAny = true;
-                LogSold(soldLog, proto, qty, price);
             }
 
             QueueDel(entity);
@@ -661,19 +639,28 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
         rewards += CompleteBounties(elevator, account, delivered);
         RecordSales(account, soldLog);
 
+        var storageFull = false;
         foreach (var proto in exchanged)
         {
             var (key, units) = ResolveStorageUnit(proto);
-            account.Comp.Storage[key] = account.Comp.Storage.GetValueOrDefault(key) + units;
+            storageFull |= AddToStorage(account.Comp, key, units);
         }
+
+        if (storageFull)
+            SendUIFeedback(elevator.Comp.Group, Loc.GetString("n14-requisition-storage-full"));
 
         if (rewards > 0)
             SendUIFeedback(elevator.Comp.Group, Loc.GetString("n14-requisition-paperwork-reward-message", ("amount", rewards)));
 
         account.Comp.Balance += rewards;
 
-        // Selling, trading, and bounty completion all mutate the account, so always push the update.
         Dirty(account);
+
+        if (soldAny || rewards > 0 || exchanged.Count > 0)
+        {
+            _adminLogs.Add(LogType.Action,
+                $"Requisitions account {elevator.Comp.Group} processed a sale: +{rewards} budget, {soldLog.Count} item type(s) sold, {exchanged.Count} item(s) banked into storage");
+        }
 
         return soldAny;
     }
@@ -732,13 +719,30 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             var progress = account.Comp.BountyProgress.GetValueOrDefault(bounty.Id) + delivCount;
             if (progress >= bounty.Amount)
             {
-                reward += bounty.Reward;
+                var amount = Math.Max(1, bounty.Amount);
+                var completions = bounty.Repeatable ? progress / amount : 1;
+
+                reward += bounty.Reward * completions;
 
                 if (bounty.RewardCrate is { } rewardCrate)
-                    account.Comp.Storage[rewardCrate] = account.Comp.Storage.GetValueOrDefault(rewardCrate) + 1;
+                    AddToStorage(account.Comp, rewardCrate, completions);
 
-                account.Comp.CompletedBounties.Add(bounty.Id);
-                account.Comp.BountyProgress.Remove(bounty.Id);
+                if (bounty.Repeatable)
+                {
+                    var remainder = progress - completions * amount;
+                    if (remainder > 0)
+                        account.Comp.BountyProgress[bounty.Id] = remainder;
+                    else
+                        account.Comp.BountyProgress.Remove(bounty.Id);
+                }
+                else
+                {
+                    account.Comp.CompletedBounties.Add(bounty.Id);
+                    account.Comp.BountyProgress.Remove(bounty.Id);
+                }
+
+                _adminLogs.Add(LogType.Action,
+                    $"Requisitions account {group} completed bounty {bounty.Id} x{completions} (reward {bounty.Reward * completions}{(bounty.RewardCrate is { } rc ? $", crate {rc.Id}" : "")})");
             }
             else
             {
@@ -762,30 +766,16 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
         var sellEntries = GetSellEntries(elevator.Comp.Group);
         foreach (var entity in _lookup.GetEntitiesIntersecting(elevator))
         {
-            if (entity == elevator.Comp.Audio ||
-                HasComp<CargoSellBlacklistComponent>(entity) ||
-                HasComp<MobStateComponent>(entity))
-            {
+            if (!IsSellableEntity(elevator, entity))
                 continue;
-            }
 
             var key = MatchKey(entity);
             if (key == null)
                 continue;
 
             var qty = TryComp(entity, out StackComponent? stack) ? stack.Count : 1;
-            int entityValue;
-            List<string>? exchangeOutputs = null;
-            if (TryGetSellEntry(sellEntries, entity, out var sellEntry))
-            {
-                entityValue = sellEntry.Value * qty;
-                if (sellEntry.Exchange.Count > 0)
-                    exchangeOutputs = sellEntry.Exchange.Select(e => e.Id).ToList();
-            }
-            else
-            {
-                entityValue = SubmitInvoices(entity) + SellValue(entity);
-            }
+            var (entityValue, exchange, _) = AppraiseSale(entity, qty, sellEntries);
+            var exchangeOutputs = exchange.Count > 0 ? exchange.Select(e => e.Id).ToList() : null;
 
             if (entityValue <= 0 && exchangeOutputs == null)
                 continue;
@@ -816,6 +806,23 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
 
         return value;
     }
+
+    private bool IsSellableEntity(Entity<RequisitionsElevatorComponent> elevator, EntityUid entity)
+    {
+        return entity != elevator.Comp.Audio
+               && !HasComp<CargoSellBlacklistComponent>(entity)
+               && !HasComp<MobStateComponent>(entity);
+    }
+
+    private (int Value, List<EntProtoId> Exchange, bool Matched) AppraiseSale(EntityUid entity, int qty, List<RequisitionsSellEntry> sellEntries)
+    {
+        if (TryGetSellEntry(sellEntries, entity, out var sellEntry))
+            return (sellEntry.Value * qty, sellEntry.Exchange, true);
+
+        return (SubmitInvoices(entity) + SellValue(entity), EmptyExchange, false);
+    }
+
+    private static readonly List<EntProtoId> EmptyExchange = new();
 
     private int SellValue(EntityUid entity)
     {
@@ -884,6 +891,21 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
     {
         return _prototypeManager.TryIndex<EntityPrototype>(proto, out var entProto) &&
                entProto.TryGetComponent<EntityStorageComponent>(out _);
+    }
+
+    private bool AddToStorage(RequisitionsAccountComponent account, string key, int units)
+    {
+        if (units <= 0)
+            return false;
+
+        var current = account.Storage.GetValueOrDefault(key);
+        var room = account.StorageLimit - current;
+        if (room <= 0)
+            return true;
+
+        var added = Math.Min(units, room);
+        account.Storage[key] = current + added;
+        return added < units;
     }
 
     public override void Update(float frameTime)

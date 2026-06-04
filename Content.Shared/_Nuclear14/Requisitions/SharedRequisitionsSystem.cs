@@ -1,12 +1,9 @@
 using Content.Shared._Nuclear14.Requisitions.Components;
 using Content.Shared.Climbing.Components;
-using Content.Shared.GameTicking;
 using Content.Shared.StepTrigger.Systems;
-using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
-using System.Numerics;
 using static Content.Shared._Nuclear14.Requisitions.Components.RequisitionsRailingMode;
 
 namespace Content.Shared._Nuclear14.Requisitions;
@@ -16,15 +13,10 @@ public abstract class SharedRequisitionsSystem : EntitySystem
     [Dependency] private readonly FixtureSystem _fixtures = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-
-    private MapId? _purchasesMap;
 
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
 
         SubscribeLocalEvent<RequisitionsElevatorComponent, StepTriggerAttemptEvent>(OnElevatorStepTriggerAttempt);
 
@@ -279,27 +271,5 @@ public abstract class SharedRequisitionsSystem : EntitySystem
             return (elevators[0].Owner, elevators[0].Comp1);
 
         return closest;
-    }
-
-    private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
-    {
-        _purchasesMap = null;
-    }
-
-    public void CreateSpecialDelivery(EntProtoId proto)
-    {
-        var map = EnsurePurchasesMap();
-        var delivery = Spawn(proto, new MapCoordinates(Vector2.Zero, map));
-        EnsureComp<RequisitionsCustomDeliveryComponent>(delivery);
-    }
-
-    private MapId EnsurePurchasesMap()
-    {
-        if (_purchasesMap != null)
-            return _purchasesMap.Value;
-
-        _map.CreateMap(out var map);
-        _purchasesMap = map;
-        return map;
     }
 }

@@ -29,6 +29,7 @@ public sealed class RequisitionsBui : BoundUserInterface
     private readonly SpriteSystem _sprite;
     private readonly Dictionary<CartKey, int> _cart = new();
     private readonly Dictionary<CartKey, RequisitionsProductCard> _productCards = new();
+    private readonly Dictionary<string, string> _renderSigs = new();
 
     private RequisitionsComputerComponent? _state;
     private RequisitionsWindow? _window;
@@ -51,6 +52,7 @@ public sealed class RequisitionsBui : BoundUserInterface
             return;
 
         _window = this.CreateWindow<RequisitionsWindow>();
+        _renderSigs.Clear();
 
         _window.SearchBar.OnTextChanged += _ => RefreshVisibleEntries();
         _window.PlatformButton.OnPressed += _ => PressPlatformButton();
@@ -93,11 +95,60 @@ public sealed class RequisitionsBui : BoundUserInterface
         UpdateStorage();
         _window?.SetPlatformBusy(_state?.BusyStart, _state?.BusyEnd);
         PopulateCategories();
-        PopulateProducts();
+        RefreshProducts();
         RefreshCart();
         PopulatePendingOrders();
         UpdateHistory();
         UpdateBounties();
+    }
+
+    private void RefreshProducts()
+    {
+        if (_window == null)
+            return;
+
+        // The product list structure depends on the catalog, filters, and per-crate stock; the
+        // affordability/quantity state is refreshed cheaply on every pass.
+        var search = _window.SearchBar.Text.Trim();
+        var sig = $"{_selectedCategory}|{search}|{CategoriesSignature()}|{DictSignature(_state?.Purchased)}";
+        if (RenderChanged("products", sig))
+            PopulateProducts();
+        else
+            UpdateVisibleProductCards();
+    }
+
+    private string CategoriesSignature()
+    {
+        if (_state is not { } computer)
+            return "x";
+
+        var sb = new System.Text.StringBuilder();
+        foreach (var category in computer.Categories)
+        {
+            sb.Append(category.Name);
+            sb.Append(':');
+            sb.Append(category.Entries.Count);
+            sb.Append(';');
+        }
+
+        return sb.ToString();
+    }
+
+    private static string DictSignature(Dictionary<string, int>? dict)
+    {
+        if (dict == null || dict.Count == 0)
+            return "x";
+
+        var sb = new System.Text.StringBuilder();
+        foreach (var (key, value) in dict)
+        {
+            sb.Append(key);
+            sb.Append('=');
+            sb.Append(value);
+            sb.Append(';');
+        }
+
+        return sb.ToString();
     }
 
     private void UpdateStorage()
@@ -105,9 +156,13 @@ public sealed class RequisitionsBui : BoundUserInterface
         if (_window == null)
             return;
 
+        var storage = _state?.Storage;
+        var sig = $"{_state is { Linked: true }}|{_state is { Full: true }}|{DictSignature(storage)}";
+        if (!RenderChanged("storage", sig))
+            return;
+
         _window.StorageContainer.DisposeAllChildren();
 
-        var storage = _state?.Storage;
         if (storage == null || storage.Count == 0)
         {
             _window.StorageStatusLabel.SetMessage(FormattedMessage.FromUnformatted(Loc.GetString("n14-requisitions-storage-empty")));
@@ -167,9 +222,15 @@ public sealed class RequisitionsBui : BoundUserInterface
         if (_window == null)
             return;
 
+        var bounties = _state?.Bounties;
+        var sig = bounties == null
+            ? "x"
+            : $"{string.Join(";", bounties.Select(b => $"{b.Id}|{b.Amount}|{b.Reward}|{b.RewardCrate}"))}#{string.Join(",", _state?.CompletedBounties ?? new List<string>())}#{DictSignature(_state?.BountyProgress)}";
+        if (!RenderChanged("bounties", sig))
+            return;
+
         _window.BountiesContainer.DisposeAllChildren();
 
-        var bounties = _state?.Bounties;
         if (bounties == null || bounties.Count == 0)
         {
             _window.BountiesStatusLabel.SetMessage(FormattedMessage.FromUnformatted(Loc.GetString("n14-requisitions-bounties-empty")));
@@ -217,9 +278,14 @@ public sealed class RequisitionsBui : BoundUserInterface
         if (_window == null)
             return;
 
-        _window.HistoryContainer.DisposeAllChildren();
-
         var history = _state?.History;
+        var sig = history == null
+            ? "x"
+            : string.Join(";", history.Select(e => $"{e.Buyer}|{e.Crate}|{e.Amount}|{e.Cost}|{e.Sold}"));
+        if (!RenderChanged("history", sig))
+            return;
+
+        _window.HistoryContainer.DisposeAllChildren();
         if (history == null || history.Count == 0)
         {
             _window.HistoryStatusLabel.SetMessage(FormattedMessage.FromUnformatted(Loc.GetString("n14-requisitions-history-empty")));
@@ -243,10 +309,17 @@ public sealed class RequisitionsBui : BoundUserInterface
             return;
 
         var value = _state?.PlatformSaleValue ?? 0;
-
-        // Currently on the platform.
-        _window.SellItemsContainer.DisposeAllChildren();
         var platformItems = _state?.PlatformItems;
+
+        var search = _window.SellSearchBar.Text.Trim();
+        var itemsSig = platformItems == null
+            ? "x"
+            : string.Join(";", platformItems.Select(i => $"{i.Proto}|{i.Count}|{i.Value}|{string.Join(",", i.Outputs)}"));
+        var sig = $"{value}|{search}|{itemsSig}|{(_state?.SellEntries.Count ?? 0)}";
+        if (!RenderChanged("sell", sig))
+            return;
+
+        _window.SellItemsContainer.DisposeAllChildren();
         if (platformItems == null || platformItems.Count == 0)
         {
             _window.SellItemsContainer.AddChild(new Label { Text = Loc.GetString("n14-requisitions-sell-empty") });
@@ -280,7 +353,6 @@ public sealed class RequisitionsBui : BoundUserInterface
             return;
         }
 
-        var search = _window.SellSearchBar.Text.Trim();
         foreach (var entry in sellEntries)
         {
             var name = entry.Name is { } loc && Loc.TryGetString(loc, out var localized)
@@ -305,9 +377,20 @@ public sealed class RequisitionsBui : BoundUserInterface
 
     private void RefreshVisibleEntries()
     {
-        PopulateProducts();
+        RefreshProducts();
         RefreshCart();
         PopulatePendingOrders();
+    }
+
+    // Returns true (and caches) when a section's inputs differ from the last render, so callers can
+    // skip rebuilding unchanged tabs instead of disposing and re-creating every row on each delta.
+    private bool RenderChanged(string key, string signature)
+    {
+        if (_renderSigs.TryGetValue(key, out var prev) && prev == signature)
+            return false;
+
+        _renderSigs[key] = signature;
+        return true;
     }
 
     private void UpdateLinkStatus()
@@ -389,6 +472,9 @@ public sealed class RequisitionsBui : BoundUserInterface
     private void PopulateCategories()
     {
         if (_window == null)
+            return;
+
+        if (!RenderChanged("categories", $"{_selectedCategory}|{CategoriesSignature()}"))
             return;
 
         _window.CategoriesContainer.DisposeAllChildren();
@@ -696,6 +782,13 @@ public sealed class RequisitionsBui : BoundUserInterface
         if (_window == null)
             return;
 
+        var search = _window.SearchBar.Text.Trim();
+        var pendingSig = _state == null
+            ? "x"
+            : string.Join(";", _state.PendingOrders.Select(o => $"{o.Entry.Crate}|{o.Amount}"));
+        if (!RenderChanged("pending", $"{_selectedCategory}|{search}|{pendingSig}"))
+            return;
+
         _window.PendingContainer.DisposeAllChildren();
 
         if (_state == null || _state.PendingOrders.Count == 0)
@@ -703,8 +796,6 @@ public sealed class RequisitionsBui : BoundUserInterface
             _window.PendingStatusLabel.SetMessage(FormattedMessage.FromUnformatted(Loc.GetString("n14-requisitions-pending-empty")));
             return;
         }
-
-        var search = _window.SearchBar.Text.Trim();
         var visibleOrders = new List<(RequisitionsPendingOrder Order, int? Category, ProductDisplay Display)>();
         foreach (var order in _state.PendingOrders)
         {

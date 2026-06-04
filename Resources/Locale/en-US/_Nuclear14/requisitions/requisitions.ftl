@@ -2,6 +2,11 @@
 n14-requisition-paperwork-receiver-name = Logistics Branch
 n14-requisition-paperwork-reward-message = Confirmation Received! Transferred ${$amount} from budget surplus
 
+# Player feedback
+n14-requisition-insufficient-funds = Insufficient budget for this order.
+n14-requisition-platform-full = The platform has no room for this order.
+n14-requisition-storage-full = Storage is full; some traded goods were discarded.
+
 # Requisition Invoice
 n14-requisition-paper-print-name = {$name} invoice
 n14-requisition-paper-print-manifest = [head=2]

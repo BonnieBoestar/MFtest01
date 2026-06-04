@@ -61,9 +61,6 @@ n14-requisitions-storage-empty = Storage is empty. Trade goods on the platform t
 n14-requisitions-storage-item = {$item}  [color=#5fbf5f]x{$count}[/color]
 n14-requisitions-storage-bring-up = Bring up
 n14-requisitions-storage-withdraw = Bring up everything
-n14-requisitions-sell-info = [bold]On platform:[/bold] {$count} item(s), appraised at ${$value}
-n14-requisitions-sell-no-platform = No platform linked.
-n14-requisitions-sell-raise-first = Raise the platform, place crates on it, then lower to sell.
 n14-requisitions-sell-empty = Nothing of value on the platform.
 n14-requisitions-sell-catalog-title = Accepted goods
 n14-requisitions-sell-catalog-empty = This terminal lists no buy-back goods.
