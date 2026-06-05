@@ -21,6 +21,7 @@
     - NCRVeteranRanger
     - NCRFieldRanger
     - NCRPatrolRanger
+    - NCRRangerRecruit
     - NCRFirstSergeant
     - NCRStaffSergeant
     - NCRNCO
@@ -28,6 +29,7 @@
     - NCRTrader
     - NCRCitizen
     - NCRWS
+    - NCRHeavyTrooper
     - NCREngineer
     - NCRMedic
     - NCRPrivateFirstClass
