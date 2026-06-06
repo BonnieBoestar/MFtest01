@@ -47,3 +47,15 @@
     sprite: Clothing/Ears/Headsets/centcom.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/centcom.rsi
+
+- type: entity
+  parent: MisfitsClothingHeadsetWastelandScrap
+  id: MisfitsClothingHeadsetEighties
+  name: 80's Headset
+  description: A headset for Eighties raider communication.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyEighties
