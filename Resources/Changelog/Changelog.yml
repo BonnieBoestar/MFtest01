@@ -6724,3 +6724,13 @@ Entries:
   id: 6043
   time: '2026-06-11T00:37:45.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/732
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: >-
+        Added chained boots for prisoners. (60% speed debuff and takes 1 minute
+        to unequip.) (still needs sprites so pretend for now) (craftable for
+        NCR)
+  id: 6044
+  time: '2026-06-11T01:22:43.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/743
