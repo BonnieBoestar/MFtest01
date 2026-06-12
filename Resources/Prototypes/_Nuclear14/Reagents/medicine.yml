@@ -230,7 +230,6 @@
         messageKeys:
         - drug-ambience-robust-healing-mixture-1
         - drug-ambience-robust-healing-mixture-2
-        refresh: true
       - !type:HealthChange
         damage:
           groups:
