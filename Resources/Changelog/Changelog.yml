@@ -6808,3 +6808,12 @@ Entries:
   id: 6050
   time: '2026-06-12T17:46:08.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/769
+- author: pierow
+  changes:
+    - type: Tweak
+      message: >-
+        C-27 Wastelander now spawns in with Light Armor, Light Helmet and a
+        basic welder.
+  id: 6051
+  time: '2026-06-12T17:46:46.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/771
