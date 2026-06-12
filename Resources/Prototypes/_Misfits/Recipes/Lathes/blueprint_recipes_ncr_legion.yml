@@ -1864,9 +1864,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 12000
+    Steel: 17500
 
-    N14Iron: 3000
+    N14Iron: 5000
 
     Circuitry: 100
 
@@ -1882,7 +1882,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 3000
+    Wood: 4000
 
     N14Iron: 950
 
