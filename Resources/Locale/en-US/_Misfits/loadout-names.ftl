@@ -222,6 +222,7 @@ loadout-name-N14LoadoutItemCigsRepublics = Republic's cigarettes
 loadout-name-N14LoadoutItemCigsSalem = Salem cigarettes
 loadout-name-N14LoadoutItemCigsWinston = Winston cigarettes
 loadout-name-N14LoadoutItemCigsMarlboro = Marlboro cigarettes
+loadout-name-N14LoadoutItemCigsLuckyStrike = Lucky Strike cigarettes
 loadout-name-N14LoadoutFoodPorkBeans = pork and beans
 loadout-name-N14CurrencyCap100 = 100 caps
 loadout-name-GeigerCounter = Geiger counter

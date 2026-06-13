@@ -529,10 +529,9 @@ undecided-loadout-category-corvax-warrior-shieldbearer-description =
 
 undecided-loadout-category-corvax-recruit-skirmisher-name = Legionnaire Recruit Skirmisher
 undecided-loadout-category-corvax-recruit-skirmisher-description =
-    Includes recruit armor, a spear quiver belt, a 9mm SMG,
-    2 9mm SMG magazines, a box of 9mm ammo,
-    a tribal machete, a Legion buckler, a healing powder,
-    2 K rations, and a ceramic flask.
+    Includes recruit armor, a spear quiver belt, 1 M3A1 grease gun,
+    2 .45 SMG magazines, a tribal machete, a Legion buckler,
+    a healing powder, 2 K rations, and a ceramic flask.
 
 undecided-loadout-category-corvax-recruit-spearman-name = Legionnaire Recruit Spearman
 undecided-loadout-category-corvax-recruit-spearman-description =

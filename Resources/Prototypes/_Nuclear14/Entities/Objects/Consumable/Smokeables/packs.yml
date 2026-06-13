@@ -183,3 +183,18 @@
     contents:
     - id: N14CigaretteRepublic
       amount: 8
+
+- type: entity
+  parent: N14CigPackBase
+  id: N14CigarettePackLuckyStrike
+  name: Lucky Strike cig pack
+  description: "A pristine pack of pre-war cigarettes once issued to U.S. Army troops. A label on the packaging reads: It's Toasted."
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Consumable/Smokeables/Packs/luckystrike.rsi
+  - type: Item
+    sprite: _Nuclear14/Objects/Consumable/Smokeables/Packs/luckystrike.rsi
+  - type: StorageFill
+    contents:
+    - id: N14CigaretteLuckyStrike
+      amount: 8

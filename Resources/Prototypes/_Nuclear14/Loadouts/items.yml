@@ -129,6 +129,27 @@
   items:
     - N14CigarettePackRepublics
 
+- type: loadout
+  id: N14LoadoutItemCigsLuckyStrike
+  category: Items
+  cost: 2
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14LoadoutSmokeables
+  - !type:CharacterJobRequirement
+    jobs:
+      - EnclaveEnlisted
+      - EnclaveNCO
+      - EnclaveJuniorOfficer
+      - EnclaveSeniorOfficer
+      - EnclaveCommander
+      - EnclaveJuniorScientist
+      - EnclaveScientist
+      - EnclaveHeadScientist
+
+  items:
+  - N14CigarettePackLuckyStrike
+
 # Lighters
 - type: loadout
   id: N14LoadoutItemLighter
