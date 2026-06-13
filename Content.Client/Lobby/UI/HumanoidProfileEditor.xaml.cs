@@ -106,6 +106,7 @@ namespace Content.Client.Lobby.UI
                 ("RobotProtectronPolice", "humanoid-profile-editor-robot-model-protectron-police"),
                 ("RobotProtectronBuilder", "humanoid-profile-editor-robot-model-protectron-builder"),
                 ("RobotProtectronFire", "humanoid-profile-editor-robot-model-protectron-fire"),
+                ("RobotProtectronTribal", "humanoid-profile-editor-robot-model-protectron-tribal"),
             },
             ["RobotAssaultron"] = new[]
             {
@@ -1799,7 +1800,8 @@ namespace Content.Client.Lobby.UI
                 || speciesId == "RobotSentryBot"
                 || speciesId == "RobotSentryBotLaser"
                 || speciesId == "RobotRobobrain"
-                || speciesId == "RobotRobobrainLaser";
+                || speciesId == "RobotRobobrainLaser"
+                || speciesId == "RobotProtectronTribal";
         }
 
         // #Misfits Add: variant species are hidden from the main Species dropdown and driven by Robot Model selector.
@@ -1812,7 +1814,8 @@ namespace Content.Client.Lobby.UI
                 || speciesId == "RobotSentryBotLaser"
                 || speciesId == "RobotRobobrainLaser"
                 || speciesId == "C27NCR" // #Misfits Add - C-27 NCR variant picked via Robot Model dropdown
-                || speciesId == "C27BoS"; // #Misfits Add - C-27 Brotherhood variant picked via Robot Model dropdown
+                || speciesId == "C27BoS" // #Misfits Add - C-27 Brotherhood variant picked via Robot Model dropdown
+                || speciesId == "RobotProtectronTribal"; // Misfits Add - Protectron Spirit-Tender
         }
 
         // #Misfits Add: normalize hidden variants to base Protectron in main species selector.
