@@ -519,7 +519,7 @@
 - type: loadout
   id: N14LoadoutOuterCoatFollowersArmored
   category: Outer
-  cost: 7
+  cost: 9
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutOuter
@@ -557,11 +557,51 @@
   items:
     - N14ClothingOuterMetalArmor
 
+- type: loadout
+  id: N14LoadoutOuterCombatArmorRaider
+  category: Outer
+  cost: 6
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutOuter
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+    - !type:CharacterJobRequirement 
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14ClothingOuterCombatArmorRaider
+
+- type: loadout
+  id: N14LoadoutOuterPoliceCombat
+  category: Outer
+  cost: 8
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutOuter
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+    - !type:CharacterJobRequirement 
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14ClothingOuterPoliceCombat
+
 
 - type: loadout
   id: N14LoadoutOuterCombatArmor
   category: Outer
-  cost: 12
+  cost: 13
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutOuter
@@ -579,9 +619,9 @@
     - N14ClothingOuterCombatArmor
 
 - type: loadout
-  id: N14LoadoutOuterCombatArmorCargo
+  id: N14LoadoutOuterCombatArmorPainspike
   category: Outer
-  cost: 12
+  cost: 13
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutOuter
@@ -596,7 +636,76 @@
       - CaesarLegionSlave
       - NCRPrisoner
   items:
-    - N14ClothingOuterCombatArmorCargo
+    - N14ClothingOuterCombatArmorPainspike
+
+
+- type: loadout
+  id: N14LoadoutOuterRaiderCombat1
+  category: Outer
+  cost: 13
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutOuter
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+    - !type:CharacterJobRequirement 
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14ClothingOuterRaiderCombat1
+    
+- type: loadout
+  id: N14LoadoutOuterCombatArmorChinese
+  category: Outer
+  cost: 13
+  requirements:
+    - !type:CharacterTraitRequirement
+      traits:
+      - LanguageChinese
+      - LanguageNerd 
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutOuter
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+    - !type:CharacterJobRequirement 
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14ClothingOuterCombatArmorChinese
+
+- type: loadout
+  id: N14LoadoutOuterVestChinese
+  category: Outer
+  cost: 12
+  requirements:
+    - !type:CharacterTraitRequirement
+      traits:
+      - LanguageChinese
+      - LanguageNerd 
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutOuter
+    - !type:CharacterDepartmentRequirement
+      inverted: true
+      departments:
+      - Vault
+    - !type:CharacterJobRequirement 
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14ClothingOuterVestChinese
 
 
 # Make Charisma Useful, Drip
