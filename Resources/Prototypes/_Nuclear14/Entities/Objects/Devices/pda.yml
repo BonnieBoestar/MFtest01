@@ -181,5 +181,16 @@
       whitelist:
         tags:
         - Write
+  - type: CartridgeLoader
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NewsReaderCartridge
+      - NanoChatCartridge
+      - PipBoyContactsCartridge
+      - PipBoyGroupsCartridge
+      - PipBoyDirectoryCartridge
+      - PipBoySettingsCartridge
+      - MisfitsWastelandMapCartridge
   - type: PdaBorderColor
     borderColor: "#7C5D00"

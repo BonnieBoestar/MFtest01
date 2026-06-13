@@ -174,6 +174,7 @@ public abstract class SharedIdCardSystem : EntitySystem
         if (!Resolve(uid, ref id))
             return false;
 
+        id.JobPrototype = job.ID;
         id.JobDepartments.Clear();
         foreach (var department in _prototypeManager.EnumeratePrototypes<DepartmentPrototype>())
         {
