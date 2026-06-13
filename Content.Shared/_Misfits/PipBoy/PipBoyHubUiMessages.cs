@@ -97,4 +97,14 @@ public enum PipBoyHubMessageType : byte
     DeadDropCreate,
     /// <summary>Collect (read and remove) a nearby dead drop. Content = drop ID string.</summary>
     DeadDropCollect,
+    /// <summary>Send a faction communications message. Content = message text.</summary>
+    FactionSendMessage,
+    /// <summary>Send a faction announcement. Content = message text.</summary>
+    FactionSendAnnouncement,
+    /// <summary>Acknowledge a faction alert. Content = alert ID.</summary>
+    FactionAcknowledgeAlert,
+    /// <summary>Create a faction task. Content = title or title\0assignee number.</summary>
+    FactionCreateTask,
+    /// <summary>Toggle task completion. Content = task ID.</summary>
+    FactionToggleTask,
 }

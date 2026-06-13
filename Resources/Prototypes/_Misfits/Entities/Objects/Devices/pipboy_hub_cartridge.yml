@@ -112,3 +112,24 @@
       sprite: _Nuclear14/Objects/Misc/pipboy.rsi
       state: pda
   - type: PipBoyHubCartridge
+
+- type: entity
+  parent: BaseItem
+  id: PipBoyFactionCartridge
+  name: Pip-Boy faction cartridge
+  description: Shared faction roster, status, and comms for linked Pip-Boys.
+  components:
+  - type: Sprite
+    sprite: DeltaV/Objects/Devices/cartridge.rsi
+    state: cart-chat
+  - type: Icon
+    sprite: DeltaV/Objects/Devices/cartridge.rsi
+    state: cart-chat
+  - type: UIFragment
+    ui: !type:PipBoyFactionUi
+  - type: Cartridge
+    programName: pipboy-faction-program-name
+    icon:
+      sprite: _Nuclear14/Objects/Misc/pipboy.rsi
+      state: pda
+  - type: PipBoyHubCartridge

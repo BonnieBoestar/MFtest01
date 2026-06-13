@@ -84,6 +84,7 @@
       - PipBoyGroupsCartridge     # #Misfits Add - PipBoy Groups: group chat, waypoints, map tracking
       - PipBoyDirectoryCartridge  # #Misfits Add - PipBoy Directory: network listing, dead drops
       - PipBoySettingsCartridge   # #Misfits Add - PipBoy Settings: visibility, status, password lock
+      - PipBoyFactionCartridge    # #Misfits Add - faction roster, alerts, and comms
       - MisfitsWastelandMapCartridge  # #Misfits Change - Pip-Boy shared faction map program
 
 - type: entity
@@ -181,5 +182,17 @@
       whitelist:
         tags:
         - Write
+  - type: CartridgeLoader
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NewsReaderCartridge
+      - NanoChatCartridge
+      - PipBoyContactsCartridge
+      - PipBoyGroupsCartridge
+      - PipBoyDirectoryCartridge
+      - PipBoySettingsCartridge
+      - PipBoyFactionCartridge
+      - MisfitsWastelandMapCartridge
   - type: PdaBorderColor
     borderColor: "#7C5D00"

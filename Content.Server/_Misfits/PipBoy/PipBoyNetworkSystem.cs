@@ -4,8 +4,15 @@
 using Content.Server.Power.Components;
 using Content.Shared._Misfits.PipBoy;
 using Content.Shared.Access.Components;
+using Content.Shared.Damage;
 using Content.Shared.DeltaV.NanoChat;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Tag;
 using Content.Shared.Radio.Components;
+using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -19,7 +26,12 @@ namespace Content.Server._Misfits.PipBoy;
 public sealed class PipBoyNetworkSystem : SharedPipBoyNetworkSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
 
     // Global group registry (ephemeral, lives for the round).
     private readonly Dictionary<uint, PipBoyGroupData> _groups = new();
@@ -28,6 +40,22 @@ public sealed class PipBoyNetworkSystem : SharedPipBoyNetworkSystem
     // Global dead drop registry.
     private readonly Dictionary<uint, PipBoyDeadDrop> _deadDrops = new();
     private uint _nextDeadDropId = 1;
+
+    // Global faction comms and alert registries.
+    private readonly Dictionary<string, List<PipBoyFactionMessage>> _factionMessages = new();
+    private readonly Dictionary<string, List<PipBoyFactionAlert>> _factionAlerts = new();
+    private readonly Dictionary<string, List<PipBoyFactionTask>> _factionTasks = new();
+    private readonly Dictionary<string, Dictionary<uint, PipBoyFactionRosterSnapshot>> _factionRosterSnapshots = new();
+    private uint _nextFactionMessageId = 1;
+    private uint _nextFactionAlertId = 1;
+    private uint _nextFactionTaskId = 1;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
+    }
 
     #region Groups
 
@@ -564,6 +592,325 @@ public sealed class PipBoyNetworkSystem : SharedPipBoyNetworkSystem
 
     #endregion
 
+    #region Faction Link
+
+    public string? GetFactionChannelId(EntityUid cardUid)
+    {
+        foreach (var channel in _prototype.EnumeratePrototypes<PipBoyFactionChannelPrototype>())
+        {
+            if (_tag.HasTag(cardUid, channel.IdCardTag))
+                return channel.ID;
+        }
+
+        return null;
+    }
+
+    public PipBoyFactionChannelPrototype? GetFactionChannel(EntityUid cardUid)
+    {
+        var channelId = GetFactionChannelId(cardUid);
+        return channelId != null && _prototype.TryIndex(channelId, out PipBoyFactionChannelPrototype? channel)
+            ? channel
+            : null;
+    }
+
+    public List<PipBoyFactionMember> GetFactionRoster(string channelId)
+    {
+        var roster = new List<PipBoyFactionMember>();
+        var seenNumbers = new HashSet<uint>();
+        var snapshots = EnsureFactionRosterSnapshots(channelId);
+        var query = EntityQueryEnumerator<NanoChatCardComponent, IdCardComponent>();
+
+        while (query.MoveNext(out var uid, out var card, out var idCard))
+        {
+            if (card.Number == null || GetFactionChannelId(uid) != channelId)
+                continue;
+
+            var number = card.Number.Value;
+            seenNumbers.Add(number);
+
+            var name = idCard.FullName ?? "Unknown";
+            var jobTitle = idCard.LocalizedJobTitle;
+
+            if (card.PdaUid != null && TryResolvePersonnelTarget(card.PdaUid.Value, out var target))
+            {
+                var (health, state) = GetPersonnelHealth(target);
+                var locationName = GetPersonnelLocationName(target);
+                var lastSeenAt = _timing.CurTime;
+
+                snapshots[number] = new PipBoyFactionRosterSnapshot(
+                    name,
+                    jobTitle,
+                    health,
+                    state,
+                    locationName,
+                    lastSeenAt);
+
+                roster.Add(new PipBoyFactionMember(
+                    number,
+                    name,
+                    jobTitle,
+                    health,
+                    state,
+                    locationName,
+                    true,
+                    lastSeenAt));
+                continue;
+            }
+
+            if (!snapshots.TryGetValue(number, out var snapshot))
+                continue;
+
+            roster.Add(new PipBoyFactionMember(
+                number,
+                name,
+                jobTitle,
+                snapshot.Health,
+                snapshot.State,
+                snapshot.LocationName,
+                false,
+                snapshot.LastSeenAt));
+        }
+
+        foreach (var (number, snapshot) in snapshots)
+        {
+            if (seenNumbers.Contains(number))
+                continue;
+
+            roster.Add(new PipBoyFactionMember(
+                number,
+                snapshot.Name,
+                snapshot.JobTitle,
+                snapshot.Health,
+                snapshot.State,
+                snapshot.LocationName,
+                false,
+                snapshot.LastSeenAt));
+        }
+
+        roster.Sort((left, right) => string.Compare(left.Name, right.Name, StringComparison.OrdinalIgnoreCase));
+        return roster;
+    }
+
+    public bool CanSendFactionAnnouncement(EntityUid cardUid)
+    {
+        if (GetFactionChannel(cardUid) is not { } channel)
+            return false;
+
+        if (channel.AnnouncerJob == null)
+            return true;
+
+        return TryComp<IdCardComponent>(cardUid, out var idCard) &&
+               idCard.JobPrototype == channel.AnnouncerJob;
+    }
+
+    public List<PipBoyFactionMessage> GetFactionMessages(string channelId)
+    {
+        if (_factionMessages.TryGetValue(channelId, out var messages))
+            return messages;
+
+        return new List<PipBoyFactionMessage>();
+    }
+
+    public List<PipBoyFactionAlert> GetFactionAlerts(string channelId)
+    {
+        if (_factionAlerts.TryGetValue(channelId, out var alerts))
+            return alerts;
+
+        return new List<PipBoyFactionAlert>();
+    }
+
+    public List<PipBoyFactionTask> GetFactionTasks(string channelId)
+    {
+        if (_factionTasks.TryGetValue(channelId, out var tasks))
+            return tasks;
+
+        return new List<PipBoyFactionTask>();
+    }
+
+    public bool AcknowledgeFactionAlert(string channelId, uint alertId)
+    {
+        if (!_factionAlerts.TryGetValue(channelId, out var alerts))
+            return false;
+
+        var index = alerts.FindIndex(alert => alert.Id == alertId);
+        if (index < 0)
+            return false;
+
+        alerts.RemoveAt(index);
+        return true;
+    }
+
+    public PipBoyFactionTask? AddFactionTask(string channelId, string title, uint? assigneeNumber, string? assigneeName)
+    {
+        if (string.IsNullOrWhiteSpace(title))
+            return null;
+
+        title = title.Trim();
+        if (title.Length > PipBoyFactionTask.MaxTitleLength)
+            title = title[..PipBoyFactionTask.MaxTitleLength];
+
+        var task = new PipBoyFactionTask(
+            _nextFactionTaskId++,
+            _timing.CurTime,
+            title,
+            assigneeNumber,
+            assigneeName,
+            false);
+
+        var tasks = EnsureFactionTasks(channelId);
+        tasks.Add(task);
+        if (tasks.Count > 40)
+            tasks.RemoveRange(0, tasks.Count - 40);
+
+        return task;
+    }
+
+    public bool ToggleFactionTask(string channelId, uint taskId)
+    {
+        if (!_factionTasks.TryGetValue(channelId, out var tasks))
+            return false;
+
+        var index = tasks.FindIndex(task => task.Id == taskId);
+        if (index < 0)
+            return false;
+
+        var task = tasks[index];
+        tasks[index] = new PipBoyFactionTask(
+            task.Id,
+            task.CreatedAt,
+            task.Title,
+            task.AssigneeNumber,
+            task.AssigneeName,
+            !task.Completed);
+        return true;
+    }
+
+    public PipBoyFactionMessage? AddFactionMessage(string channelId, uint senderNumber, string senderName, string content, bool isAnnouncement)
+    {
+        if (string.IsNullOrWhiteSpace(content))
+            return null;
+
+        content = content.Trim();
+        if (content.Length > PipBoyFactionMessage.MaxContentLength)
+            content = content[..PipBoyFactionMessage.MaxContentLength];
+
+        var message = new PipBoyFactionMessage(
+            _nextFactionMessageId++,
+            _timing.CurTime,
+            senderNumber,
+            senderName,
+            content,
+            isAnnouncement);
+
+        var messages = EnsureFactionMessages(channelId);
+        messages.Add(message);
+        if (messages.Count > 100)
+            messages.RemoveRange(0, messages.Count - 100);
+
+        return message;
+    }
+
+    private List<PipBoyFactionMessage> EnsureFactionMessages(string channelId)
+    {
+        if (_factionMessages.TryGetValue(channelId, out var messages))
+            return messages;
+
+        messages = new List<PipBoyFactionMessage>();
+        _factionMessages[channelId] = messages;
+        return messages;
+    }
+
+    private List<PipBoyFactionAlert> EnsureFactionAlerts(string channelId)
+    {
+        if (_factionAlerts.TryGetValue(channelId, out var alerts))
+            return alerts;
+
+        alerts = new List<PipBoyFactionAlert>();
+        _factionAlerts[channelId] = alerts;
+        return alerts;
+    }
+
+    private List<PipBoyFactionTask> EnsureFactionTasks(string channelId)
+    {
+        if (_factionTasks.TryGetValue(channelId, out var tasks))
+            return tasks;
+
+        tasks = new List<PipBoyFactionTask>();
+        _factionTasks[channelId] = tasks;
+        return tasks;
+    }
+
+    private Dictionary<uint, PipBoyFactionRosterSnapshot> EnsureFactionRosterSnapshots(string channelId)
+    {
+        if (_factionRosterSnapshots.TryGetValue(channelId, out var snapshots))
+            return snapshots;
+
+        snapshots = new Dictionary<uint, PipBoyFactionRosterSnapshot>();
+        _factionRosterSnapshots[channelId] = snapshots;
+        return snapshots;
+    }
+
+    private void AddFactionAlert(string channelId, string message, string locationName)
+    {
+        var alerts = EnsureFactionAlerts(channelId);
+        alerts.Add(new PipBoyFactionAlert(_nextFactionAlertId++, _timing.CurTime, message, locationName));
+        if (alerts.Count > 20)
+            alerts.RemoveRange(0, alerts.Count - 20);
+    }
+
+    private void OnMobStateChanged(MobStateChangedEvent args)
+    {
+        if (args.Target == EntityUid.Invalid)
+            return;
+
+        var transitionedDown = args.OldMobState == MobState.Alive &&
+                               args.NewMobState is MobState.SoftCritical or MobState.Critical or MobState.Dead;
+
+        var recovered = args.OldMobState is MobState.SoftCritical or MobState.Critical or MobState.Dead &&
+                        args.NewMobState == MobState.Alive;
+
+        if (!transitionedDown && !recovered)
+            return;
+
+        foreach (var (cardUid, channelId) in GetFactionCardsForEntity(args.Target))
+        {
+            var info = GetCardDisplayInfo(cardUid);
+            var location = GetPersonnelLocationName(args.Target);
+            var message = recovered
+                ? $"{info.Name} recovered at {location}"
+                : $"{info.Name} down at {location}";
+
+            AddFactionAlert(channelId, message, location);
+        }
+    }
+
+    public IEnumerable<EntityUid> GetFactionMemberCards(string channelId)
+    {
+        var query = EntityQueryEnumerator<NanoChatCardComponent>();
+        while (query.MoveNext(out var uid, out var card))
+        {
+            if (card.PdaUid == null || GetFactionChannelId(uid) != channelId)
+                continue;
+
+            yield return uid;
+        }
+    }
+
+    private IEnumerable<(EntityUid CardUid, string ChannelId)> GetFactionCardsForEntity(EntityUid entity)
+    {
+        var query = EntityQueryEnumerator<NanoChatCardComponent>();
+        while (query.MoveNext(out var uid, out var card))
+        {
+            if (card.PdaUid == null || GetFactionChannelId(uid) is not { } channelId)
+                continue;
+
+            if (TryResolvePersonnelTarget(card.PdaUid.Value, out var target) && target == entity)
+                yield return (uid, channelId);
+        }
+    }
+
+    #endregion
+
     #region Radio Relay
 
     /// <summary>
@@ -573,7 +920,6 @@ public sealed class PipBoyNetworkSystem : SharedPipBoyNetworkSystem
     public bool HasTelecommAccess(EntityUid loaderUid)
     {
         // Check if there's a powered telecomm server on the same station
-        var xform = Transform(loaderUid);
         var query = EntityQueryEnumerator<TelecomServerComponent, ApcPowerReceiverComponent>();
         while (query.MoveNext(out _, out _, out var power))
         {
@@ -606,6 +952,63 @@ public sealed class PipBoyNetworkSystem : SharedPipBoyNetworkSystem
             return (idCard.FullName ?? "Unknown", idCard.LocalizedJobTitle);
         return ("Unknown", null);
     }
+
+    private (float Health, MobState State) GetPersonnelHealth(EntityUid target)
+    {
+        var state = TryComp<MobStateComponent>(target, out var mobState)
+            ? mobState.CurrentState
+            : MobState.Alive;
+
+        if (state == MobState.Dead)
+            return (0f, state);
+
+        if (!TryComp<DamageableComponent>(target, out var damageable))
+            return (1f, state);
+
+        if (!_mobThreshold.TryGetDeadThreshold(target, out var deadThreshold) &&
+            !_mobThreshold.TryGetIncapThreshold(target, out deadThreshold))
+        {
+            return (1f, state);
+        }
+
+        var threshold = deadThreshold.Value.Float();
+        if (threshold <= 0f)
+            return (1f, state);
+
+        var health = Math.Clamp(1f - damageable.TotalDamage.Float() / threshold, 0f, 1f);
+        return (health, state);
+    }
+
+    private bool TryResolvePersonnelTarget(EntityUid pdaUid, out EntityUid target)
+    {
+        target = pdaUid;
+        var current = pdaUid;
+
+        while (_container.TryGetContainingContainer((current, null, null), out var container))
+        {
+            current = container.Owner;
+            target = current;
+        }
+
+        if (target == pdaUid || Deleted(target))
+            return false;
+
+        return HasComp<MobStateComponent>(target);
+    }
+
+    private string GetPersonnelLocationName(EntityUid target)
+    {
+        var worldPos = Transform(target).WorldPosition;
+        return $"{worldPos.X:F0}, {worldPos.Y:F0}";
+    }
+
+    private sealed record PipBoyFactionRosterSnapshot(
+        string Name,
+        string? JobTitle,
+        float Health,
+        MobState State,
+        string LocationName,
+        TimeSpan LastSeenAt);
 
     #endregion
 }

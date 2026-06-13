@@ -52,6 +52,10 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
     private static readonly List<PipBoyDirectoryEntry> EmptyDirectory = new();
     private static readonly List<PipBoySosAlert> EmptySosAlerts = new();
     private static readonly List<PipBoyDeadDrop> EmptyDeadDrops = new();
+    private static readonly List<PipBoyFactionMember> EmptyFactionRoster = new();
+    private static readonly List<PipBoyFactionAlert> EmptyFactionAlerts = new();
+    private static readonly List<PipBoyFactionMessage> EmptyFactionMessages = new();
+    private static readonly List<PipBoyFactionTask> EmptyFactionTasks = new();
 
     public override void Initialize()
     {
@@ -87,10 +91,9 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
                 continue;
 
             var newCard = pda.ContainedId;
-            if (newCard == hub.Card)
-                continue;
+            if (newCard != hub.Card)
+                hub.Card = newCard;
 
-            hub.Card = newCard;
             UpdateUI((uid, hub), cartridge.LoaderUid.Value);
         }
     }
@@ -198,6 +201,21 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
             // ── Contact Notes ──
             case PipBoyHubMessageType.ContactSetNote:
                 HandleContactSetNote(ownNumber, msg);
+                break;
+            case PipBoyHubMessageType.FactionSendMessage:
+                HandleFactionMessage(cardUid, ownNumber, msg, false);
+                break;
+            case PipBoyHubMessageType.FactionSendAnnouncement:
+                HandleFactionMessage(cardUid, ownNumber, msg, true);
+                break;
+            case PipBoyHubMessageType.FactionAcknowledgeAlert:
+                HandleFactionAlertAcknowledge(cardUid, msg);
+                break;
+            case PipBoyHubMessageType.FactionCreateTask:
+                HandleFactionTaskCreate(cardUid, msg);
+                break;
+            case PipBoyHubMessageType.FactionToggleTask:
+                HandleFactionTaskToggle(cardUid, msg);
                 break;
         }
 
@@ -566,6 +584,96 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
             string.IsNullOrWhiteSpace(notes) ? null : notes);
     }
 
+    private void HandleFactionMessage(EntityUid cardUid, uint ownNumber, PipBoyHubUiMessageEvent msg, bool isAnnouncement)
+    {
+        if (string.IsNullOrWhiteSpace(msg.Content))
+            return;
+
+        var channel = _network.GetFactionChannel(cardUid);
+        if (channel == null)
+            return;
+
+        if (isAnnouncement && !_network.CanSendFactionAnnouncement(cardUid))
+            return;
+
+        var info = _network.GetCardDisplayInfo(cardUid);
+        var entry = _network.AddFactionMessage(channel.ID, ownNumber, info.Name, msg.Content, isAnnouncement);
+        if (entry == null)
+            return;
+
+        foreach (var memberCard in _network.GetFactionMemberCards(channel.ID))
+        {
+            if (memberCard == cardUid)
+                continue;
+
+            NotifyCardHolder(memberCard,
+                isAnnouncement
+                    ? Loc.GetString("pipboy-faction-notif-announcement-title", ("faction", channel.LocalizedName))
+                    : Loc.GetString("pipboy-faction-notif-message-title", ("faction", channel.LocalizedName)),
+                Truncate(entry.Value.Content, NotificationMaxLength));
+
+            if (isAnnouncement)
+            {
+                RelayFactionAnnouncementToChat(memberCard, channel.LocalizedName, info.Name, entry.Value.Content);
+            }
+        }
+    }
+
+    private void HandleFactionAlertAcknowledge(EntityUid cardUid, PipBoyHubUiMessageEvent msg)
+    {
+        if (!_network.CanSendFactionAnnouncement(cardUid))
+            return;
+
+        if (!uint.TryParse(msg.Content, out var alertId))
+            return;
+
+        if (_network.GetFactionChannel(cardUid) is not { } channel)
+            return;
+
+        _network.AcknowledgeFactionAlert(channel.ID, alertId);
+    }
+
+    private void HandleFactionTaskCreate(EntityUid cardUid, PipBoyHubUiMessageEvent msg)
+    {
+        if (!_network.CanSendFactionAnnouncement(cardUid))
+            return;
+
+        if (_network.GetFactionChannel(cardUid) is not { } channel || string.IsNullOrWhiteSpace(msg.Content))
+            return;
+
+        var content = msg.Content;
+        var title = content;
+        uint? assigneeNumber = null;
+        string? assigneeName = null;
+
+        var separatorIdx = content.IndexOf('\0');
+        if (separatorIdx >= 0)
+        {
+            title = content[..separatorIdx];
+            var assigneePart = content[(separatorIdx + 1)..];
+            if (uint.TryParse(assigneePart, out var parsedAssignee))
+            {
+                assigneeNumber = parsedAssignee;
+                var assigneeCard = _network.FindCardByNumber(parsedAssignee);
+                if (assigneeCard != null)
+                    assigneeName = _network.GetCardDisplayInfo(assigneeCard.Value).Name;
+            }
+        }
+
+        _network.AddFactionTask(channel.ID, title, assigneeNumber, assigneeName);
+    }
+
+    private void HandleFactionTaskToggle(EntityUid cardUid, PipBoyHubUiMessageEvent msg)
+    {
+        if (_network.GetFactionChannel(cardUid) is not { } channel)
+            return;
+
+        if (!uint.TryParse(msg.Content, out var taskId))
+            return;
+
+        _network.ToggleFactionTask(channel.ID, taskId);
+    }
+
     #endregion
 
     #region UI
@@ -635,6 +743,12 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
         string? statusMessage = null;
         List<PipBoyDeadDrop> nearbyDeadDrops = EmptyDeadDrops;
         var hasRadioConnection = false;
+        string? factionName = null;
+        var canFactionAnnounce = false;
+        List<PipBoyFactionMember> factionRoster = EmptyFactionRoster;
+        List<PipBoyFactionAlert> factionAlerts = EmptyFactionAlerts;
+        List<PipBoyFactionMessage> factionMessages = EmptyFactionMessages;
+        List<PipBoyFactionTask> factionTasks = EmptyFactionTasks;
 
         if (ent.Comp.Card != null &&
             TryComp<NanoChatCardComponent>(ent.Comp.Card, out var card) &&
@@ -686,6 +800,26 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
                         }
                     }
                 }
+
+                if (_network.GetFactionChannel(ent.Comp.Card.Value) is { } factionChannel)
+                {
+                    factionName = factionChannel.LocalizedName;
+                    canFactionAnnounce = _network.CanSendFactionAnnouncement(ent.Comp.Card.Value);
+                    factionRoster = _network.GetFactionRoster(factionChannel.ID);
+                    factionAlerts = _network.GetFactionAlerts(factionChannel.ID);
+                    factionMessages = _network.GetFactionMessages(factionChannel.ID);
+                    factionTasks = _network.GetFactionTasks(factionChannel.ID);
+
+                    foreach (var alert in factionAlerts)
+                    {
+                        if (!ent.Comp.NotifiedFactionAlertIds.Add(alert.Id))
+                            continue;
+
+                        NotifyCardHolder(ent.Comp.Card.Value,
+                            Loc.GetString("pipboy-faction-notif-alert-title", ("faction", factionChannel.LocalizedName)),
+                            Truncate(alert.Message, NotificationMaxLength));
+                    }
+                }
             }
         }
 
@@ -706,7 +840,13 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
             presenceStatus,
             statusMessage,
             nearbyDeadDrops,
-            hasRadioConnection);
+            hasRadioConnection,
+            factionName,
+            canFactionAnnounce,
+            factionRoster,
+            factionAlerts,
+            factionMessages,
+            factionTasks);
 
         _cartridge.UpdateCartridgeUiState(loader, state);
     }
@@ -741,6 +881,30 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
         var escapedBody = FormattedMessage.EscapeText(body);
         var wrappedMessage = Loc.GetString("pda-notification-message",
             ("header", header),
+            ("message", escapedBody));
+
+        _chatManager.ChatMessageToOne(
+            ChatChannel.Notifications,
+            escapedBody,
+            wrappedMessage,
+            EntityUid.Invalid,
+            false,
+            actor.PlayerSession.Channel);
+    }
+
+    private void RelayFactionAnnouncementToChat(EntityUid cardUid, string factionName, string senderName, string body)
+    {
+        if (!TryComp<NanoChatCardComponent>(cardUid, out var card) || card.PdaUid is not {} pdaUid)
+            return;
+
+        if (!_container.TryGetContainingContainer((pdaUid, null, null), out var container)
+            || !TryComp<ActorComponent>(container.Owner, out var actor))
+            return;
+
+        var escapedBody = FormattedMessage.EscapeText(body);
+        var wrappedMessage = Loc.GetString("pipboy-faction-announcement-chat",
+            ("faction", factionName),
+            ("sender", senderName),
             ("message", escapedBody));
 
         _chatManager.ChatMessageToOne(

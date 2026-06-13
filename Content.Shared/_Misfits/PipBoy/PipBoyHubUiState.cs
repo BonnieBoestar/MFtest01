@@ -47,6 +47,14 @@ public sealed class PipBoyHubUiState : BoundUserInterfaceState
     // Radio relay
     public readonly bool HasRadioConnection;
 
+    // Faction link
+    public readonly string? FactionName;
+    public readonly bool CanFactionAnnounce;
+    public readonly List<PipBoyFactionMember> FactionRoster;
+    public readonly List<PipBoyFactionAlert> FactionAlerts;
+    public readonly List<PipBoyFactionMessage> FactionMessages;
+    public readonly List<PipBoyFactionTask> FactionTasks;
+
     public PipBoyHubUiState(
         uint ownNumber,
         bool hasPassword,
@@ -64,7 +72,13 @@ public sealed class PipBoyHubUiState : BoundUserInterfaceState
         PipBoyPresenceStatus presenceStatus,
         string? statusMessage,
         List<PipBoyDeadDrop> nearbyDeadDrops,
-        bool hasRadioConnection)
+        bool hasRadioConnection,
+        string? factionName,
+        bool canFactionAnnounce,
+        List<PipBoyFactionMember> factionRoster,
+        List<PipBoyFactionAlert> factionAlerts,
+        List<PipBoyFactionMessage> factionMessages,
+        List<PipBoyFactionTask> factionTasks)
     {
         OwnNumber = ownNumber;
         HasPassword = hasPassword;
@@ -83,5 +97,11 @@ public sealed class PipBoyHubUiState : BoundUserInterfaceState
         StatusMessage = statusMessage;
         NearbyDeadDrops = nearbyDeadDrops;
         HasRadioConnection = hasRadioConnection;
+        FactionName = factionName;
+        CanFactionAnnounce = canFactionAnnounce;
+        FactionRoster = factionRoster;
+        FactionAlerts = factionAlerts;
+        FactionMessages = factionMessages;
+        FactionTasks = factionTasks;
     }
 }

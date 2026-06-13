@@ -1,4 +1,5 @@
 // #Misfits Add - PipBoy Network data structures for contacts, groups, directory, and group messages.
+using Content.Shared.Mobs;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Misfits.PipBoy;
@@ -255,5 +256,113 @@ public partial struct PipBoyDeadDrop
         Y = y;
         Timestamp = timestamp;
         TargetNumber = targetNumber;
+    }
+}
+
+[Serializable, NetSerializable, DataRecord]
+public partial struct PipBoyFactionMember
+{
+    public uint Number;
+    public string Name;
+    public string? JobTitle;
+    public float Health;
+    public MobState State;
+    public string LocationName;
+    public bool IsOnline;
+    public TimeSpan LastSeenAt;
+
+    public PipBoyFactionMember(
+        uint number,
+        string name,
+        string? jobTitle,
+        float health,
+        MobState state,
+        string locationName,
+        bool isOnline,
+        TimeSpan lastSeenAt)
+    {
+        Number = number;
+        Name = name;
+        JobTitle = jobTitle;
+        Health = health;
+        State = state;
+        LocationName = locationName;
+        IsOnline = isOnline;
+        LastSeenAt = lastSeenAt;
+    }
+}
+
+[Serializable, NetSerializable, DataRecord]
+public partial struct PipBoyFactionAlert
+{
+    public uint Id;
+    public TimeSpan Timestamp;
+    public string Message;
+    public string LocationName;
+
+    public PipBoyFactionAlert(uint id, TimeSpan timestamp, string message, string locationName)
+    {
+        Id = id;
+        Timestamp = timestamp;
+        Message = message;
+        LocationName = locationName;
+    }
+}
+
+[Serializable, NetSerializable, DataRecord]
+public partial struct PipBoyFactionMessage
+{
+    public const int MaxContentLength = 512;
+
+    public uint Id;
+    public TimeSpan Timestamp;
+    public uint SenderNumber;
+    public string SenderName;
+    public string Content;
+    public bool IsAnnouncement;
+
+    public PipBoyFactionMessage(
+        uint id,
+        TimeSpan timestamp,
+        uint senderNumber,
+        string senderName,
+        string content,
+        bool isAnnouncement)
+    {
+        Id = id;
+        Timestamp = timestamp;
+        SenderNumber = senderNumber;
+        SenderName = senderName;
+        Content = content;
+        IsAnnouncement = isAnnouncement;
+    }
+}
+
+[Serializable, NetSerializable, DataRecord]
+public partial struct PipBoyFactionTask
+{
+    public const int MaxTitleLength = 96;
+
+    public uint Id;
+    public TimeSpan CreatedAt;
+    public string Title;
+    public uint? AssigneeNumber;
+    public string? AssigneeName;
+    public bool Completed;
+
+    public PipBoyFactionTask(
+        uint id,
+        TimeSpan createdAt,
+        string title,
+        uint? assigneeNumber,
+        string? assigneeName,
+        bool completed)
+    {
+        Id = id;
+        CreatedAt = createdAt;
+        Title = title;
+        AssigneeNumber = assigneeNumber;
+        AssigneeName = assigneeName;
+        Completed = completed;
     }
 }

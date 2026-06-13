@@ -1,0 +1,5 @@
+- type: pipBoyFactionChannel
+  id: VaultFaction
+  name: pipboy-faction-vault-name
+  idCardTag: IdCardVault
+  announcerJob: Overseer
