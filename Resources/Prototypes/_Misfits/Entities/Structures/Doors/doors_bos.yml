@@ -3,9 +3,8 @@
   id: MisfitsDoorCellBoSMidwestKnight
   suffix: BoSMidwest, Locked, Knight
   components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBOSMidwestKnight ]
+  - type: AccessReader
+    access: [["BOSKnight"]]
   - type: Wires
     layoutId: HighSec
 
@@ -15,18 +14,7 @@
   suffix: BoSMidwest, Locked, Knight
   components:
   - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBOSMidwestKnight ]
-  - type: Wires
-    layoutId: HighSec
-
-- type: entity
-  parent: HighSecDoor
-  id: NMisfitsHighSecDoorLockedBoSMidwest
-  suffix: BoSMidwest, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBOSMidwestGeneral ]
+  - type: AccessReader
+    access: [["BOSKnight"]]
   - type: Wires
     layoutId: HighSec
