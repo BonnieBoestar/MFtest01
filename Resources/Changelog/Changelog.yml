@@ -6951,3 +6951,12 @@ Entries:
   id: 6063
   time: '2026-06-14T03:57:25.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/795
+- author: Squagg
+  changes:
+    - type: Add
+      message: >-
+        You can now pick a UI color theme (Pip-Boy Green, Dark Mode, Amber,
+        Vault Blue, or Classic Gold) from the options menu.
+  id: 6064
+  time: '2026-06-14T03:57:45.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/790
