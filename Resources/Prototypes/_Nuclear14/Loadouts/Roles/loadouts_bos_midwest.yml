@@ -128,7 +128,7 @@
 
 - type: loadout
   id: LoadoutBoSMidwest
-  category: Roles
+  category: Outer
   cost: 12
   exclusive: true
   requirements:
@@ -143,7 +143,7 @@
 
 - type: loadout
   id: LoadoutBoSMidwestSilver
-  category: Roles
+  category: Outer
   cost: 12
   exclusive: true
   requirements:
