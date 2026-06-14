@@ -7000,3 +7000,26 @@ Entries:
   id: 6068
   time: '2026-06-14T19:47:50.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/801
+- author: paige404
+  changes:
+    - type: Fix
+      message: >-
+        Fixed several problems with the custom Malnutrition damage group for its
+        reintroduction.
+    - type: Tweak
+      message: >-
+        Changed the Cold damage from starving and dehydrating back to the custom
+        Malnutrition damage types. These damages heal gradually on their own by
+        maintaining good nutrition and hydration. These damages can lead to
+        death, but not RR.
+    - type: Add
+      message: >-
+        Added small amounts of Malnutrition damage healing to several food and
+        drink reagents.
+    - type: Add
+      message: >-
+        Added examinable health states for Malnutrition damage types and for
+        Caustic damage.
+  id: 6069
+  time: '2026-06-14T20:38:22.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/803
