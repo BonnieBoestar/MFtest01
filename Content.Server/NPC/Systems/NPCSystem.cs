@@ -95,7 +95,6 @@ namespace Content.Server.NPC.Systems
             SubscribeLocalEvent<RecruitedFollowerComponent, ComponentShutdown>(OnRecruitedFollowerShutdown);
             SubscribeLocalEvent<RecruitedFollowerComponent, MountMovementControlAttemptEvent>(OnFollowerMountMovementControlAttempt);
             SubscribeLocalEvent<FollowerCommanderComponent, ComponentStartup>(OnCommanderStartup);
-            SubscribeLocalEvent<FollowerCommanderComponent, EntParentChangedMessage>(OnCommanderParentChanged);
             SubscribeAllEvent<IssueFollowerOrderMessage>(OnIssueFollowerOrder);
             SubscribeLocalEvent<FollowerAutoRecruitComponent, ComponentStartup>(OnFollowerAutoRecruitStartup);
         }
@@ -750,26 +749,23 @@ namespace Content.Server.NPC.Systems
             ent.Comp.LastKnownGrid = Transform(ent.Owner).GridUid;
         }
 
-        private void OnCommanderParentChanged(Entity<FollowerCommanderComponent> ent, ref EntParentChangedMessage args)
-        {
-            var newGrid = args.Transform.GridUid;
-            if (newGrid == ent.Comp.LastKnownGrid)
-                return;
-
-            var oldGrid = ent.Comp.LastKnownGrid;
-            ent.Comp.LastKnownGrid = newGrid;
-
-            if (oldGrid == null || newGrid == null)
-                return;
-
-            ent.Comp.GridTeleportAccumulator = FollowerCommanderComponent.GridTeleportDelaySeconds;
-        }
-
         private void UpdateGridTeleports(float frameTime)
         {
             var query = EntityQueryEnumerator<FollowerCommanderComponent>();
             while (query.MoveNext(out var commander, out var comp))
             {
+                var commanderXform = Transform(commander);
+
+                var newGrid = commanderXform.GridUid;
+                if (newGrid != comp.LastKnownGrid)
+                {
+                    var oldGrid = comp.LastKnownGrid;
+                    comp.LastKnownGrid = newGrid;
+
+                    if (oldGrid != null && newGrid != null)
+                        comp.GridTeleportAccumulator = FollowerCommanderComponent.GridTeleportDelaySeconds;
+                }
+
                 if (comp.GridTeleportAccumulator <= 0f)
                     continue;
 
@@ -778,14 +774,18 @@ namespace Content.Server.NPC.Systems
                     continue;
 
                 comp.GridTeleportAccumulator = 0f;
-                var commanderCoords = Transform(commander).Coordinates;
+
+                var commanderMapCoords = _transform.GetMapCoordinates(commander, commanderXform);
                 var followerQuery = EntityQueryEnumerator<RecruitedFollowerComponent>();
                 while (followerQuery.MoveNext(out var follower, out var recruited))
                 {
                     if (recruited.Commander != commander || recruited.Order == FollowerOrderType.HoldPosition)
                         continue;
 
-                    _transform.SetCoordinates(follower, commanderCoords);
+                    if (commanderXform.ParentUid == follower)
+                        continue;
+
+                    _transform.SetMapCoordinates(follower, commanderMapCoords);
                 }
             }
         }
