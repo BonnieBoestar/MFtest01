@@ -98,12 +98,17 @@ public sealed class GunPredictionSystem : SharedGunPredictionSystem
     private void OnPredictedMapInit(Entity<PredictedProjectileServerComponent> ent, ref MapInitEvent args)
     {
         if (ent.Comp.Shooter == null)
-        {
-            Log.Warning($"{nameof(PredictedProjectileServerComponent)} map initialized with a null shooter session!");
             return;
-        }
 
         _predicted[(ent.Comp.Shooter.UserId.UserId, ent.Comp.ClientId)] = ent;
+    }
+
+    public void RegisterPredictedProjectile(EntityUid uid, PredictedProjectileServerComponent comp)
+    {
+        if (comp.Shooter == null)
+            return;
+
+        _predicted[(comp.Shooter.UserId.UserId, comp.ClientId)] = uid;
     }
 
     private void OnPredictedRemove<T>(Entity<PredictedProjectileServerComponent> ent, ref T args)

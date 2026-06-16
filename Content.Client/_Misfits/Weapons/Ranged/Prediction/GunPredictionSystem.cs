@@ -27,6 +27,8 @@ public sealed class GunPredictionSystem : SharedGunPredictionSystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
+    private readonly HashSet<EntityUid> _pendingProjectileDeletes = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -37,6 +39,7 @@ public sealed class GunPredictionSystem : SharedGunPredictionSystem
         SubscribeNetworkEvent<MaxLinearVelocityMsg>(OnLinearVelocityMsg);
 
         SubscribeLocalEvent<PredictedProjectileClientComponent, UpdateIsPredictedEvent>(OnClientProjectileUpdateIsPredicted);
+        SubscribeLocalEvent<PredictedProjectileClientComponent, PreventCollideEvent>(OnClientProjectilePreventCollide);
         SubscribeLocalEvent<PredictedProjectileClientComponent, StartCollideEvent>(OnClientProjectileStartCollide);
         SubscribeLocalEvent<PredictedProjectileServerComponent, ComponentStartup>(OnServerProjectileStartup);
 
@@ -85,6 +88,12 @@ public sealed class GunPredictionSystem : SharedGunPredictionSystem
         args.IsPredicted = true;
     }
 
+    private void OnClientProjectilePreventCollide(Entity<PredictedProjectileClientComponent> _, ref PreventCollideEvent args)
+    {
+        if (HasComp<PredictedPhysicsComponent>(args.OtherEntity))
+            args.Cancelled = true;
+    }
+
     private void OnClientProjectileStartCollide(Entity<PredictedProjectileClientComponent> ent, ref StartCollideEvent args)
     {
         if (ent.Comp.Hit ||
@@ -106,10 +115,13 @@ public sealed class GunPredictionSystem : SharedGunPredictionSystem
         RaiseNetworkEvent(new PredictedProjectileHitEvent(ent.Owner.Id, hit));
 
         ent.Comp.Hit = true;
-        _projectile.ProjectileCollide((ent, projectile, physics), args.OtherEntity);
+
+        _projectile.ProjectileCollide((ent, projectile, physics), args.OtherEntity, predicted: true);
+        if (projectile.DeleteOnCollide)
+            _pendingProjectileDeletes.Add(ent.Owner);
     }
 
-    private void OnServerProjectileStartup(Entity<PredictedProjectileServerComponent> ent, ref ComponentStartup args)
+    private void OnServerProjectileStartup(Entity<PredictedProjectileServerComponent> ent, ref ComponentStartup _)
     {
         if (!GunPrediction)
             return;
@@ -124,6 +136,13 @@ public sealed class GunPredictionSystem : SharedGunPredictionSystem
 
         if (!_timing.IsFirstTimePredicted)
             return;
+
+        foreach (var uid in _pendingProjectileDeletes)
+        {
+            if (Exists(uid))
+                QueueDel(uid);
+        }
+        _pendingProjectileDeletes.Clear();
 
         var projectiles = EntityQueryEnumerator<PredictedProjectileClientComponent, ProjectileComponent, PhysicsComponent>();
         while (projectiles.MoveNext(out var uid, out var predicted, out var projectile, out var physics))
