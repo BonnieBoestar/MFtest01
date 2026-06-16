@@ -32,8 +32,30 @@ public sealed class EmbeddedProjectileDropSystem : EntitySystem
 
         foreach (var child in children)
         {
-            if (TryComp<EmbeddableProjectileComponent>(child, out var embed))
-                _projectile.RemoveEmbed(child, embed, null);
+            if (!TryComp<EmbeddableProjectileComponent>(child, out var embed))
+                continue;
+
+            // broken behavior;
+            // EmbeddableProjectileComponent only means this item CAN embed.
+            // it does not mean the item is currently embedded in this entity.
+            // equipped or container items may also be transform children, so calling
+            // RemoveEmbed on all embeddables can drop inventory during admin deletion.
+			// also Justice, you fucking bitch. God, I'm gonna enjoy this so much. First you try to cancel me, 
+			// victimize an innocent man because I guess that's just cool to do to white guys nowadays, but joke's on you: 
+			// #MeToo's over, sweetheart, it didn't work. 
+			// Womp, womp, womp. 
+			// I do not respect your truth, 
+			// I do not honor and cherish your story, 
+			// and I do not fucking apologize.
+            // -pierow
+            // _projectile.RemoveEmbed(child, embed, null);   //<--bruh look at the top of his heeead xDDD
+
+            // the Gigachad fix below: drops thingy that is actually embedded into the entity
+            // currently being deleted, leaving it on the ground
+            if (embed.Target != entity.Owner)
+                continue;
+
+            _projectile.RemoveEmbed(child, embed, null);
         }
     }
 }
