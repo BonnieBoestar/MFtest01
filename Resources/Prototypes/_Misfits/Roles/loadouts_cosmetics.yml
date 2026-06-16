@@ -1060,6 +1060,45 @@
   items:
     - MisfitsClothingHeadBikeHelmetBeige
 
+# === Uniform: Oiled Pants and Jacket ===
+
+- type: loadout
+  id: MisfitsLoadoutUniform80sPants
+  category: Uniform
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutUniform
+    - !type:CharacterJobRequirement
+      jobs:
+        - EightiesTheBlock
+        - EightiesCylinders
+        - EightiesPistons
+        - EightiesOilers
+        - EightiesRoadRash
+  items:
+    - MisfitsClothingUniform80sPants
+
+- type: loadout
+  id: MisfitsLoadoutOuterCoatJacketBiker
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutOuter
+    - !type:CharacterJobRequirement
+      jobs:
+        - EightiesTheBlock
+        - EightiesCylinders
+        - EightiesPistons
+        - EightiesOilers
+        - EightiesRoadRash
+  items:
+    - ClothingOuterCoatJacketBiker
+
+
 # === Neck: NCR faction cloaks and mantles ===
 
 - type: loadout

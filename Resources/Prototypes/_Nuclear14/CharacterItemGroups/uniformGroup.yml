@@ -90,7 +90,7 @@
     - type: loadout
       id: N14LoadoutUniformJumpsuitPreWarManagerVault
     - type: loadout
-      id: N14LoadoutUniformJumpsuitBlueSuitVault 
+      id: N14LoadoutUniformJumpsuitBlueSuitVault
     - type: loadout
       id: N14LoadoutUniformJumpsuitPreWarLumberjackVault
     - type: loadout
@@ -157,3 +157,5 @@
       id: N14LoadoutUniversalUniformNCRSnow
     - type: loadout
       id: N14LoadoutUniversalUniformRangerPatrol
+    - type: loadout # Misfits 80s
+      id: MisfitsLoadoutUniform80sPants
