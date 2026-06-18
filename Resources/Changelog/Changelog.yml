@@ -7369,3 +7369,24 @@ Entries:
   id: 6097
   time: '2026-06-18T02:12:30.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/806
+- author: Bill
+  changes:
+    - type: Add
+      message: Added fun new melee weapon, THE RIPPER SWORD!
+    - type: Add
+      message: >-
+        Added said fun new melee weapon to the big block kit, and to a
+        paladin-grade kit. 
+    - type: Remove
+      message: Removed auto-shotgun from paladin kit, replaced with said rippersword.
+    - type: Tweak
+      message: Gave multiple legion variant sets for several kits.
+    - type: Fix
+      message: >-
+        Fixed the american 180 drum has been given its RL accurate capacity of
+        177 rounds
+    - type: Tweak
+      message: made american 180 more accurate, off of feedback from cylinders.
+  id: 6098
+  time: '2026-06-18T02:12:55.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/839
