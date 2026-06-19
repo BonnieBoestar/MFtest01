@@ -7480,3 +7480,14 @@ Entries:
   id: 6103
   time: '2026-06-19T01:13:19.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/847
+- author: luckyshotpictures
+  changes:
+    - type: Fix
+      message: Fixed the locksmith tool.
+    - type: Fix
+      message: NCR medics spawn inside the NCR now.
+    - type: Fix
+      message: Legion can no longer mine into Valhalla and back. Hopefully.
+  id: 6104
+  time: '2026-06-19T05:39:29.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/851
