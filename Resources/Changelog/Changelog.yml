@@ -7514,3 +7514,10 @@ Entries:
   id: 6107
   time: '2026-06-19T16:49:31.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/855
+- author: Vixting
+  changes:
+    - type: Add
+      message: Added the overseer overwatch terminal to their office
+  id: 6108
+  time: '2026-06-19T16:51:58.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/850
