@@ -20,7 +20,6 @@ using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Weapons.Reflect;
 using Content.Shared.Damage.Components;
 using Content.Shared._Misfits.Weapons; // #Misfits Add - GunDamageBonusComponent support
-using Content.Server._Misfits.Weapons.Ranged.Prediction;
 using Content.Shared._Misfits.Weapons.Ranged.Prediction;
 using Content.Server.Weapons.Ranged.Events;
 using Robust.Shared.Audio;
@@ -49,7 +48,6 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly StaminaSystem _stamina = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly GunPredictionSystem _gunPrediction = default!;
 
     private readonly HashSet<EntityUid> _lagCompCandidates = [];
     private float _lagCompAabbEnlargement;
@@ -137,7 +135,6 @@ public sealed partial class GunSystem : SharedGunSystem
             comp.ClientId = predictedProjectiles[predictedIndex++];
             comp.ClientEnt = user;
             Dirty(uid, comp);
-            _gunPrediction.RegisterPredictedProjectile(uid, comp);
         }
 
         foreach (var (ent, shootable) in ammo)
