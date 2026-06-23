@@ -6,8 +6,6 @@ using System.Text;
 using Content.Client.Materials;
 using Content.Shared.DeltaV.Salvage.Components; // DeltaV
 using Content.Shared.DeltaV.Salvage.Systems; // DeltaV
-using Content.Shared._Misfits.Special;
-using Content.Shared._Misfits.Special.Components;
 using Content.Shared.Lathe;
 using Content.Shared.Lathe.Prototypes;
 using Content.Shared.Materials;
@@ -39,7 +37,6 @@ public sealed partial class LatheMenu : DefaultWindow
     private readonly LatheSystem _lathe;
     private readonly MaterialStorageSystem _materialStorage;
     private readonly MiningPointsSystem _miningPoints; // DeltaV
-    private readonly SharedSpecialSystem _special;
 
     public event Action<BaseButton.ButtonEventArgs>? OnServerListButtonPressed;
     public event Action<string, int>? RecipeQueueAction;
@@ -69,7 +66,6 @@ public sealed partial class LatheMenu : DefaultWindow
         _lathe = _entityManager.System<LatheSystem>();
         _materialStorage = _entityManager.System<MaterialStorageSystem>();
         _miningPoints = _entityManager.System<MiningPointsSystem>(); // DeltaV
-        _special = _entityManager.System<SharedSpecialSystem>();
 
         SearchBar.OnTextChanged += _ =>
         {
@@ -190,7 +186,7 @@ public sealed partial class LatheMenu : DefaultWindow
         RecipeList.Children.Clear();
         BlueprintRecipeList.Children.Clear();
         _entityManager.TryGetComponent(Entity, out LatheComponent? lathe);
-        var materialUseMultiplier = GetEffectiveMaterialUseMultiplier(lathe);
+        var materialUseMultiplier = lathe?.MaterialUseMultiplier ?? 1f;
 
         foreach (var prototype in sortedItemRecipesToShow)
         {
@@ -244,7 +240,7 @@ public sealed partial class LatheMenu : DefaultWindow
 
         BuildableRecipeList.Children.Clear();
         _entityManager.TryGetComponent(Entity, out LatheComponent? lathe);
-        var materialUseMultiplier = GetEffectiveMaterialUseMultiplier(lathe);
+        var materialUseMultiplier = lathe?.MaterialUseMultiplier ?? 1f;
 
         var buildable = new List<LatheRecipePrototype>();
         var itemSearch = SearchBar.Text.Trim().ToLowerInvariant();
@@ -309,7 +305,7 @@ public sealed partial class LatheMenu : DefaultWindow
     {
         StringBuilder sb = new();
         _entityManager.TryGetComponent(Entity, out LatheComponent? lathe);
-        var multiplier = GetEffectiveMaterialUseMultiplier(lathe);
+        var multiplier = lathe?.MaterialUseMultiplier ?? 1f;
 
         foreach (var (id, amount) in prototype.Materials)
         {
@@ -363,17 +359,6 @@ public sealed partial class LatheMenu : DefaultWindow
         return sb.ToString();
     }
 
-    private float GetEffectiveMaterialUseMultiplier(LatheComponent? lathe)
-    {
-        var multiplier = lathe?.MaterialUseMultiplier ?? 1f;
-        if (_player.LocalEntity is not { } player ||
-            !_entityManager.TryGetComponent(player, out SpecialComponent? special))
-        {
-            return multiplier;
-        }
-
-        return _special.GetIntelligenceLatheMaterialUseMultiplier(player, multiplier, special);
-    }
 
     public void UpdateCategories()
     {

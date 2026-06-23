@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Client.Popups;
+using Content.Shared._Misfits.Crafting;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Construction.Steps;
@@ -286,6 +287,11 @@ namespace Content.Client.Construction
         public void TryStartItemConstruction(string prototypeName)
         {
             RaiseNetworkEvent(new TryStartItemConstructionMessage(prototypeName));
+        }
+
+        public void TryHandCraftIntellRecipe(string recipeId)
+        {
+            RaiseNetworkEvent(new TryHandCraftIntellRecipeMessage(recipeId));
         }
 
         /// <summary>

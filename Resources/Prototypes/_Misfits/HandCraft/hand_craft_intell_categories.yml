@@ -1,0 +1,427 @@
+- type: handCraftIntellRecipe
+  id: BowImprovised
+  minInt: 6
+
+- type: handCraftIntellRecipe
+  id: N14RecurveBow
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14WarBow
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14ArrowTribal
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14ArrowBroadHead
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14Bola
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14WastelandTribalJavelin
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14WastelandSpear
+  minInt: 6
+
+- type: handCraftIntellRecipe
+  id: N14ScrapMachete
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14BrassKnife
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14TrainingSword
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14LongSword
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: MakeshiftShield
+  minInt: 6
+
+- type: handCraftIntellRecipe
+  id: WoodenBuckler
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14InsectShield
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14ChemicalPayload
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14FlashPayload
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14ExplosivePayload
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14ModularGrenade
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: LandMineKick
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14LandMine
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: LandMineExplosive
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: LandMineModular
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterLeatherRobes
+  minInt: 6
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterBlackRobes
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterLightLeatherArmor
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterLeatherArmor
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterCoatLeatherDuster
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterTribalArmorHeavy
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterReinforcedLeatherArmor
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterChitinArmor
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterInsectArmor
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterMetalArmor
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterPainspike
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterZealotDuster
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14ClothingOuterCoatWinterArmored
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: MagazineBox45-70
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14Magazine50AMR
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: SpeedLoader9
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: SpeedLoader10
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol22lr
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol9mm
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol10mm
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol45
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: SpeedLoader44
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol44
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol12mm
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14MagazineSMG9mm
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14MagazineSMG10mm
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: Magazine45SubMachineGun
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14MagazineSMG12mm
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14TopMagazineSMG12mm
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: Magazine308Rifle
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: Magazine308RifleLong
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: ClipMagazine308Rifle
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: Magazine308RifleSniper
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: SpeedLoader45-70
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: SpeedLoader45-70Tube
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: Magazine762AmmoShort
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: Magazine762Rifle
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: Magazine762AmmoBelt
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: Magazine556Rifle
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: LongMagazine556Rifle
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: LMGMagazine556Rifle
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14MagazineShotgun12
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14MagazineShotgun20
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14MagazineMinigun5mm
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: MagazineBox50
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: MagazineBox9mm
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: MagazineBox10mm
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: MagazineBox22
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: MagazineBox45
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: MagazineBox44
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: MagazineBox12
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: MagazineBox308
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: MagazineBox762
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: MagazineBox556
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: MagazineBox12gauge
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: MagazineBox20gauge
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14HandCraftPipePistol
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14HandCraftPipeShotgun
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14HandCraftPipeSMG10mm
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14HandCraftPipeSMG12mm
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14HandCraftPipeRifle556
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14HandCraftPipeSniperRifle
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14FlashlightLantern
+  minInt: 6
+
+- type: handCraftIntellRecipe
+  id: N14CleanGauze1
+  minInt: 6
+
+- type: handCraftIntellRecipe
+  id: N14ClothingEyesGlassesWelding
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14HandheldRadio
+  minInt: 6
+
+- type: handCraftIntellRecipe
+  id: N14HandLabeler
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14GeigerCounter
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14HydroponicsToolClippers
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14HydroponicsToolHatchet
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14HydroponicsToolScythe
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: HydroponicsToolSpade
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14HydroponicsToolHoe
+  minInt: 7
+
+- type: handCraftIntellRecipe
+  id: N14HandheldHealthAnalyzer
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14SprayPainter
+  minInt: 8
+
+- type: handCraftIntellRecipe
+  id: N14MiningDrill
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14PowerDrill
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14RemoteSignaller
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: N14TRayScanner
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14NetworkConfigurator
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: N14RPED
+  minInt: 9
+
+- type: handCraftIntellRecipe
+  id: TimerTrigger
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: SignalTrigger
+  minInt: 10
+
+- type: handCraftIntellRecipe
+  id: VoiceTrigger
+  minInt: 10

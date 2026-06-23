@@ -11,16 +11,16 @@
             </BoxContainer>
             <!-- #Misfits Add: "Craftable Now" shows material recipes the player can craft from items
                  currently in hands, bags, or on the ground — no scrolling required. -->
-            <BoxContainer Name="CraftableNowSection" Orientation="Vertical" HorizontalExpand="True" Visible="False">
+            <BoxContainer Name="CraftableNowSection" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="1.5" Visible="False">
                 <Label Text="Craftable Now" StyleClasses="LabelBig" HorizontalAlignment="Center" Margin="0 4 0 2"/>
-                <ItemList Name="CraftableRecipes" Access="Public" SelectMode="Single" MinSize="0 70" MaxSize="2000 100"/>
+                <ItemList Name="CraftableRecipes" Access="Public" SelectMode="Single" MinSize="0 70" VerticalExpand="True"/>
                 <Control MinSize="0 6"/>
             </BoxContainer>
-            <ItemList Name="Recipes" Access="Public" SelectMode="Single" VerticalExpand="True"/>
+            <ItemList Name="Recipes" Access="Public" SelectMode="Single" VerticalExpand="True" SizeFlagsStretchRatio="3"/>
         </BoxContainer>
         <Control MinSize="10 0"/>
         <BoxContainer Orientation="Vertical" HorizontalExpand="True" SizeFlagsStretchRatio="0.5">
-            <Control>
+            <Control MaxSize="2000 80">
                 <BoxContainer Orientation="Horizontal" Align="Center">
                     <TextureRect Name="TargetTexture" HorizontalAlignment="Right" Stretch="Keep"/>
                     <Control MinSize="10 0"/>

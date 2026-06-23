@@ -1,4 +1,4 @@
-# Blueprint crafting recipes for Brotherhood of Steel and Townsfolk factions.
+﻿# Blueprint crafting recipes for Brotherhood of Steel and Townsfolk factions.
 # All recipes require a blueprint item in workbench storage.
 
 # =====================================================================
@@ -19,7 +19,7 @@
 
     Glass: 500
 
-    Circuitry: 500
+    Circuitry: 400
 
 
 # Recharger variants are intentionally excluded from blueprint crafting.
@@ -69,7 +69,7 @@
 
     Glass: 350
 
-    Circuitry: 150
+    Circuitry: 100
 
     Scrap: 250
 
@@ -105,7 +105,7 @@
 
     Glass: 600
 
-    Circuitry: 300
+    Circuitry: 200
 
     Plastic: 500
 
@@ -125,7 +125,7 @@
 
     Glass: 200
 
-    Circuitry: 150
+    Circuitry: 100
 
     ScrapElectronic: 300
 
@@ -143,7 +143,7 @@
 
     Glass: 800
 
-    Circuitry: 500
+    Circuitry: 400
 
     ScrapElectronic: 500
 
@@ -162,7 +162,7 @@
 
     Glass: 1500
 
-    Circuitry: 350
+    Circuitry: 300
 
     ScrapElectronic: 500
 
@@ -184,7 +184,7 @@
 
     Glass: 3500
 
-    Circuitry: 600
+    Circuitry: 500
 
     ScrapElectronic: 200
 
@@ -202,7 +202,7 @@
 
     Glass: 4000
 
-    Circuitry: 1000
+    Circuitry: 900
 
     ScrapElectronic: 400
 
@@ -239,7 +239,7 @@
 
     Glass: 2300
 
-    Circuitry: 1200
+    Circuitry: 1100
 
     Plastic: 1500
 
@@ -257,7 +257,7 @@
 
     Glass: 400
 
-    Circuitry: 750
+    Circuitry: 700
 
     ScrapElectronic: 450
 
@@ -275,7 +275,7 @@
 
     Glass: 1200
 
-    Circuitry: 1000
+    Circuitry: 900
 
     ScrapElectronic: 550
 
@@ -293,7 +293,7 @@
 
     Glass: 900
 
-    Circuitry: 400
+    Circuitry: 300
 
     ScrapElectronic: 450
 
@@ -314,7 +314,7 @@
 
     Glass: 1000
 
-    Circuitry: 1000
+    Circuitry: 900
 
     ScrapElectronic: 1000
 
@@ -334,7 +334,7 @@
 
     Glass: 1600
 
-    Circuitry: 1000
+    Circuitry: 900
 
     ScrapElectronic: 1300
 
@@ -375,7 +375,7 @@
 
     Glass: 3400
 
-    Circuitry: 2500
+    Circuitry: 2100
 
     ScrapElectronic: 1000
 
@@ -395,7 +395,7 @@
 
     Glass: 2300
 
-    Circuitry: 600
+    Circuitry: 500
 
     ScrapElectronic: 450
 
@@ -571,7 +571,7 @@
 
     Leather: 800
 
-    Circuitry: 500
+    Circuitry: 400
 
 
 - type: latheRecipe
@@ -591,7 +591,7 @@
 
     Leather: 800
 
-    Circuitry: 500
+    Circuitry: 400
 
 
 - type: latheRecipe
@@ -611,7 +611,7 @@
 
     Leather: 1200
 
-    Circuitry: 500
+    Circuitry: 400
 
 
 - type: latheRecipe
@@ -631,7 +631,7 @@
 
     Leather: 1200
 
-    Circuitry: 500
+    Circuitry: 400
 
 
 - type: latheRecipe
@@ -651,7 +651,7 @@
 
     Leather: 1200
 
-    Circuitry: 700
+    Circuitry: 600
 
 
 # --- BoS Tier 4 Armor (Power Armor) ---
@@ -760,7 +760,7 @@
   materials:
     Glass: 600
 
-    Circuitry: 150
+    Circuitry: 100
 
     ScrapElectronic: 100
 

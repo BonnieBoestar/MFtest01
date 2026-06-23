@@ -1,4 +1,4 @@
-# Blueprint crafting recipes for Vault and Tribe factions.
+﻿# Blueprint crafting recipes for Vault and Tribe factions.
 # All recipes require a blueprint item in workbench storage.
 
 # =====================================================================
@@ -41,7 +41,7 @@
   materials:
     Steel: 1000
     Glass: 550
-    Circuitry: 500
+    Circuitry: 400
 
 # --- Vault Tier 2 Weapons (Advanced security) ---
 - type: latheRecipe
@@ -83,7 +83,7 @@
   materials:
     Steel: 600
     Glass: 375
-    Circuitry: 250
+    Circuitry: 200
     ScrapElectronic: 200
 
 - type: latheRecipe
@@ -111,7 +111,7 @@
   materials:
     Steel: 6000
     Glass: 500
-    Circuitry: 500
+    Circuitry: 400
     ScrapElectronic: 250
 
 # --- Vault Tier 4 Weapons (Experimental prototypes) ---
@@ -126,7 +126,7 @@
   materials:
     Steel: 4000
     Glass: 1500
-    Circuitry: 250
+    Circuitry: 200
     ScrapElectronic: 150
     Plastic: 500
     N14Gold: 200
@@ -158,7 +158,7 @@
   materials:
     Steel: 7000
     Glass: 1500
-    Circuitry: 500
+    Circuitry: 400
     ScrapElectronic: 500
     Plastic: 750
     N14Gold: 300
@@ -175,7 +175,7 @@
   materials:
     Steel: 6000
     Glass: 2500
-    Circuitry: 800
+    Circuitry: 700
     ScrapElectronic: 575
     Plastic: 750
     N14Gold: 500
@@ -230,7 +230,7 @@
     Cloth: 500
     Thread: 250
     Plastic: 250
-    Circuitry: 250
+    Circuitry: 200
 
 - type: latheRecipe
   id: N14BPVaultArmorPoliceCombat
@@ -259,7 +259,7 @@
     Steel: 7000
     Cloth: 500
     Thread: 200
-    Circuitry: 500
+    Circuitry: 400
     ScrapElectronic: 250
     Plastic: 500
 
@@ -275,7 +275,7 @@
     Steel: 8000
     Cloth: 1000
     Thread: 575
-    Circuitry: 450
+    Circuitry: 400
     ScrapElectronic: 900
     Plastic: 750
 
@@ -291,7 +291,7 @@
     Steel: 9000
     Cloth: 800
     Thread: 750
-    Circuitry: 500
+    Circuitry: 400
     ScrapElectronic: 1000
     N14Iron: 1500
 
@@ -1133,7 +1133,7 @@
     Steel: 3000
     Cloth: 1000
     Leather: 500
-    Circuitry: 500
+    Circuitry: 400
 
 # --- Tribe Tier 1 Helmets (head wraps / drylander) ---
 - type: latheRecipe

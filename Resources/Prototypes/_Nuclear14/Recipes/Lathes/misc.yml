@@ -1,4 +1,4 @@
-- type: latheRecipe
+﻿- type: latheRecipe
   id: N14LightTube
   result: LightTube
   category: N14Lights
@@ -75,7 +75,7 @@
   category: N14Lights
   completetime: 2
   materials:
-    Steel: 50 
+    Steel: 50
     N14Copper: 50 #Misfits Change: Makes More sense
     Glass: 100
     Plastic: 100
@@ -157,7 +157,7 @@
   category: Parts
   completetime: 2
   materials:
-    N14Copper: 150 
+    N14Copper: 150
 
 - type: latheRecipe
   id: N14JunkComponentGearLarge

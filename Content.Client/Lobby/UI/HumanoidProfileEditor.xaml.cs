@@ -2758,13 +2758,14 @@ namespace Content.Client.Lobby.UI
                 : $"hand crafting delay {FormatSignedPercent(GetIntelligenceConstructionDelayModifier(value))}";
             var lathe = value <= 3
                 ? "lathes locked"
-                : $"lathe production time {FormatSignedPercent(GetIntelligenceLatheTimeModifier(value, tuning))}, lathe material cost {FormatSignedPercent(GetIntelligenceLatheMaterialCostModifier(value, tuning))}";
+                : $"lathe production time {FormatSignedPercent(GetIntelligenceLatheTimeModifier(value, tuning))}";
             var medical = $"medical action speed {FormatSignedPercent(SharedSpecialSystem.GetIntelligenceMedicalActionSpeed(value) - 1f)} (CPR, healing, surgery, scans)";
             var extra = value switch
             {
                 <= 1 => ", low-intelligence accent",
                 >= 10 => ", detailed chemical scans, medical HUD",
                 >= 8 => ", detailed chemical scans",
+                >= 7 => ", hand caft workbench recipes",
                 _ => string.Empty,
             };
 

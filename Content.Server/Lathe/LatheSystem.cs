@@ -221,7 +221,7 @@ namespace Content.Server.Lathe
             if (!Resolve(uid, ref component))
                 return false;
 
-            var materialUseMultiplier = GetIntelligenceLatheMaterialUseMultiplier(actor, component.MaterialUseMultiplier);
+            var materialUseMultiplier = component.MaterialUseMultiplier;
 
             if (!CanProduce(uid, recipe, 1, materialUseMultiplier, component))
                 return false;
@@ -562,7 +562,7 @@ namespace Content.Server.Lathe
                         if (i == 0)
                         {
                             var hasRecipe = HasRecipe(uid, recipe, component);
-                            var materialUseMultiplier = GetIntelligenceLatheMaterialUseMultiplier(args.Actor, component.MaterialUseMultiplier);
+                            var materialUseMultiplier = component.MaterialUseMultiplier;
                             var canProduce = CanProduce(uid, recipe, 1, materialUseMultiplier, component);
                             var missing = string.Join(", ",
                                 recipe.Materials.Select(m =>
@@ -621,14 +621,6 @@ namespace Content.Server.Lathe
             var multiplier = 1f + modifier;
 
             return baseTime * MathF.Max(0.1f, multiplier);
-        }
-
-        private float GetIntelligenceLatheMaterialUseMultiplier(EntityUid? user, float baseMultiplier)
-        {
-            if (user == null || !TryComp<SpecialComponent>(user.Value, out var special))
-                return baseMultiplier;
-
-            return _special.GetIntelligenceLatheMaterialUseMultiplier(user.Value, baseMultiplier, special);
         }
 
         /// <summary>

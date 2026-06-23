@@ -1,4 +1,4 @@
-- type: latheRecipe
+﻿- type: latheRecipe
   id: N14Wirecutter
   icon:
     sprite: Objects/Tools/wirecutters.rsi

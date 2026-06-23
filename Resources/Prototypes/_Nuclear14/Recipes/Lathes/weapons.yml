@@ -1,4 +1,4 @@
-# MARK: Guns
+﻿# MARK: Guns
 
 # - type: latheRecipe
 #   id: N14WeaponPistol10mmPipe
@@ -318,11 +318,11 @@
 # Misfits Add: Recipes for payloads because there is none for modular mines.
 - type: latheRecipe
   id: N14ChemicalPayload
-  result: ChemicalPayload 
+  result: ChemicalPayload
   category: N14Weapons
   completetime: 10
   materials:
-    Circuitry: 300
+    Circuitry: 200
     Steel: 400
 
 - type: latheRecipe
