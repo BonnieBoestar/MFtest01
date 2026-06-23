@@ -1,3 +1,4 @@
+using Content.Shared.Materials;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Misfits.Crafting;
@@ -10,4 +11,13 @@ public sealed partial class HandCraftIntellRecipePrototype : IPrototype
 
     [DataField(required: true)]
     public int MinInt;
+
+    [DataField(required: true)]
+    public EntProtoId Result;
+
+    [DataField]
+    public Dictionary<ProtoId<MaterialPrototype>, int> Materials = new();
+
+    [DataField]
+    public TimeSpan CompleteTime = TimeSpan.FromSeconds(5);
 }

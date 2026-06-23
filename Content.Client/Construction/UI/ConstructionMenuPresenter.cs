@@ -7,7 +7,6 @@ using Content.Shared.Construction.Prototypes;
 using Content.Shared.Materials;
 using Content.Shared.Stacks;
 using Robust.Shared.Containers;
-using Content.Shared.Research.Prototypes;
 using Content.Shared.Tag;
 using Content.Shared.Whitelist;
 using Robust.Client.GameObjects;
@@ -47,7 +46,7 @@ namespace Content.Client.Construction.UI
 
         private ConstructionSystem? _constructionSystem;
         private ConstructionPrototype? _selected;
-        private LatheRecipePrototype? _selectedLatheRecipe;
+        private HandCraftIntellRecipePrototype? _selectedIntellRecipe;
 
         private bool CraftingAvailable
         {
@@ -155,20 +154,20 @@ namespace Content.Client.Construction.UI
             if (item is null)
             {
                 _selected = null;
-                _selectedLatheRecipe = null;
+                _selectedIntellRecipe = null;
                 _constructionView.ClearRecipeInfo();
                 return;
             }
 
-            if (item.Metadata is LatheRecipePrototype latheRecipe)
+            if (item.Metadata is HandCraftIntellRecipePrototype intellRecipe)
             {
                 _selected = null;
-                _selectedLatheRecipe = latheRecipe;
-                PopulateLatheInfo(latheRecipe);
+                _selectedIntellRecipe = intellRecipe;
+                PopulateIntellInfo(intellRecipe);
                 return;
             }
 
-            _selectedLatheRecipe = null;
+            _selectedIntellRecipe = null;
             _selected = (ConstructionPrototype) item.Metadata!;
             if (_placementManager.IsActive && !_placementManager.Eraser) UpdateGhostPlacement();
             PopulateInfo(_selected);
@@ -262,26 +261,22 @@ namespace Content.Client.Construction.UI
             {
                 if (playerInt < craftData.MinInt)
                     continue;
-                if (!_prototypeManager.TryIndex<LatheRecipePrototype>(craftData.ID, out var recipe))
-                    continue;
-                if (recipe.Abstract || recipe.Result == null)
-                    continue;
-                if (!ClientHasMaterials(clientMaterials, recipe.Materials))
+                if (!ClientHasMaterials(clientMaterials, craftData.Materials))
                     continue;
 
-                var displayName = GetLatheRecipeName(recipe);
-                Texture icon = recipe.Icon != null
-                    ? spriteSys.Frame0(recipe.Icon)
-                    : spriteSys.Frame0(new SpriteSpecifier.EntityPrototype(recipe.Result.Value));
+                var displayName = GetIntellRecipeName(craftData);
+                var icon = spriteSys.Frame0(new SpriteSpecifier.EntityPrototype(craftData.Result));
+                var desc = string.Empty;
+                if (_prototypeManager.TryIndex<EntityPrototype>(craftData.Result, out var resultProto))
+                    desc = resultProto.Description;
 
                 craftableList.Add(new ItemList.Item(craftableList)
                 {
-                    Metadata = recipe,
+                    Metadata = craftData,
                     Text = displayName,
                     Icon = icon,
-
                     TooltipEnabled = true,
-                    TooltipText = recipe.Description is { } descId ? Loc.GetString(descId.Id) : string.Empty,
+                    TooltipText = desc,
                 });
             }
 
@@ -446,13 +441,7 @@ namespace Content.Client.Construction.UI
                 if (playerInt < craftData.MinInt)
                     continue;
 
-                if (!_prototypeManager.TryIndex<LatheRecipePrototype>(craftData.ID, out var recipe))
-                    continue;
-
-                if (recipe.Abstract || recipe.Result == null)
-                    continue;
-
-                var displayName = GetLatheRecipeName(recipe);
+                var displayName = GetIntellRecipeName(craftData);
 
                 if (!string.IsNullOrEmpty(search))
                 {
@@ -461,20 +450,18 @@ namespace Content.Client.Construction.UI
                         continue;
                 }
 
-                Texture icon;
-                if (recipe.Icon != null)
-                    icon = spriteSys.Frame0(recipe.Icon);
-                else
-                    icon = spriteSys.Frame0(new SpriteSpecifier.EntityPrototype(recipe.Result.Value));
+                var icon = spriteSys.Frame0(new SpriteSpecifier.EntityPrototype(craftData.Result));
+                var desc = string.Empty;
+                if (_prototypeManager.TryIndex<EntityPrototype>(craftData.Result, out var resultProto))
+                    desc = resultProto.Description;
 
                 workbenchItems.Add((displayName, new ItemList.Item(recipesList)
                 {
-                    Metadata = recipe,
+                    Metadata = craftData,
                     Text = displayName,
                     Icon = icon,
-
                     TooltipEnabled = true,
-                    TooltipText = recipe.Description is { } descId ? Loc.GetString(descId.Id) : string.Empty,
+                    TooltipText = desc,
                 }));
             }
 
@@ -482,40 +469,30 @@ namespace Content.Client.Construction.UI
 
             if (workbenchItems.Count > 0)
             {
-                recipesList.AddItem("─── Workbench ───", null, false);
+                recipesList.AddItem("─── Intelligence ───", null, false);
                 foreach (var (_, item) in workbenchItems)
                     recipesList.Add(item);
             }
         }
 
-        private void PopulateLatheInfo(LatheRecipePrototype recipe)
+        private void PopulateIntellInfo(HandCraftIntellRecipePrototype craftData)
         {
             var spriteSys = _systemManager.GetEntitySystem<SpriteSystem>();
             _constructionView.ClearRecipeInfo();
 
-            var name = GetLatheRecipeName(recipe);
+            var name = GetIntellRecipeName(craftData);
+            var icon = spriteSys.Frame0(new SpriteSpecifier.EntityPrototype(craftData.Result));
 
-            Texture icon;
-            if (recipe.Icon != null)
-                icon = spriteSys.Frame0(recipe.Icon);
-            else if (recipe.Result.HasValue)
-                icon = spriteSys.Frame0(new SpriteSpecifier.EntityPrototype(recipe.Result.Value));
-            else
-                icon = Texture.Transparent;
-
-            var desc = recipe.Description is { } descId ? Loc.GetString(descId.Id) : string.Empty;
-            if (string.IsNullOrEmpty(desc) && recipe.Result.HasValue &&
-                _prototypeManager.TryIndex<EntityPrototype>(recipe.Result.Value, out var resultProto))
+            var desc = string.Empty;
+            if (_prototypeManager.TryIndex<EntityPrototype>(craftData.Result, out var resultProto))
                 desc = resultProto.Description;
 
             _constructionView.SetRecipeInfo(name, desc, icon, false);
 
             var stepList = _constructionView.RecipeStepList;
+            stepList.AddItem($"Requires INT {craftData.MinInt}", Texture.Transparent, false);
 
-            if (_prototypeManager.TryIndex<HandCraftIntellRecipePrototype>(recipe.ID, out var craftData))
-                stepList.AddItem($"Requires INT {craftData.MinInt}", Texture.Transparent, false);
-
-            foreach (var (mat, amount) in recipe.Materials)
+            foreach (var (mat, amount) in craftData.Materials)
             {
                 string label;
                 Texture matIcon = Texture.Transparent;
@@ -537,17 +514,12 @@ namespace Content.Client.Construction.UI
             }
         }
 
-        private string GetLatheRecipeName(LatheRecipePrototype recipe)
+        private string GetIntellRecipeName(HandCraftIntellRecipePrototype recipe)
         {
-            if (recipe.Name is { } nameId && Loc.TryGetString(nameId.Id, out var locName))
-                return locName;
-            if (recipe.Result.HasValue)
-            {
-                if (Loc.TryGetString($"ent-{recipe.Result.Value}", out var entName))
-                    return entName;
-                if (_prototypeManager.TryIndex<EntityPrototype>(recipe.Result.Value, out var entProto) && !string.IsNullOrEmpty(entProto.Name))
-                    return entProto.Name;
-            }
+            if (Loc.TryGetString($"ent-{recipe.Result}", out var name))
+                return name;
+            if (_prototypeManager.TryIndex<EntityPrototype>(recipe.Result, out var entProto) && !string.IsNullOrEmpty(entProto.Name))
+                return entProto.Name;
             return recipe.ID;
         }
 
@@ -555,10 +527,10 @@ namespace Content.Client.Construction.UI
         {
             if (pressed)
             {
-                if (_selectedLatheRecipe != null)
+                if (_selectedIntellRecipe != null)
                 {
                     if (_constructionSystem is not null)
-                        _constructionSystem.TryHandCraftIntellRecipe(_selectedLatheRecipe.ID);
+                        _constructionSystem.TryHandCraftIntellRecipe(_selectedIntellRecipe.ID);
                     _constructionView.BuildButtonPressed = false;
                     return;
                 }

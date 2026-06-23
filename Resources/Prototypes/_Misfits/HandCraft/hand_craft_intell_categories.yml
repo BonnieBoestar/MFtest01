@@ -1,407 +1,1054 @@
+# Ranged
 - type: handCraftIntellRecipe
   id: BowImprovised
   minInt: 6
+  result: BowImprovised
+  completetime: 12
+  materials:
+    Wood: 500
+    Cloth: 200
+    Thread: 200
 
-- type: handCraftIntellRecipe
-  id: N14RecurveBow
-  minInt: 7
-
-- type: handCraftIntellRecipe
-  id: N14WarBow
-  minInt: 8
 
 - type: handCraftIntellRecipe
   id: N14ArrowTribal
   minInt: 8
+  result: N14ArrowTribal
+  completetime: 2
+  materials:
+    Steel: 25
+    Cloth: 10
 
 - type: handCraftIntellRecipe
   id: N14ArrowBroadHead
   minInt: 8
+  result: N14ArrowBroadHead
+  completetime: 2
+  materials:
+    Steel: 25
+    Cloth: 10
+    Glass: 10
 
 - type: handCraftIntellRecipe
   id: N14Bola
   minInt: 7
+  result: Bola
+  completetime: 12
+  materials:
+    Steel: 200
+    Cloth: 200
 
+- type: handCraftIntellRecipe
+  id: ClothingBeltQuiver
+  minInt: 9
+  result: ClothingBeltQuiver
+  completetime: 4
+  materials:
+    Leather: 400
+    Cloth: 200
+
+- type: handCraftIntellRecipe
+  id: ClothingBeltQuiverSpear
+  minInt: 9
+  result: ClothingBeltQuiverSpear
+  completetime: 4
+  materials:
+    Steel: 100
+    Leather: 300
+    Cloth: 100
+
+# Melee
 - type: handCraftIntellRecipe
   id: N14WastelandTribalJavelin
   minInt: 8
+  result: N14WastelandTribalJavelin
+  completetime: 12
+  materials:
+    Steel: 100
+    Wood: 200
+    Cloth: 100
 
 - type: handCraftIntellRecipe
   id: N14WastelandSpear
   minInt: 6
+  result: N14WastelandSpear
+  completetime: 12
+  materials:
+    Steel: 100
+    Wood: 600
+    Cloth: 100
 
 - type: handCraftIntellRecipe
   id: N14ScrapMachete
   minInt: 7
+  result: N14ScrapMachete
+  completetime: 12
+  materials:
+    Scrap: 600
+    Cloth: 200
 
 - type: handCraftIntellRecipe
   id: N14BrassKnife
   minInt: 7
+  result: N14BrassKnife
+  completetime: 12
+  materials:
+    N14Brass: 200
+    N14Iron: 100
+    Cloth: 200
 
 - type: handCraftIntellRecipe
   id: N14TrainingSword
   minInt: 6
+  result: N14TrainingSword
+  completetime: 5
+  materials:
+    Wood: 300
 
 - type: handCraftIntellRecipe
   id: N14LongSword
   minInt: 7
+  result: N14LongSword
+  completetime: 30
+  materials:
+    Wood: 300
+    N14Iron: 500
+    N14Brass: 200
+    Leather: 200
 
+# Shields
 - type: handCraftIntellRecipe
   id: MakeshiftShield
   minInt: 6
+  result: MakeshiftShield
+  completetime: 6
+  materials:
+    Steel: 600
+    Wood: 200
 
 - type: handCraftIntellRecipe
   id: WoodenBuckler
   minInt: 7
+  result: WoodenBuckler
+  completetime: 6
+  materials:
+    Steel: 200
+    Wood: 800
 
 - type: handCraftIntellRecipe
   id: N14InsectShield
   minInt: 8
+  result: N14InsectShield
+  completetime: 6
+  materials:
+    Exoskeleton: 50
+    Wood: 400
 
+# Explosives
 - type: handCraftIntellRecipe
   id: N14ChemicalPayload
   minInt: 10
+  result: ChemicalPayload
+  completetime: 10
+  materials:
+    Circuitry: 200
+    Steel: 400
 
 - type: handCraftIntellRecipe
   id: N14FlashPayload
   minInt: 10
+  result: FlashPayload
+  completetime: 10
+  materials:
+    Aluminum: 100
+    Sulfur: 400
 
 - type: handCraftIntellRecipe
   id: N14ExplosivePayload
   minInt: 10
+  result: ExplosivePayload
+  completetime: 10
+  materials:
+    N14Gunpowder: 1000
+    Lead: 400
 
 - type: handCraftIntellRecipe
   id: N14ModularGrenade
   minInt: 10
+  result: ModularGrenade
+  completetime: 10
+  materials:
+    Steel: 300
 
 - type: handCraftIntellRecipe
   id: LandMineKick
   minInt: 10
+  result: LandMineKick
+  completetime: 12
+  materials:
+    Steel: 500
+    N14Iron: 200
 
 - type: handCraftIntellRecipe
   id: N14LandMine
   minInt: 10
+  result: N14LandMine
+  completetime: 20
+  materials:
+    Steel: 800
+    N14Gunpowder: 500
+    Lead: 200
 
 - type: handCraftIntellRecipe
   id: LandMineExplosive
   minInt: 10
+  result: LandMineExplosive
+  completetime: 25
+  materials:
+    Steel: 1000
+    N14Gunpowder: 1000
+    Lead: 400
 
 - type: handCraftIntellRecipe
   id: LandMineModular
   minInt: 10
+  result: LandMineModular
+  completetime: 15
+  materials:
+    Steel: 600
 
+# Armor
 - type: handCraftIntellRecipe
   id: N14ClothingOuterLeatherRobes
   minInt: 6
+  result: N14ClothingOuterLeatherRobes
+  completetime: 4
+  materials:
+    Cloth: 600
+    Leather: 100
+    Thread: 200
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterBlackRobes
   minInt: 7
+  result: N14ClothingOuterBlackRobes
+  completetime: 4
+  materials:
+    Cloth: 600
+    Leather: 100
+    Thread: 200
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterLightLeatherArmor
   minInt: 7
+  result: N14ClothingOuterLightLeatherArmor
+  completetime: 4
+  materials:
+    Leather: 500
+    Thread: 200
+    RawLeather: 200
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterLeatherArmor
   minInt: 8
+  result: N14ClothingOuterLeatherArmor
+  completetime: 4
+  materials:
+    Leather: 500
+    Thread: 200
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterCoatLeatherDuster
   minInt: 8
+  result: N14ClothingOuterCoatLeatherDuster
+  completetime: 4
+  materials:
+    Cloth: 500
+    Leather: 300
+    Thread: 200
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterTribalArmorHeavy
   minInt: 9
+  result: N14ClothingOuterTribalArmorHeavy
+  completetime: 8
+  materials:
+    Cloth: 500
+    Leather: 500
+    Wood: 2000
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterReinforcedLeatherArmor
   minInt: 9
+  result: N14ClothingOuterReinforcedLeatherArmor
+  completetime: 4
+  materials:
+    Leather: 500
+    Thread: 200
+    RawLeather: 500
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterChitinArmor
   minInt: 9
+  result: N14ClothingOuterChitinArmor
+  completetime: 6
+  materials:
+    AntChitin: 300
+    Cloth: 450
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterInsectArmor
   minInt: 9
+  result: N14ClothingOuterInsectArmor
+  completetime: 8
+  materials:
+    Exoskeleton: 300
+    Cloth: 350
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterMetalArmor
   minInt: 10
+  result: N14ClothingOuterMetalArmor
+  completetime: 8
+  materials:
+    Cloth: 1000
+    Steel: 2000
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterPainspike
   minInt: 9
+  result: N14ClothingOuterPainspike
+  completetime: 6
+  materials:
+    Cloth: 400
+    Steel: 600
+    Leather: 100
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterZealotDuster
   minInt: 9
+  result: N14ClothingOuterZealotDuster
+  completetime: 8
+  materials:
+    Cloth: 1000
+    Steel: 1000
+    Leather: 300
+    Thread: 200
 
 - type: handCraftIntellRecipe
   id: N14ClothingOuterCoatWinterArmored
   minInt: 10
+  result: N14ClothingOuterCoatWinterArmored
+  completetime: 4
+  materials:
+    Cloth: 600
+    Leather: 100
+    Thread: 200
 
-- type: handCraftIntellRecipe
-  id: MagazineBox45-70
-  minInt: 9
-
-- type: handCraftIntellRecipe
-  id: N14Magazine50AMR
-  minInt: 10
-
+# Ammo - Speedloaders / Clips
 - type: handCraftIntellRecipe
   id: SpeedLoader9
   minInt: 7
+  result: SpeedLoader9
+  completetime: 5
+  materials:
+    Lead: 6
+    Steel: 22
+    N14Gunpowder: 12
 
 - type: handCraftIntellRecipe
   id: SpeedLoader10
   minInt: 7
-
-- type: handCraftIntellRecipe
-  id: N14MagazinePistol22lr
-  minInt: 7
-
-- type: handCraftIntellRecipe
-  id: N14MagazinePistol9mm
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: N14MagazinePistol10mm
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: N14MagazinePistol45
-  minInt: 8
+  result: SpeedLoader10
+  completetime: 5
+  materials:
+    Lead: 6
+    Steel: 22
+    N14Gunpowder: 12
 
 - type: handCraftIntellRecipe
   id: SpeedLoader44
   minInt: 8
-
-- type: handCraftIntellRecipe
-  id: N14MagazinePistol44
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: N14MagazinePistol12mm
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: N14MagazineSMG9mm
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: N14MagazineSMG10mm
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: Magazine45SubMachineGun
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: N14MagazineSMG12mm
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: N14TopMagazineSMG12mm
-  minInt: 9
-
-- type: handCraftIntellRecipe
-  id: Magazine308Rifle
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: Magazine308RifleLong
-  minInt: 9
-
-- type: handCraftIntellRecipe
-  id: ClipMagazine308Rifle
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: Magazine308RifleSniper
-  minInt: 9
+  result: SpeedLoader44
+  completetime: 5
+  materials:
+    Lead: 10
+    Steel: 25
+    N14Gunpowder: 10
 
 - type: handCraftIntellRecipe
   id: SpeedLoader45-70
   minInt: 8
+  result: SpeedLoader45-70
+  completetime: 5
+  materials:
+    Lead: 24
+    Steel: 25
+    N14Gunpowder: 20
 
 - type: handCraftIntellRecipe
   id: SpeedLoader45-70Tube
   minInt: 8
+  result: SpeedLoader45-70Tube
+  completetime: 5
+  materials:
+    Lead: 40
+    Steel: 35
+    N14Gunpowder: 30
+
+- type: handCraftIntellRecipe
+  id: ClipMagazine308Rifle
+  minInt: 8
+  result: ClipMagazine308Rifle
+  completetime: 5
+  materials:
+    Lead: 24
+    Steel: 132
+    N14Gunpowder: 24
+
+# Ammo - Pistol Magazines
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol22lr
+  minInt: 7
+  result: N14MagazinePistol22lr
+  completetime: 5
+  materials:
+    Lead: 80
+    Steel: 260
+    N14Gunpowder: 160
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol9mm
+  minInt: 8
+  result: N14MagazinePistol9mm
+  completetime: 5
+  materials:
+    Lead: 24
+    Steel: 148
+    N14Gunpowder: 48
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol10mm
+  minInt: 8
+  result: N14MagazinePistol10mm
+  completetime: 5
+  materials:
+    Lead: 10
+    Steel: 120
+    N14Gunpowder: 20
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol45
+  minInt: 8
+  result: N14MagazinePistol45
+  completetime: 5
+  materials:
+    Lead: 18
+    Steel: 136
+    N14Gunpowder: 36
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol44
+  minInt: 8
+  result: N14MagazinePistol44
+  completetime: 5
+  materials:
+    Lead: 20
+    Steel: 30
+    N14Gunpowder: 15
+
+- type: handCraftIntellRecipe
+  id: N14MagazinePistol12mm
+  minInt: 8
+  result: N14MagazinePistol12mm
+  completetime: 5
+  materials:
+    Lead: 20
+    Steel: 130
+    N14Gunpowder: 20
+
+# Ammo - SMG Magazines
+- type: handCraftIntellRecipe
+  id: N14MagazineSMG9mm
+  minInt: 8
+  result: N14MagazineSMG9mm
+  completetime: 5
+  materials:
+    Lead: 31
+    Steel: 162
+    N14Gunpowder: 62
+
+- type: handCraftIntellRecipe
+  id: N14MagazineSMG10mm
+  minInt: 8
+  result: N14MagazineSMG10mm
+  completetime: 5
+  materials:
+    Lead: 35
+    Steel: 170
+    N14Gunpowder: 70
+
+- type: handCraftIntellRecipe
+  id: Magazine45SubMachineGun
+  minInt: 8
+  result: Magazine45SubMachineGun
+  completetime: 5
+  materials:
+    Lead: 25
+    Steel: 150
+    N14Gunpowder: 50
+
+- type: handCraftIntellRecipe
+  id: N14MagazineSMG12mm
+  minInt: 8
+  result: N14MagazineSMG12mm
+  completetime: 5
+  materials:
+    Lead: 56
+    Steel: 184
+    N14Gunpowder: 56
+
+- type: handCraftIntellRecipe
+  id: N14TopMagazineSMG12mm
+  minInt: 9
+  result: N14TopMagazineSMG12mm
+  completetime: 5
+  materials:
+    Lead: 80
+    Steel: 220
+    N14Gunpowder: 80
+
+# Ammo - Rifle Magazines
+- type: handCraftIntellRecipe
+  id: Magazine308Rifle
+  minInt: 8
+  result: Magazine308Rifle
+  completetime: 5
+  materials:
+    Lead: 33
+    Steel: 144
+    N14Gunpowder: 33
+
+- type: handCraftIntellRecipe
+  id: Magazine308RifleLong
+  minInt: 9
+  result: Magazine308RifleLong
+  completetime: 5
+  materials:
+    Lead: 300
+    Steel: 500
+    N14Gunpowder: 300
+
+- type: handCraftIntellRecipe
+  id: Magazine308RifleSniper
+  minInt: 9
+  result: Magazine308RifleSniper
+  completetime: 5
+  materials:
+    Lead: 33
+    Steel: 77
+    N14Gunpowder: 33
 
 - type: handCraftIntellRecipe
   id: Magazine762AmmoShort
   minInt: 8
+  result: Magazine762AmmoShort
+  completetime: 5
+  materials:
+    Lead: 40
+    Steel: 180
+    N14Gunpowder: 40
 
 - type: handCraftIntellRecipe
   id: Magazine762Rifle
   minInt: 9
+  result: Magazine762Rifle
+  completetime: 5
+  materials:
+    Lead: 60
+    Steel: 190
+    N14Gunpowder: 60
 
 - type: handCraftIntellRecipe
   id: Magazine762AmmoBelt
   minInt: 10
+  result: Magazine762AmmoBelt
+  completetime: 5
+  materials:
+    Lead: 500
+    Steel: 1100
+    N14Gunpowder: 1000
 
 - type: handCraftIntellRecipe
   id: Magazine556Rifle
   minInt: 9
+  result: Magazine556Rifle
+  completetime: 5
+  materials:
+    Lead: 50
+    Steel: 175
+    N14Gunpowder: 50
 
 - type: handCraftIntellRecipe
   id: LongMagazine556Rifle
   minInt: 9
+  result: LongMagazine556Rifle
+  completetime: 5
+  materials:
+    Lead: 70
+    Steel: 205
+    N14Gunpowder: 70
 
 - type: handCraftIntellRecipe
   id: LMGMagazine556Rifle
   minInt: 10
+  result: LMGMagazine556Rifle
+  completetime: 5
+  materials:
+    Lead: 110
+    Steel: 265
+    N14Gunpowder: 110
 
+# Ammo - Shotgun Magazines
 - type: handCraftIntellRecipe
   id: N14MagazineShotgun12
   minInt: 8
+  result: N14MagazineShotgun12
+  completetime: 5
+  materials:
+    Lead: 16
+    N14Paper: 24
+    Steel: 100
+    N14Gunpowder: 16
 
 - type: handCraftIntellRecipe
   id: N14MagazineShotgun20
   minInt: 8
+  result: N14MagazineShotgun20
+  completetime: 5
+  materials:
+    Lead: 20
+    Steel: 100
+    N14Paper: 40
+    N14Gunpowder: 40
 
-- type: handCraftIntellRecipe
-  id: MagazineBox50
-  minInt: 10
-
+# Ammo - Boxes
 - type: handCraftIntellRecipe
   id: MagazineBox9mm
   minInt: 8
+  result: MagazineBox9mm
+  completetime: 5
+  materials:
+    Lead: 80
+    Steel: 160
+    N14Gunpowder: 160
+    Cardboard: 100
 
 - type: handCraftIntellRecipe
   id: MagazineBox10mm
   minInt: 8
+  result: MagazineBox10mm
+  completetime: 5
+  materials:
+    Lead: 80
+    Steel: 160
+    N14Gunpowder: 160
+    Cardboard: 100
 
 - type: handCraftIntellRecipe
   id: MagazineBox22
   minInt: 8
+  result: MagazineBox22
+  completetime: 5
+  materials:
+    Lead: 75
+    Steel: 150
+    N14Gunpowder: 150
+    Cardboard: 100
 
 - type: handCraftIntellRecipe
   id: MagazineBox45
   minInt: 8
+  result: MagazineBox45
+  completetime: 5
+  materials:
+    Lead: 75
+    Steel: 150
+    N14Gunpowder: 150
+    Cardboard: 100
 
 - type: handCraftIntellRecipe
   id: MagazineBox44
   minInt: 8
+  result: MagazineBox44
+  completetime: 5
+  materials:
+    Lead: 44
+    Steel: 166
+    N14Gunpowder: 44
+    Cardboard: 100
 
 - type: handCraftIntellRecipe
   id: MagazineBox12
   minInt: 8
+  result: MagazineBox12
+  completetime: 5
+  materials:
+    Lead: 150
+    Steel: 225
+    N14Gunpowder: 150
+    Cardboard: 100
 
 - type: handCraftIntellRecipe
   id: MagazineBox308
   minInt: 9
+  result: MagazineBox308
+  completetime: 5
+  materials:
+    Lead: 96
+    Steel: 128
+    N14Gunpowder: 96
+    Cardboard: 100
 
 - type: handCraftIntellRecipe
   id: MagazineBox762
   minInt: 9
+  result: MagazineBox762
+  completetime: 5
+  materials:
+    Lead: 120
+    Steel: 180
+    N14Gunpowder: 120
+    Cardboard: 100
 
 - type: handCraftIntellRecipe
   id: MagazineBox556
   minInt: 9
+  result: MagazineBox556
+  completetime: 5
+  materials:
+    Lead: 150
+    Steel: 225
+    N14Gunpowder: 150
+    Cardboard: 100
 
 - type: handCraftIntellRecipe
   id: MagazineBox12gauge
   minInt: 8
+  result: MagazineBox12gauge
+  completetime: 5
+  materials:
+    Lead: 60
+    N14Paper: 90
+    N14Gunpowder: 60
+    Cardboard: 100
 
 - type: handCraftIntellRecipe
   id: MagazineBox20gauge
   minInt: 8
+  result: MagazineBox20gauge
+  completetime: 5
+  materials:
+    Lead: 30
+    N14Paper: 60
+    N14Gunpowder: 60
+    Cardboard: 100
 
+- type: handCraftIntellRecipe
+  id: MagazineBox45-70
+  minInt: 9
+  result: MagazineBox45-70
+  completetime: 5
+  materials:
+    Lead: 120
+    Steel: 150
+    N14Gunpowder: 100
+    Cardboard: 100
+
+- type: handCraftIntellRecipe
+  id: N14Magazine50AMR
+  minInt: 10
+  result: N14Magazine50AMR
+  completetime: 5
+  materials:
+    Lead: 25
+    Steel: 50
+    N14Gunpowder: 25
+
+- type: handCraftIntellRecipe
+  id: MagazineBox50
+  minInt: 10
+  result: MagazineBox50
+  completetime: 5
+  materials:
+    Lead: 150
+    Steel: 200
+    N14Gunpowder: 150
+    Cardboard: 100
+
+# guns
 - type: handCraftIntellRecipe
   id: N14HandCraftPipePistol
   minInt: 7
+  result: N14WeaponPistol10mmPipe
+  completetime: 15
+  materials:
+    Steel: 500
+    Wood: 200
+    Cloth: 100
 
 - type: handCraftIntellRecipe
   id: N14HandCraftPipeShotgun
   minInt: 8
+  result: N14WeaponShotgunPipe
+  completetime: 20
+  materials:
+    Steel: 500
+    Wood: 500
+    Cloth: 100
 
 - type: handCraftIntellRecipe
   id: N14HandCraftPipeSMG10mm
   minInt: 8
+  result: N14WeaponSMG10mmPipe
+  completetime: 25
+  materials:
+    Steel: 1000
+    Wood: 300
+    Cloth: 200
 
 - type: handCraftIntellRecipe
   id: N14HandCraftPipeSMG12mm
   minInt: 8
+  result: N14WeaponSMG12mmPipe
+  completetime: 25
+  materials:
+    Steel: 1200
+    Wood: 300
+    Cloth: 200
 
 - type: handCraftIntellRecipe
   id: N14HandCraftPipeRifle556
   minInt: 10
+  result: N14WeaponRifle556Pipe
+  completetime: 35
+  materials:
+    Steel: 1000
+    Wood: 1200
+    Cloth: 200
 
 - type: handCraftIntellRecipe
   id: N14HandCraftPipeSniperRifle
   minInt: 10
+  result: N14WeaponSniper308PipeRifle
+  completetime: 40
+  materials:
+    Steel: 1000
+    Wood: 2000
+    Cloth: 300
 
+# tools / misc stuff
 - type: handCraftIntellRecipe
   id: N14FlashlightLantern
   minInt: 6
-
-- type: handCraftIntellRecipe
-  id: N14CleanGauze1
-  minInt: 8
-
-- type: handCraftIntellRecipe
-  id: N14ClothingEyesGlassesWelding
-  minInt: 9
+  result: EmptyFlashlightLantern
+  completetime: 2
+  materials:
+    Steel: 50
+    N14Copper: 50
+    Glass: 100
+    Plastic: 100
 
 - type: handCraftIntellRecipe
   id: N14HandheldRadio
   minInt: 6
+  result: RadioHandheld
+  completetime: 5
+  materials:
+    Steel: 100
+    Circuitry: 100
 
 - type: handCraftIntellRecipe
   id: N14HandLabeler
   minInt: 8
+  result: HandLabeler
+  completetime: 2
+  materials:
+    Plastic: 100
 
 - type: handCraftIntellRecipe
   id: N14HydroponicsToolClippers
   minInt: 7
+  result: N14HydroponicsToolClippers
+  completetime: 3
+  materials:
+    Steel: 100
 
 - type: handCraftIntellRecipe
   id: N14HydroponicsToolHatchet
   minInt: 7
+  result: N14HydroponicsToolHatchet
+  completetime: 3
+  materials:
+    Steel: 100
 
 - type: handCraftIntellRecipe
   id: N14HydroponicsToolScythe
   minInt: 7
+  result: N14HydroponicsToolScythe
+  completetime: 5
+  materials:
+    Steel: 200
 
 - type: handCraftIntellRecipe
   id: HydroponicsToolSpade
   minInt: 7
+  result: HydroponicsToolSpade
+  completetime: 3
+  materials:
+    Steel: 100
 
 - type: handCraftIntellRecipe
   id: N14HydroponicsToolHoe
   minInt: 7
-
-- type: handCraftIntellRecipe
-  id: N14HandheldHealthAnalyzer
-  minInt: 10
+  result: N14HydroponicsToolHoe
+  completetime: 3
+  materials:
+    Steel: 100
 
 - type: handCraftIntellRecipe
   id: N14SprayPainter
   minInt: 8
+  result: SprayPainter
+  completetime: 2
+  materials:
+    Steel: 300
+    Plastic: 100
 
 - type: handCraftIntellRecipe
   id: N14MiningDrill
   minInt: 9
+  result: MiningDrill
+  completetime: 3
+  materials:
+    Steel: 300
+    N14Copper: 200
+    Plastic: 100
 
 - type: handCraftIntellRecipe
   id: N14PowerDrill
   minInt: 9
+  result: N14PowerDrill
+  completetime: 2
+  materials:
+    N14Copper: 500
+    Steel: 100
+    Plastic: 200
+
+- type: handCraftIntellRecipe
+  id: N14ClothingEyesGlassesWelding
+  minInt: 9
+  result: N14ClothingEyesGlassesWelding
+  completetime: 5
+  materials:
+    Steel: 50
+    Glass: 200
+    Plastic: 100
+
+- type: handCraftIntellRecipe
+  id: N14HandheldHealthAnalyzer
+  minInt: 10
+  result: N14HandheldHealthAnalyzer
+  completetime: 2
+  materials:
+    N14Gold: 50
+    Plastic: 300
+    Circuitry: 100
 
 - type: handCraftIntellRecipe
   id: N14RemoteSignaller
   minInt: 10
+  result: RemoteSignaller
+  completetime: 2
+  materials:
+    N14Copper: 50
+    Plastic: 300
+    Circuitry: 100
 
 - type: handCraftIntellRecipe
   id: TimerTrigger
   minInt: 10
+  result: TimerTrigger
+  completetime: 2
+  materials:
+    Steel: 300
+    Plastic: 200
 
 - type: handCraftIntellRecipe
   id: SignalTrigger
   minInt: 10
+  result: SignalTrigger
+  completetime: 2
+  materials:
+    Steel: 300
+    Plastic: 200
 
 - type: handCraftIntellRecipe
   id: VoiceTrigger
   minInt: 10
+  result: VoiceTrigger
+  completetime: 2
+  materials:
+    Steel: 300
+    Plastic: 200
+
+- type: handCraftIntellRecipe
+  id: N14GlowstickRed
+  minInt: 8
+  result: GlowstickRed
+  completetime: 2
+  materials:
+    Plastic: 50
+
+# Medicine
+
+- type: handCraftIntellRecipe
+  id: BodyBagFolded
+  minInt: 5
+  result: BodyBagFolded
+  completetime: 10
+  materials:
+    Cloth: 500
+
+- type: handCraftIntellRecipe
+  id: N14MortarpestleGrinder
+  minInt: 8
+  result: N14MortarpestleGrinder
+  completetime: 5
+  materials:
+    Wood: 200
+
+- type: handCraftIntellRecipe
+  id: N14CleanGauze1
+  minInt: 9
+  result: N14CleanGauze1
+  completetime: 5
+  materials:
+    Cloth: 100
+
+- type: handCraftIntellRecipe
+  id: N14JetInhaler
+  minInt: 10
+  result: N14JetInhaler
+  completetime: 2
+  materials:
+    Plastic: 100
+
+- type: handCraftIntellRecipe
+  id: N14SyringeInjectable
+  minInt: 8
+  result: N14DoctorSyringe
+  completetime: 2
+  materials:
+    Plastic: 100
+    Steel: 25

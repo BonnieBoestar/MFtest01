@@ -4,7 +4,6 @@ using Content.Shared._Misfits.Crafting;
 using Content.Shared._Misfits.Special;
 using Content.Shared.DoAfter;
 using Content.Shared.Materials;
-using Content.Shared.Research.Prototypes;
 using Content.Shared.Stacks;
 using Robust.Shared.Containers;
 using Robust.Shared.Localization;
@@ -34,9 +33,6 @@ public sealed class HandCraftIntellSystem : EntitySystem
         if (player == null)
             return;
 
-        if (!_proto.TryIndex<LatheRecipePrototype>(msg.RecipeId, out var recipe))
-            return;
-
         if (!_proto.TryIndex<HandCraftIntellRecipePrototype>(msg.RecipeId, out var craftData))
             return;
 
@@ -46,14 +42,14 @@ public sealed class HandCraftIntellSystem : EntitySystem
             return;
         }
 
-        if (!CheckMaterialsAvailable(player.Value, recipe.Materials))
+        if (!CheckMaterialsAvailable(player.Value, craftData.Materials))
         {
             _popup.PopupEntity(Loc.GetString("hand-craft-intell-insufficient-materials"), player.Value, player.Value);
             return;
         }
 
         var ev = new HandCraftIntellDoAfterEvent(msg.RecipeId);
-        var doAfterArgs = new DoAfterArgs(EntityManager, player.Value, recipe.CompleteTime, ev, player.Value)
+        var doAfterArgs = new DoAfterArgs(EntityManager, player.Value, craftData.CompleteTime, ev, player.Value)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
@@ -70,17 +66,16 @@ public sealed class HandCraftIntellSystem : EntitySystem
 
         var player = args.User;
 
-        if (!_proto.TryIndex<LatheRecipePrototype>(args.RecipeId, out var recipe))
+        if (!_proto.TryIndex<HandCraftIntellRecipePrototype>(args.RecipeId, out var craftData))
             return;
 
-        if (!TryConsumeMaterials(player, recipe.Materials))
+        if (!TryConsumeMaterials(player, craftData.Materials))
         {
             _popup.PopupEntity(Loc.GetString("hand-craft-intell-insufficient-materials"), player, player);
             return;
         }
 
-        if (recipe.Result.HasValue)
-            Spawn(recipe.Result.Value, Transform(player).Coordinates);
+        Spawn(craftData.Result, Transform(player).Coordinates);
 
         args.Handled = true;
     }
