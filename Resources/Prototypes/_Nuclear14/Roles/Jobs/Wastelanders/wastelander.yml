@@ -10,26 +10,11 @@
   icon: "JobIconWastelander" # Corvax-Change
   supervisors: job-supervisors-wastelander
   requirements: # Misfits Change: block non-human species
-  - !type:CharacterSpeciesRequirement
-    inverted: true
-    species:
-    - RobotMrHandy
-    - RobotMrGutsy
-    - RobotProtectron
-    - RobotProtectronPolice # #Misfits Fix - missing variant species
-    - RobotProtectronBuilder # #Misfits Fix - missing variant species
-    - RobotProtectronFire # #Misfits Fix - missing variant species
-    - RobotAssaultron
-    - RobotAssaultronTesla # #Misfits Fix - missing variant species
-    - RobotSentryBot # #Misfits Fix - missing robot chassis
-    - RobotSentryBotLaser # #Misfits Fix - missing variant species
-    - RobotRobobrain # #Misfits Fix - missing robot chassis
-    - RobotRobobrainLaser # #Misfits Fix - missing variant species
-    - SuperMutant
-    - Nightkin
-    - C27
-    - C27NCR
-    - C27BoS
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - GhoulGlowing
   special:
   - !type:AddComponentSpecial
     components:

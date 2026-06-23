@@ -39,17 +39,3 @@
     sprite: _Nuclear14/Objects/Weapons/Melee/shield_heavy.rsi
     state: icon
   objectType: Item
-
-- type: construction
-  name: legionnaire heater shield
-  id: N14LegionnaireShield #Misfits Change /Add/
-  graph: N14LegionnaireShield
-  startNode: start
-  targetNode: legionnaireshield
-  category: construction-category-weapons
-  description: He had seen worse battles.
-  hide: false
-  icon:
-    sprite: Corvax/Objects/Weapons/Melee/romanshield.rsi
-    state: icon
-  objectType: Item

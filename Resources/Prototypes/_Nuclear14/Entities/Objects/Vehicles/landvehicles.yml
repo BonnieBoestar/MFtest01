@@ -5,6 +5,38 @@
   description: A clean green motorbike.
   components:
   - type: Vehicle
+  - type: Motorbike
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Motorbike
+  - type: Repairable
+    fuelCost: 10
+    doAfterDelay: 15
+    qualityNeeded: Welding
+  - type: Destructible
+    thresholds: []
+  - type: ExplosionResistance
+    worn: false
+    damageCoefficient: 1.1
+  - type: Flammable
+    alwaysCombustible: true
+    canExtinguish: false
+    firestacksOnIgnite: 5
+    firestackFade: 0
+    damage:
+      types:
+        Heat: 1
+  - type: SolutionContainerManager
+    solutions:
+      motorbikeFuel:
+        maxVol: 1500
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 1500
+  - type: RefillableSolution
+    solution: motorbikeFuel
+  - type: ExaminableSolution
+    solution: motorbikeFuel
   - type: Strap
     # #Misfits Change - vehicle riding requires the shared riding perk instead of any humanoid.
     whitelist:
@@ -29,7 +61,19 @@
     acceleration: 6
     friction: 0.1
     baseWalkSpeed: 8
-    baseSprintSpeed: 10
+    baseSprintSpeed: 8
+  - type: Fixtures # So they cant fit through 1 door.
+    fixtures:
+      fix1:
+        hard: true
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.75
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
   - type: ItemSlots
     slots:
       key_slot:

@@ -58,6 +58,9 @@
     sprite: _Misfits/Clothing/VeteranRangers/Mask/rangervetgasmaskroe.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/VeteranRangers/Mask/rangervetgasmaskroe.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
 
 # --- Ranger Duster ---
 - type: entity

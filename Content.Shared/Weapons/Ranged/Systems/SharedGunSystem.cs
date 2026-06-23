@@ -1,9 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared._NC.Mountable.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Audio;
+using Content.Shared.Buckle.Components;
 using Content.Shared.Contests;
 using Content.Shared.CombatMode;
 using Content.Shared.Containers.ItemSlots;
@@ -30,6 +32,7 @@ using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Whitelist;
+using Content.Shared.Vehicles;
 using Robust.Shared.Configuration;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -361,11 +364,12 @@ public abstract partial class SharedGunSystem : EntitySystem
             return null;
         }
 
+        gun.ShotCounter += shots;
+
         if (!Timing.IsFirstTimePredicted)
             return null;
 
         var fromCoordinates = Transform(user).Coordinates;
-        var ignoredEntity = GetShotIgnoreEntity(user);
 
         // #Misfits Add: apply per-gun origin offset (e.g. Assaultron head beam)
         if (gun.ShootOffset != Vector2.Zero)
@@ -381,10 +385,6 @@ public abstract partial class SharedGunSystem : EntitySystem
         DebugTools.Assert(ev.Ammo.Count <= shots);
         DebugTools.Assert(shots >= 0);
         UpdateAmmoCount(gunUid);
-
-        // Even if we don't actually shoot update the ShotCounter. This is to avoid spamming empty sounds
-        // where the gun may be SemiAuto or Burst.
-        gun.ShotCounter += shots;
 
         if (ev.Ammo.Count <= 0)
         {
@@ -515,7 +515,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         var projectile = EnsureComp<ProjectileComponent>(uid);
         Projectiles.SetShooter(uid, projectile, user ?? gunUid);
         projectile.Weapon = gunUid;
-        projectile.ExtraIgnoredEntity = GetShotIgnoreEntity(user);
+        projectile.ExtraIgnoredEntity = GetShotExtraIgnoredEntity(user);
 
         TransformSystem.SetWorldRotationNoLerp(uid, direction.ToWorldAngle() + projectile.Angle);
     }
@@ -626,15 +626,31 @@ public abstract partial class SharedGunSystem : EntitySystem
             Audio.PlayEntity(weaponSound, filter, otherEntity, true);
     }
 
-    protected EntityUid? GetShotIgnoreEntity(EntityUid? user)
+    protected EntityUid? GetShotExtraIgnoredEntity(EntityUid? user)
     {
         if (user is not { } shooter)
             return null;
 
-        if (!TryComp<MechPilotComponent>(shooter, out var mechPilot))
-            return shooter;
+        if (TryComp<BuckleComponent>(shooter, out var buckle) &&
+            buckle.BuckledTo is { } buckledTo &&
+            (HasComp<VehicleComponent>(buckledTo) || HasComp<MountableComponent>(buckledTo)))
+        {
+            return buckledTo;
+        }
 
-        return mechPilot.Mech;
+        if (TryComp<MechPilotComponent>(shooter, out var mechPilot))
+            return mechPilot.Mech;
+
+        return null;
+    }
+
+    protected EntityCoordinates GetShotEffectCoordinates(MapCoordinates mapCoordinates)
+    {
+        // [Changed by MisfitsCrew/Operator] Hitscan beam effects must be anchored to the grid or map,
+        // not to a ridden vehicle that happens to be the shooter's coordinate parent.
+        return MapManager.TryFindGridAt(mapCoordinates, out var gridUid, out _)
+            ? EntityCoordinates.FromMap(gridUid, mapCoordinates, TransformSystem, EntityManager)
+            : EntityCoordinates.FromMap(MapManager.GetMapEntityId(mapCoordinates.MapId), mapCoordinates, TransformSystem, EntityManager);
     }
 
     protected bool TryResolveGunHitscan(EntityUid gunUid, out HitscanPrototype hitscan)

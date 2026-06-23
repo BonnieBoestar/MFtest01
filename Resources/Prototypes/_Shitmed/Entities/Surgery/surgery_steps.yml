@@ -440,6 +440,7 @@
     damage:
       types:
         Poison: -2147483648 # Literally the max 32 bit value, if your patient has gone higher than this, maybe it's time to restart the round.
+        Radiation: -2147483648
     sleepModifier: 1
     isConsumable: true
 

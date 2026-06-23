@@ -14,7 +14,7 @@
     whitelist:
       tags:
         - N14CartridgePistol9
-    capacity: 35
+    capacity: 71 # Misfits 
     proto: N14CartridgePistol9
   - type: ContainerContainer
     containers:

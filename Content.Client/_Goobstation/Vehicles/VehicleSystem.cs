@@ -5,6 +5,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.GameObjects;
 using Content.Shared.Vehicles;
+using Robust.Shared.Timing;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 
@@ -14,6 +15,7 @@ public sealed class VehicleSystem : SharedVehicleSystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly IEyeManager _eye = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
     public override void Initialize()
@@ -21,6 +23,21 @@ public sealed class VehicleSystem : SharedVehicleSystem
         base.Initialize();
         SubscribeLocalEvent<VehicleComponent, AppearanceChangeEvent>(OnAppearanceChange);
         SubscribeLocalEvent<VehicleComponent, MoveEvent>(OnMove);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var burning = EntityQueryEnumerator<MotorbikeComponent, SpriteComponent>();
+        while (burning.MoveNext(out var uid, out var motorbike, out var sprite))
+        {
+            if (!motorbike.Burning)
+                continue;
+
+            var flashRed = ((int) (_timing.CurTime.TotalSeconds * 5)) % 2 == 0;
+            sprite.LayerSetColor(0, flashRed ? Color.Red : Color.White);
+        }
     }
 
     private void OnAppearanceChange(Entity<VehicleComponent> ent, ref AppearanceChangeEvent args)
@@ -36,6 +53,9 @@ public sealed class VehicleSystem : SharedVehicleSystem
             return;
 
         _sprite.LayerSetAutoAnimated(layer, animated);
+
+        if (_appearance.TryGetData(ent, MotorbikeVisuals.Burning, out bool burning))
+            spriteComp.LayerSetColor(0, burning ? Color.Red : Color.White);
     }
 
     private void OnMove(Entity<VehicleComponent> ent, ref MoveEvent args)

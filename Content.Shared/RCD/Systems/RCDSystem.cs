@@ -31,6 +31,8 @@ namespace Content.Shared.RCD.Systems;
 [Virtual]
 public class RCDSystem : EntitySystem
 {
+    public static readonly ProtoId<TagPrototype> RcdConstructedTag = "RCDConstructed";
+
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
@@ -516,6 +518,7 @@ public class RCDSystem : EntitySystem
 
             case RcdMode.ConstructObject:
                 var ent = Spawn(component.CachedPrototype.Prototype, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
+                _tags.AddTag(ent, RcdConstructedTag);
 
                 switch (component.CachedPrototype.Rotation)
                 {

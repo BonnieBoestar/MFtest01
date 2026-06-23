@@ -4,6 +4,8 @@ using Content.Server.Stack;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Prototypes;
 using Content.Shared.Stacks;
+using Content.Shared.RCD.Systems;
+using Content.Shared.Tag;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -31,6 +33,9 @@ namespace Content.Server.Destructible.Thresholds.Behaviors
 
         public void Execute(EntityUid owner, DestructibleSystem system, EntityUid? cause = null)
         {
+            if (system.EntityManager.System<TagSystem>().HasTag(owner, RCDSystem.RcdConstructedTag))
+                return;
+
             var tSys = system.EntityManager.System<TransformSystem>();
             var position = tSys.GetMapCoordinates(owner);
 

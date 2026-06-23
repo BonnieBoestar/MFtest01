@@ -7,6 +7,7 @@ namespace Content.IntegrationTests.Tests.Destructible
         public const string DestructibleDestructionEntityId = "DestructibleTestsDestructibleDestructionEntity";
         public const string DestructibleDamageTypeEntityId = "DestructibleTestsDestructibleDamageTypeEntity";
         public const string DestructibleDamageGroupEntityId = "DestructibleTestsDestructibleDamageGroupEntity";
+        public const string RcdConstructedTag = "RCDConstructed";
 
         [TestPrototypes]
         public const string DamagePrototypes = $@"

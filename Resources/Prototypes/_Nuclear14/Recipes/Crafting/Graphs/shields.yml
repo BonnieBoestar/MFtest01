@@ -46,20 +46,3 @@
 
     - node: heavyshield
       entity: N14ShieldMetalHeavy
-
-- type: constructionGraph
-  id: N14LegionnaireShield #Misfits Change /Add/
-  start: start
-  graph:
-    - node: start
-      edges:
-        - to: legionnaireshield
-          steps:
-            - material: WoodPlank
-              amount: 5
-            - material: Steel
-              amount: 3
-              doAfter: 3
-
-    - node: legionnaireshield
-      entity: N14LegionnaireShield

@@ -10,6 +10,11 @@
     Heat: 5
 
 - type: damageModifierSet
+  id: Motorbike
+  coefficients:
+    Piercing: 1.1
+
+- type: damageModifierSet
   id: StructuralMetallicStrong
   coefficients:
     Blunt: 0.5

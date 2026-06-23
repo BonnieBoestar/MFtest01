@@ -14,6 +14,9 @@
       - FloorMetalBlue
   - type: Stack
     stackType: FloorTileMetalBlue
+  - type: Construction
+    graph: N14FloorTileMetalBlue
+    node: metaltileblue
 
 - type: entity
   name: metal floor blue solid
@@ -46,6 +49,9 @@
       - FloorMetalGreen
   - type: Stack
     stackType: FloorTileMetalGreen
+  - type: Construction
+    graph: N14FloorTileMetalGreen
+    node: metaltilegreen
 
 - type: entity
   name: metal floor green solid
@@ -174,6 +180,9 @@
       - FloorMetalRed
   - type: Stack
     stackType: FloorTileMetalRed
+  - type: Construction
+    graph: N14FloorTileMetalRed
+    node: metaltilered
 
 - type: entity
   name: metal floor red solid
@@ -321,9 +330,9 @@
       - FloorWoodOak
   - type: Stack
     stackType: FloorTileWoodOak
-#  - type: Construction
-#    graph: TileWood
-#    node: woodtileoak
+  - type: Construction
+    graph: N14FloorTileWoodOak
+    node: woodtileoak
 
 # #Misfits Add: Plating-compatible version for base SS14 areas
 - type: entity
@@ -357,9 +366,9 @@
       - FloorWoodHouse
   - type: Stack
     stackType: FloorTileWoodHouse
-#  - type: Construction
-#    graph: TileWood
-#    node: woodtiledark
+  - type: Construction
+    graph: N14FloorTileWoodHouse
+    node: woodtilehouse
 
 # #Misfits Add: Plating-compatible version for base SS14 areas
 - type: entity
@@ -393,9 +402,9 @@
       - FloorWoodMaple
   - type: Stack
     stackType: FloorTileWoodMaple
-#  - type: Construction
-#    graph: TileWood
-#    node: woodtilelight
+  - type: Construction
+    graph: N14FloorTileWoodMaple
+    node: woodtilemaple
 
 # #Misfits Add: Plating-compatible version for base SS14 areas
 - type: entity

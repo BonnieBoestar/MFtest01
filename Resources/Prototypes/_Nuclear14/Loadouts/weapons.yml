@@ -550,48 +550,6 @@
     - N14WeaponSMG12mm
 
 
-- type: loadout
-  id: N14WeaponSMGPPSh41
-  category: Weapons
-  cost: 16
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponSMGPPSh41
-
-#- type: loadout
-#  id: N14WeaponSMGAmerican180
-#  category: Weapons
-#  cost: 15
-#  requirements:
-#    - !type:CharacterItemGroupRequirement
-#      group: N14LoadoutGunsBig
-#    - !type:CharacterDepartmentRequirement
-#      inverted: true
-#      departments:
-#      - Vault
-#    - !type:CharacterJobRequirement
-#      inverted: true
-#      jobs:
-#      - BoSMidSerf
-#      - CaesarLegionSlave
-#      - NCRPrisoner
-#  items:
-#    - N14WeaponSMGAmerican180
-
-
-
 
 
 ## Rifles
@@ -1301,40 +1259,6 @@
       - NCRPrisoner
   items:
     - Magazine45SubMachineGun
-
-- type: loadout
-  id: N14MagazineSMG9mmDrum
-  category: Weapons
-  cost: 3
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutAmmoBig
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14MagazineSMG9mmDrum
-    
-#- type: loadout
-#  id: N14MagazineAmerican180Drum
-#  category: Weapons
-#  cost: 3
-#  requirements:
-#    - !type:CharacterItemGroupRequirement
-#      group: N14LoadoutAmmoBig
-#    - !type:CharacterJobRequirement
-#      inverted: true
-#      jobs:
-#      - BoSMidSerf
-#      - CaesarLegionSlave
-#      - NCRPrisoner
-#  items:
-#    - N14MagazineAmerican180Drum
-# ARs
-
 
 - type: loadout
   id: Magazine762AmmoShort

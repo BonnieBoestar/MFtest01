@@ -7460,3 +7460,280 @@ Entries:
   id: 6101
   time: '2026-06-18T23:48:58.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/844
+- author: RedBookcase
+  changes:
+    - type: Add
+      message: >-
+        Various chem injectors have had new fill sprites added, and various
+        chems have received changes to their appearance and descriptions.
+  id: 6102
+  time: '2026-06-19T00:28:37.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/842
+- author: paige404
+  changes:
+    - type: Add
+      message: >-
+        Added new sprites by Octin for the tribal Tree of Life and the Legion's
+        Tree of Mars
+    - type: Add
+      message: Added new tribe banners by sprited by Octin and Skellingtonio.
+  id: 6103
+  time: '2026-06-19T01:13:19.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/847
+- author: luckyshotpictures
+  changes:
+    - type: Fix
+      message: Fixed the locksmith tool.
+    - type: Fix
+      message: NCR medics spawn inside the NCR now.
+    - type: Fix
+      message: Legion can no longer mine into Valhalla and back. Hopefully.
+  id: 6104
+  time: '2026-06-19T05:39:29.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/851
+- author: Oli
+  changes:
+    - type: Tweak
+      message: sprite files to / from \ in for legion drip
+  id: 6105
+  time: '2026-06-19T16:39:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/848
+- author: Squagg
+  changes:
+    - type: Tweak
+      message: All Eighties roles now receive the Riding trait by default.
+  id: 6106
+  time: '2026-06-19T16:48:30.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/854
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Added ~3 hours of time req to all 80's roles
+    - type: Tweak
+      message: Nerfed bikes by 20%
+  id: 6107
+  time: '2026-06-19T16:49:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/855
+- author: Vixting
+  changes:
+    - type: Add
+      message: Added the overseer overwatch terminal to their office
+  id: 6108
+  time: '2026-06-19T16:51:58.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/850
+- author: Operator
+  changes: []
+  id: 6109
+  time: '2026-06-19T16:52:38.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/843
+- author: paige404
+  changes:
+    - type: Fix
+      message: Hitler Dead
+  id: 6110
+  time: '2026-06-19T20:22:19.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/853
+- author: RedBookcase
+  changes:
+    - type: Add
+      message: Combat Injectors can now be printed at workbenches.
+    - type: Fix
+      message: Fixed broken fill sprites on Antidote/Hydra injectors.
+  id: 6111
+  time: '2026-06-19T21:42:07.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/857
+- author: Vixting
+  changes:
+    - type: Fix
+      message: Fixed prediction issue
+  id: 6112
+  time: '2026-06-19T21:45:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/858
+- author: Tytos
+  changes:
+    - type: Add
+      message: Added Houndmaster cloak courtesy of Pinky
+    - type: Tweak
+      message: changed legion sm job slot limit, vex hood now has armor value
+    - type: Fix
+      message: ncr and legion civis having trait blacklists they shouldn't
+  id: 6113
+  time: '2026-06-19T21:51:11.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/846
+- author: '-'
+  changes: []
+  id: 6114
+  time: '2026-06-20T03:28:02.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/859
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: >-
+        Road Rash forgot how to ride bikes, oh no! They will have to learn ic 
+        )also cant take it from perks.)
+    - type: Tweak
+      message: 'Bikes cant fit through a single tile anymore. '
+  id: 6115
+  time: '2026-06-20T03:34:17.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/864
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added in ID and headset sprites for the eighties
+    - type: Remove
+      message: Removed the keys for the eighties for now.
+  id: 6116
+  time: '2026-06-20T15:08:55.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/866
+- author: Vixting
+  changes:
+    - type: Remove
+      message: Removed prediction
+  id: 6117
+  time: '2026-06-20T15:10:12.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/867
+- author: Operator
+  changes: []
+  id: 6118
+  time: '2026-06-21T04:23:23.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/869
+- author: Squagg
+  changes:
+    - type: Add
+      message: Added veteran ranger duster options for off-duty NCR Rangers.
+    - type: Fix
+      message: Fixed Super Mutants being unable to select physical traits.
+    - type: Fix
+      message: Fixed Salt Coven ranger mask hair bug.
+    - type: Add
+      message: Liver transplants now fix radiation.
+    - type: Fix
+      message: No more adminbus for Juniors.
+    - type: Fix
+      message: Fixed duplication glitch with crafting tiles.
+  id: 6119
+  time: '2026-06-21T20:21:26.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/870
+- author: RedBookcase
+  changes:
+    - type: Tweak
+      message: Changed some underpriced Vault BP's.
+  id: 6120
+  time: '2026-06-21T20:25:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/868
+- author: Bradysgaming
+  changes:
+    - type: Fix
+      message: Fixed Securitrons being playable as wastelanders
+  id: 6121
+  time: '2026-06-21T20:26:53.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/875
+- author: WazuraWasTaken
+  changes:
+    - type: Tweak
+      message: 9mm drum mag now holds 71 shots
+    - type: Fix
+      message: Wrong Description on 22lr Drum Mag
+    - type: Remove
+      message: Removed the ppsh from loadouts
+  id: 6122
+  time: '2026-06-21T20:29:45.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/865
+- author: HungryCuban
+  changes:
+    - type: Tweak
+      message: Revert Prediction Deletion
+  id: 6123
+  time: '2026-06-21T21:27:00.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/876
+- author: Operator
+  changes:
+    - type: Add
+      message: >-
+        The eighties gang finally ran out of their initial fuel stockpiles,
+        they're starting to scavenge from the region now. Fear. Motorbikes take
+        fuel, a fuel tank lasts 10 minutes. Can't be refueled with the engine on
+        either.
+    - type: Add
+      message: >-
+        Their motorbikes have also started to feel the wear and tear of the
+        deserts, the activity strains their engines. They are damagable
+        entities, have 250 HP, take 10% more piercing, and will blow up after 5
+        seconds of hissing when they hit 0. They can be repaired with a welder
+        and 15 seconds of spare time.
+    - type: Tweak
+      message: >-
+        The BLOCK Finally remembered to grab the Blueprints for their bikes. Its
+        in their safe.
+    - type: Fix
+      message: >-
+        Bullet prediction also works on bikes now. And sprites wont attach to
+        them.
+  id: 6124
+  time: '2026-06-21T21:29:46.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/871
+- author: '-'
+  changes: []
+  id: 6125
+  time: '2026-06-22T00:00:17.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/877
+- author: Squagg
+  changes:
+    - type: Add
+      message: >-
+        Added a tribal settlement construction module to the Spirit-Tender
+        Protectron.
+    - type: Fix
+      message: Spirit-Tenders now spawn alongside the tribal roles on Wendover.
+    - type: Fix
+      message: >-
+        Objects constructed by RCDs no longer produce free materials or salvage
+        when dismantled or destroyed.
+  id: 6126
+  time: '2026-06-22T00:50:52.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/872
+- author: Operator
+  changes:
+    - type: Fix
+      message: Shots fired from a motorbike colliding with it
+    - type: Fix
+      message: Exploding motorbikes no longer outright delete their riders
+    - type: Fix
+      message: Melee wideswing properly applies damage
+    - type: Fix
+      message: Melee wideswing no longer hits bikes you're on
+    - type: Fix
+      message: Laser sprites dont attach to bikes. [Again.]
+  id: 6127
+  time: '2026-06-22T20:52:16.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/878
+- author: Operator
+  changes:
+    - type: Fix
+      message: Welding a motorbike at full HP wont blow it up anymore.
+  id: 6128
+  time: '2026-06-23T21:44:18.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/881
+- author: Squagg
+  changes:
+    - type: Tweak
+      message: Chemical sets no longer have a 1000u buffer limit.
+  id: 6129
+  time: '2026-06-23T21:44:41.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/879
+- author: Vixting
+  changes:
+    - type: Remove
+      message: Removed vault sec medical & engi access
+  id: 6130
+  time: '2026-06-23T21:47:23.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/873
+- author: RedBookcase
+  changes:
+    - type: Add
+      message: >-
+        New Legion Blueprints have been sent in from the Augustus, and old
+        designs have been changed.
+  id: 6131
+  time: '2026-06-23T21:51:46.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/862

@@ -1,7 +1,11 @@
 using System.Text;
+using System.Linq;
 using Content.Server.Construction.Completions;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Prototypes;
+using Content.Shared.RCD.Systems;
+using Content.Shared.Tag;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests.Construction
@@ -118,6 +122,36 @@ namespace Content.IntegrationTests.Tests.Construction
             });
 
             Assert.That(valid, Is.True, $"One or more edges specified invalid node targets!\n{message}");
+            await pair.CleanReturnAsync();
+        }
+
+        [Test]
+        public async Task RcdConstructedDoorDoesNotRefundMaterials()
+        {
+            await using var pair = await PoolManager.GetServerClient();
+            var server = pair.Server;
+            var testMap = await pair.CreateTestMap();
+            var entityManager = server.ResolveDependency<IEntityManager>();
+            var prototypeManager = server.ResolveDependency<IPrototypeManager>();
+
+            await server.WaitAssertion(() =>
+            {
+                var owner = entityManager.SpawnEntity("Table", testMap.GridCoords);
+                entityManager.System<TagSystem>().AddTag(owner, RCDSystem.RcdConstructedTag);
+
+                var edge = prototypeManager.Index<ConstructionGraphPrototype>("N14DoorGraph")
+                    .Edge("WoodDoor", "start")!;
+                var refunds = edge.Completed.OfType<SpawnPrototype>().ToArray();
+                Assert.That(refunds, Is.Not.Empty);
+
+                foreach (var refund in refunds)
+                    refund.PerformAction(owner, null, entityManager);
+
+                var spawnedRefund = entityManager.EntityQuery<MetaDataComponent>()
+                    .Any(meta => meta.EntityPrototype?.ID is "MaterialWoodPlank1" or "N14ScrapBrass1");
+                Assert.That(spawnedRefund, Is.False);
+            });
+
             await pair.CleanReturnAsync();
         }
     }

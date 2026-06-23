@@ -2,7 +2,9 @@ using Content.Server.Stack;
 using Content.Shared.Construction;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Prototypes;
+using Content.Shared.RCD.Systems;
 using Content.Shared.Stacks;
+using Content.Shared.Tag;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
@@ -21,6 +23,10 @@ namespace Content.Server.Construction.Completions
         public void PerformAction(EntityUid uid, EntityUid? userUid, IEntityManager entityManager)
         {
             if (string.IsNullOrEmpty(Prototype))
+                return;
+
+            if (entityManager.EntitySysManager.GetEntitySystem<TagSystem>()
+                .HasTag(uid, RCDSystem.RcdConstructedTag))
                 return;
 
             var coordinates = entityManager.GetComponent<TransformComponent>(userUid ?? uid).Coordinates;

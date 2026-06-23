@@ -460,7 +460,7 @@
     - N14StationRadioServerCircuitboard
     - N14StationRadioRigCircuitboard
     - N14StationRadioCircuitboard
-    - N14DoorElectronics    
+    - N14DoorElectronics
   - type: ActivatableUIRequiresPower
 
 - type: entity
@@ -543,12 +543,12 @@
           - PillCanister
   - type: SolutionContainerManager
     solutions:
-      buffer:
-        maxVol: 1000 # #Misfits Tweak - cap buffer at 150u to prevent super-chem stacking
+      buffer: {}
       pillBuffer:
         maxVol: 1000
   - type: DumpableSolution
     solution: buffer
+    unlimited: true
   - type: Anchorable
   - type: Rotatable
 
@@ -664,10 +664,12 @@
     - N14PillCanisterCateye
     - N14PillCanisterFixer
     - N14JetInhaler
+    - N14Med-XInjector
     - N14TurboInhaler
     - N14HydraInhaler
     - N14ChemicalSyringeAntidoteEmpty
     - N14PsychoSyringe
+    - N14CombatInjector
     - N14RadAwayPhialEmpty
     - N14CleanGauze1
     # Misc

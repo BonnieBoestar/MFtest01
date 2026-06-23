@@ -55,7 +55,7 @@
   hide: false
   icon:
     sprite: _Nuclear14/Objects/Specific/Medical/ms13_stimpak.rsi # Forge-Change
-    state: stimpak
+    state: stimpak-empty
   objectType: Item
 
 #Misfits Change /Add/: Add a wasteland-style Bitterdrink item recipe using implemented plant ingredients and an empty soda bottle.
@@ -152,7 +152,7 @@
   hide: true
   icon:
     sprite: _Nuclear14/Objects/Specific/Medical/ms13_drugs.rsi
-    state: hydra
+    state: hydra-empty
   objectType: Item
 
 # Healing Poultice
