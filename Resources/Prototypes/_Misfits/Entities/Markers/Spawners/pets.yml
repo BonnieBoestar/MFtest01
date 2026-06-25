@@ -1,61 +1,76 @@
 ﻿# Follower pet spawner
 
 - type: entity
-  parent: MisfitsPetSpawnerBase
+  parent: MarkerBase
   id: MisfitsSpawnerRabbitFollowersPet
   name: dr. thumper rabbit pet followers spawner
   components:
-  - type: GhostRole
-    name: ghost-role-information-misfitpet-rabbit-followers-name
-    description: ghost-role-information-misfit-faction-description
-    rules: ghost-role-component-default-rules
-  - type: GhostRoleMobSpawner
-    prototype: MisfitsMobRabbitFollowersPet
   - type: Sprite
     layers:
     - state: green
-    - state: rabbit
-      sprite: _Nuclear14/Mobs/Animals/rabbit.rsi
+    - sprite: _Nuclear14/Mobs/Animals/rabbit.rsi
+      state: rabbit
+    - state: ai
   - type: ConditionalSpawner
     prototypes:
     - MisfitsMobRabbitFollowersPet
 
 - type: entity
-  parent: MisfitsPetSpawnerBase
+  parent: MarkerBase
   id: MisfitsSpawnerMobLizardBoSPet1
   name: timmy bos pet spawner
   components:
-  - type: GhostRole
-    name: ghost-role-information-misfitpet-lizard1-bos-name
-    description: ghost-role-information-misfit-faction-description
-    rules: ghost-role-component-default-rules
-  - type: GhostRoleMobSpawner
-    prototype: MisfitsMobLizardBoSPet1
   - type: Sprite
     layers:
     - state: green
-    - state: lizard
-      sprite: Mobs/Animals/lizard.rsi
+    - sprite: Mobs/Animals/lizard.rsi
+      state: lizard
+    - state: ai
   - type: ConditionalSpawner
     prototypes:
     - MisfitsMobLizardBoSPet1
 
 - type: entity
-  parent: MisfitsPetSpawnerBase
+  parent: MarkerBase
   id: MisfitsSpawnerMobLizardBoSPet2
   name: jimmy bos pet spawner
   components:
-  - type: GhostRole
-    name: ghost-role-information-misfitpet-lizard2-bos-name
-    description: ghost-role-information-misfit-faction-description
-    rules: ghost-role-component-default-rules
-  - type: GhostRoleMobSpawner
-    prototype: MisfitsMobLizardBoSPet2
   - type: Sprite
     layers:
     - state: green
-    - state: lizard
-      sprite: Mobs/Animals/lizard.rsi
+    - sprite: Mobs/Animals/lizard.rsi
+      state: lizard
+    - state: ai
   - type: ConditionalSpawner
     prototypes:
     - MisfitsMobLizardBoSPet2
+
+- type: entity
+  parent: MarkerBase
+  id: MisfitsSpawnerMobPetDogLegion
+  name: legion dog spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Nuclear14/Mobs/Animals/dogwolf.rsi
+      state: wolf
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - N14MobPetDogLegion
+
+- type: entity
+  parent: MarkerBase
+  id: MisfitsSpawnerMobPetRadToad
+  name: rad toad spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Misfits/Mobs/NPCs/radtoad.rsi
+      state: wolf
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MisfitsMobRadtoad

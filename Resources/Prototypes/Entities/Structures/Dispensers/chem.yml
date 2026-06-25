@@ -46,3 +46,20 @@
   components:
   - type: ReagentDispenser
     pack: EmptyInventory
+
+- type: entity
+  id: ChemDispenserReduced
+  name: chemical dispenser
+  suffix: Filled, Reduced
+  parent: ReagentDispenserBase
+  description: An industrial grade chemical dispenser.
+  components:
+  - type: Sprite
+    sprite: Structures/dispensers.rsi
+    state: industrial-working
+    snapCardinals: true
+  - type: ReagentDispenser
+    storageWhitelist:
+      tags:
+      - ChemDispensable
+    pack: ChemDispenserReducedInventory

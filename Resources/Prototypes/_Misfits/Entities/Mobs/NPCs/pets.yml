@@ -31,6 +31,11 @@
   - type: NpcFactionMember
     factions:
     - Followers
+  - type: GhostRole
+    name: ghost-role-information-misfitpet-rabbit-followers-name
+    description: ghost-role-information-misfit-faction-description
+    rules: ghost-role-component-default-rules
+  - type: GhostTakeoverAvailable
 
 - type: entity
   name: Timmy
@@ -52,6 +57,12 @@
     - BrotherhoodOfSteel
   - type: MobPrice
     price: 200
+  - type: GhostRole
+    name: ghost-role-information-misfitpet-lizard1-bos-name
+    description: ghost-role-information-misfit-faction-description
+    rules: ghost-role-component-default-rules
+  - type: GhostTakeoverAvailable
+
 
 - type: entity
   name: Jimmy
@@ -73,3 +84,8 @@
     - BrotherhoodOfSteel
   - type: MobPrice
     price: 200
+  - type: GhostRole
+    name: ghost-role-information-misfitpet-lizard2-bos-name
+    description: ghost-role-information-misfit-faction-description
+    rules: ghost-role-component-default-rules
+  - type: GhostTakeoverAvailable

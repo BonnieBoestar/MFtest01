@@ -24,3 +24,18 @@
 
 - type: reagentDispenserInventory
   id: EmptyInventory
+
+- type: reagentDispenserInventory
+  id: ChemDispenserReducedInventory
+  inventory:
+  - JugCarbon
+  - JugChlorine
+  - JugFluorine
+  - JugIodine
+  - JugLithium
+  - JugMercury
+  - JugNitrogen
+  - JugNitrogen
+  - JugPotassium
+  - JugRadium
+  - JugSodium

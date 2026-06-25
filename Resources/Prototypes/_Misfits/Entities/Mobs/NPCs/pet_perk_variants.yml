@@ -682,3 +682,42 @@
       params:
         volume: -5
         maxDistance: 5
+
+# Wim - imma be honest, this is a joke but i also would love to manifest wim
+- type: entity
+  name: Wim
+  id: MisfitsMobPetWim
+  parent: N14MobPetDogLegion
+  description: A true agent of chaos.
+  components:
+  - type: SpoonCatTranslator
+  - type: Emoting
+  - type: MobThresholds # #Misfits Add - allow revival by medics
+    allowRevives: true
+  - type: Inventory
+    speciesId: cat
+    templateId: cat_pet
+  - type: Puller # #Misfits Add - explicit puller for drag mechanic
+    needsHands: false
+  - type: Hands # #Misfits Add - allows dragging and item handling
+  - type: BorgHands # #Misfits Add - gives cats actual holdable hand slots
+    handCount: 2
+  - type: ComplexInteraction # #Misfits Add - allows click-opening doors and other complex hand interactions
+  - type: RobotWeaponPickupBlacklist # #Misfits Add - cats should not be able to pick up guns/melee weapons
+    blacklist:
+      components:
+      - Gun
+      - MeleeWeapon
+  - type: InventorySlots
+  - type: Strippable
+  - type: PetCollarHolder
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+  - type: NpcFactionMember
+    factions:
+      - Wastelander
