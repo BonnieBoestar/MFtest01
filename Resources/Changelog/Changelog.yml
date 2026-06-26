@@ -7856,3 +7856,10 @@ Entries:
   id: 6138
   time: '2026-06-26T00:15:21.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/893
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: RobustToolBox update to 277.2.1 with included Lidgren Security Fix.
+  id: 6139
+  time: '2026-06-26T00:49:40.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/895
