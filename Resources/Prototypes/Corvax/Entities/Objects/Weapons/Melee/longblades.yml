@@ -102,9 +102,9 @@
       collection: MetalThud
     activatedDamage:
         types:
-            Heat: 80
+            Heat: 60
             Shock: 20
-            Structural: 120
+            Structural: 150 # Can-opener. KILL THOSE FUCKING PA CHUDS RIP THEM OPEN AND GORE THEM!
   # Misfits Fix - WelderComponent restores fuel quantity display when held
   - type: Welder
     fuelConsumption: 1
