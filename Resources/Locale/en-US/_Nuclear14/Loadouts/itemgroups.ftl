@@ -10,3 +10,6 @@ character-item-group-N14LoadoutMelee = Melee Weapons
 character-item-group-N14LoadoutNeck = Neckwear
 character-item-group-N14LoadoutOuter = Outerwear
 character-item-group-N14LoadoutShoes = Shoes
+character-item-group-N14LoadoutAmmoBig = Big Ammo
+character-item-group-N14LoadoutAmmoBox = Ammo Box
+character-item-group-N14LoadoutGunsBig = Big Guns

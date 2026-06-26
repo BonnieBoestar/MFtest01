@@ -399,6 +399,135 @@ loadout-name-LoadoutClothingOuterMBoSSquireArmor = Brotherhood squire armor (Mid
 # loadout-name-LoadoutClothingHeadHatBoSInquisitorBattleHelmetHood = Brotherhood inquisitor battle helmet (hooded)
 # loadout-name-LoadoutClothingHeadHatBoSInquisitorBlackHat = Brotherhood inquisitor black hat
 # loadout-name-LoadoutClothingHeadHatBoSInquisitorHat = Brotherhood inquisitor hat
+
+# Misfits Add - N14 weapon loadout names
+loadout-name-N14WeaponBlowback = blowback
+loadout-name-N14WeaponLaserPistol = laser pistol
+loadout-name-N14WeaponLaserRevolver = laser revolver
+loadout-name-N14WeaponLaserRifleMakeshift = makeshift laser rifle
+loadout-name-N14WeaponPistol10mm = 10mm pistol
+loadout-name-N14WeaponPistol12mm = 12mm pistol
+loadout-name-N14WeaponRifle308Battle = .308 battle rifle
+loadout-name-N14WeaponRifle556Carbine = 5.56 carbine
+loadout-name-N14WeaponRifle556CarbineOld = 5.56 carbine (old)
+loadout-name-N14WeaponRifle556EM2 = EM-2 rifle
+loadout-name-N14WeaponRifle556R91 = R91 assault rifle
+loadout-name-N14WeaponRifle556Service = 5.56 service rifle
+loadout-name-N14WeaponRifle762Canadian = 7.62 Canadian rifle
+loadout-name-N14WeaponRifle762Chinese = 7.62 Chinese assault rifle
+loadout-name-N14WeaponRifle762Fal = FN FAL
+loadout-name-N14WeaponRifle762M14 = M14
+loadout-name-N14WeaponRifle762Marksman = 7.62 marksman rifle
+loadout-name-N14WeaponRifle762SKS = SKS
+loadout-name-N14WeaponShotgun = shotgun
+loadout-name-N14WeaponShotgunAuto = auto shotgun
+loadout-name-N14WeaponShotgunCanadian = Canadian shotgun
+loadout-name-N14WeaponShotgunCaravan = caravan shotgun
+loadout-name-N14WeaponShotgunChinese = Chinese shotgun
+loadout-name-N14WeaponShotgunLever = lever-action shotgun
+loadout-name-N14WeaponShotgunRiot = riot shotgun
+loadout-name-N14WeaponSMG10mm = 10mm SMG
+loadout-name-N14WeaponSMG10mmChinese = Chinese 10mm SMG
+loadout-name-N14WeaponSMG10mmPipe = 10mm pipe SMG
+loadout-name-N14WeaponSMG10mmSuppressed = 10mm SMG (suppressed)
+loadout-name-N14WeaponSMG12mm = 12mm SMG
+loadout-name-N14WeaponSMG12mmPipe = 12mm pipe SMG
+loadout-name-N14WeaponSMG45 = .45 SMG
+loadout-name-N14WeaponSMG9mm = 9mm SMG
+loadout-name-N14WeaponSMG9mmCanadian = Canadian 9mm SMG
+loadout-name-N14WeaponSniper44LeverCarbine = .44 lever carbine
+loadout-name-N14WeaponSniper556VarmintRifle = 5.56 varmint rifle
+loadout-name-N14WeaponSniperHunting = hunting rifle
+
+# Misfits Add - Magazine and ammo loadout names
+loadout-name-N14MagazinePistol12mm = 12mm pistol magazine
+loadout-name-N14MagazineShotgun12 = 12-gauge shotgun magazine
+loadout-name-N14MagazineShotgun20 = 20-gauge shotgun magazine
+loadout-name-N14MagazineSMG10mm = 10mm SMG magazine
+loadout-name-N14MagazineSMG12mm = 12mm SMG magazine
+loadout-name-N14MagazineSMG9mm = 9mm SMG magazine
+loadout-name-N14PowerCellSmall = small energy cell
+loadout-name-Magazine45SubMachineGun = .45 SMG magazine
+loadout-name-Magazine556Rifle = 5.56 rifle magazine
+loadout-name-LongMagazine556Rifle = 5.56 long rifle magazine
+loadout-name-Magazine762AmmoShort = 7.62 short magazine
+loadout-name-Magazine762Rifle = 7.62 rifle magazine
+loadout-name-ClipMagazine308Rifle = .308 rifle clip
+loadout-name-MagazineBox10mm = 10mm ammo box
+loadout-name-MagazineBox12 = 12-gauge ammo box
+loadout-name-MagazineBox12gauge = 12-gauge ammo box
+loadout-name-MagazineBox20gauge = 20-gauge ammo box
+loadout-name-MagazineBox22 = .22 ammo box
+loadout-name-MagazineBox308 = .308 ammo box
+loadout-name-MagazineBox44 = .44 ammo box
+loadout-name-MagazineBox45 = .45 ammo box
+loadout-name-MagazineBox556 = 5.56 ammo box
+loadout-name-MagazineBox762 = 7.62 ammo box
+loadout-name-MagazineBox9mm = 9mm ammo box
+
+# Misfits Add - Outer armor and clothing loadout names
+loadout-name-N14LoadoutOuterVestChinese = Chinese vest
+loadout-name-N14LoadoutOuterPoliceCombat = police combat armor
+loadout-name-N14LoadoutOuterPressArmor = press armor
+loadout-name-N14ClothingOuterCombatArmorChinese = Chinese combat armor
+loadout-name-N14LoadoutOuterCombatArmorPainspike = painspike combat armor
+loadout-name-N14LoadoutOuterCombatArmor = combat armor
+loadout-name-N14LoadoutOuterCoatCombatDuster = combat duster
+loadout-name-N14LoadoutOuterJacketBomber = bomber jacket
+loadout-name-N14LoadoutOuterCoatFollowersArmored = armored Followers coat
+loadout-name-N14LoadoutOuterCoatFollowersArmoredCheap = armored Followers coat (cheap)
+loadout-name-N14LoadoutOuterDuster = duster
+loadout-name-N14LoadoutOuterSoldierCoat = soldier coat
+loadout-name-N14LoadoutOuterZealotDuster = zealot duster
+loadout-name-N14LoadoutOuterRaiderCombat1 = raider combat armor
+loadout-name-N14LoadoutOuterCombatArmorRaider = raider combat armor
+
+# Misfits Add - Headgear loadout names
+loadout-name-LoadoutN14ClothingHatSaltRunnerMask = Salt Runner mask
+loadout-name-LoadoutN14ClothingHatSaltRunnerHelmet = Salt Runner helmet
+loadout-name-N14ClothingHeadHatLightBaseballHelmet = light baseball helmet
+loadout-name-N14ClothingHeadHatChineseHelmet = Chinese helmet
+loadout-name-N14ClothingHeadHatChineseHelmetMk2 = Chinese helmet Mk2
+loadout-name-N14ClothingHeadHatCombatHelmet = combat helmet
+loadout-name-N14ClothingHeadHatPressHelmet = press helmet
+loadout-name-N14ClothingHeadHatPrewarMilitaryHelmet = pre-war military helmet
+loadout-name-LoadoutN14ClothingHeadFourLeafRangerHelmet = Four Leaf ranger helmet
+loadout-name-LoadoutN14ClothingNeckHighlandRangerHelmet = Highland ranger helmet
+
+# Misfits Add - Neckwear loadout names
+loadout-name-LoadoutN14ClothingNeckRangerDuster = ranger duster
+loadout-name-LoadoutN14ClothingNeckHighlandRangerDuster = Highland ranger duster
+loadout-name-LoadoutN14ClothingNeckSaltRunnerDuster = Salt Runner duster
+loadout-name-LoadoutN14ClothingNeckCaliforniaGirlDuster = California girl duster
+loadout-name-LoadoutN14ClothingNeckFourLeafDuster = Four Leaf duster
+loadout-name-ClothingNeckBellCollar = bell collar
+
+# Misfits Add - Consumable loadout names
+loadout-name-LoadoutSprayPaintGreen = green spray paint
+loadout-name-LoadoutSprayPaintBlue = blue spray paint
+loadout-name-LoadoutSprayPaintOrange = orange spray paint
+loadout-name-LoadoutSprayPaintWhite = white spray paint
+loadout-name-LoadoutSprayPaintBlack = black spray paint
+loadout-name-LoadoutSprayPaintPurple = purple spray paint
+loadout-name-LoadoutSprayPaintRed = red spray paint
+loadout-name-LoadoutHealingPoutltice = healing poultice
+loadout-name-LoadoutHealingPowder = healing powder
+loadout-name-LoadoutPsycho = Psycho
+loadout-name-LoadoutStimpakDirty = dirty stimpak
+loadout-name-LoadoutStimpak = stimpak
+loadout-name-LoadoutTurbo = Turbo
+loadout-name-LoadoutJet = Jet
+
+# Misfits Add - Faction loadout names
+loadout-name-LoadoutBoSMidwestSilver = Brotherhood of Steel armor (Midwest silver)
+loadout-name-LoadoutBoSMidwest = Brotherhood of Steel armor (Midwest)
+loadout-name-LoadoutN14ClothingOuterVetRangerRiotArmor = veteran ranger riot armor
+
+# Misfits Add - Misfits-specific loadout names
+loadout-name-MisfitsLoadoutOuterCoatJacketBiker = biker jacket
+loadout-name-MisfitsLoadoutUniform80sPants = 80s pants
+loadout-name-MisfitsClothingBackpackSatchelMarching = marching satchel
+loadout-name-MisfitsClothingBackpackSatchelOld = old satchel
 #
 # # Brotherhood of Steel loadouts (Washington)
 # loadout-name-LoadoutBoSWashingtonSquire = Brotherhood squire armor (Washington)

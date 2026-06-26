@@ -15,3 +15,9 @@ loadout-name-ClothingSuperMutantTribalGloves = supermutant tribal gloves
 loadout-name-ClothingSuperMutantZootSuit = supermutant zoot suit
 loadout-name-ClothingSuperMutantZootHat = super mutant zoot hat
 loadout-name-ClothingSuperMutantZootBoot = supermutant zoot boots
+
+# Misfits Add - Scavenged super mutant loadout names
+loadout-name-MisfitsLoadoutSuperMutantScavengedGloves = super mutant scavenged gloves
+loadout-name-MisfitsLoadoutSuperMutantScavengedBoots = super mutant scavenged boots
+loadout-name-MisfitsLoadoutSuperMutantScavengedArmor = super mutant scavenged armor
+loadout-name-MisfitsLoadoutSuperMutantScavengedHelmet = super mutant scavenged helmet
