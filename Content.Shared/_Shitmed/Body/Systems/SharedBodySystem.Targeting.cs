@@ -35,7 +35,8 @@ public partial class SharedBodySystem
     [Dependency] private readonly StandingStateSystem _standing = default!;
 
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    private readonly string[] _severingDamageTypes = { "Slash", "Piercing", "Blunt" };
+    // Misfits Change: All physical damage types can sever
+    private readonly string[] _severingDamageTypes = { "Slash", "Piercing", "Blunt", "Heat", "Caustic", "Cold", };
     private const double IntegrityJobTime = 0.005;
     private readonly JobQueue _integrityJobQueue = new(IntegrityJobTime);
     public sealed class IntegrityJob : Job<object>
