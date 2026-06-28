@@ -8035,3 +8035,12 @@ Entries:
   id: 6154
   time: '2026-06-28T15:08:16.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/915
+- author: JohnKieser
+  changes:
+    - type: Fix
+      message: >-
+        Converted all audio files to mono and to use the same bit and sampling
+        rate
+  id: 6155
+  time: '2026-06-28T21:35:36.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/916
