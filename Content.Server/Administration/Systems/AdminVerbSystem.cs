@@ -140,6 +140,7 @@ namespace Content.Server.Administration.Systems
                     var frozen = TryComp<AdminFrozenComponent>(args.Target, out var frozenComp);
                     var frozenAndMuted = frozenComp?.Muted ?? false;
 
+                    // #Misfits Change — Bumped freeze to High so admin alert fires
                     if (!frozen)
                     {
                         args.Verbs.Add(new Verb
@@ -152,10 +153,11 @@ namespace Content.Server.Administration.Systems
                             {
                                 EnsureComp<AdminFrozenComponent>(args.Target);
                             },
-                            Impact = LogImpact.Medium,
+                            Impact = LogImpact.High,
                         });
                     }
 
+                    // #Misfits Change — Bumped freeze+mute to High so admin alert fires
                     if (!frozenAndMuted)
                     {
                         // allow you to additionally mute someone when they are already frozen
@@ -169,10 +171,11 @@ namespace Content.Server.Administration.Systems
                             {
                                 _freeze.FreezeAndMute(args.Target);
                             },
-                            Impact = LogImpact.Medium,
+                            Impact = LogImpact.High,
                         });
                     }
 
+                    // #Misfits Change — Bumped unfreeze to High so admin alert fires
                     if (frozen)
                     {
                         args.Verbs.Add(new Verb
@@ -185,7 +188,7 @@ namespace Content.Server.Administration.Systems
                             {
                                 RemComp<AdminFrozenComponent>(args.Target);
                             },
-                            Impact = LogImpact.Medium,
+                            Impact = LogImpact.High,
                         });
                     }
 
@@ -363,13 +366,14 @@ namespace Content.Server.Administration.Systems
                 }
 
                 // #Misfits Change — Rejuvenate moved from Debug to Admin tab so all admins can use it
+                // #Misfits Change — Bumped to Extreme so admin alert fires
                 Verb rejuvenateVerb = new()
                 {
                     Text = Loc.GetString("rejuvenate-verb-get-data-text"),
                     Category = VerbCategory.Admin,
                     Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/rejuvenate.svg.192dpi.png")),
                     Act = () => _rejuvenate.PerformRejuvenate(args.Target),
-                    Impact = LogImpact.Medium
+                    Impact = LogImpact.Extreme
                 };
                 args.Verbs.Add(rejuvenateVerb);
             }
@@ -383,6 +387,7 @@ namespace Content.Server.Administration.Systems
             var player = actor.PlayerSession;
 
             // Delete verb
+            // #Misfits Change — Bumped delete to High so admin alert fires
             if (_toolshed.ActivePermissionController?.CheckInvokable(new CommandSpec(_toolshed.DefaultEnvironment.GetCommand("delete"), null), player, out _) ?? false)
             {
                 Verb verb = new()
@@ -391,7 +396,7 @@ namespace Content.Server.Administration.Systems
                     Category = VerbCategory.Debug,
                     Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/delete_transparent.svg.192dpi.png")),
                     Act = () => EntityManager.DeleteEntity(args.Target),
-                    Impact = LogImpact.Medium,
+                    Impact = LogImpact.High,
                     ConfirmationPopup = true
                 };
                 args.Verbs.Add(verb);
@@ -458,6 +463,7 @@ namespace Content.Server.Administration.Systems
             }
 
             // Set clothing verb
+            // #Misfits Change — Bumped set outfit to High so admin alert fires
             if (_groupController.CanCommand(player, "setoutfit") &&
                 EntityManager.HasComponent<InventoryComponent>(args.Target))
             {
@@ -467,7 +473,7 @@ namespace Content.Server.Administration.Systems
                     Category = VerbCategory.Debug,
                     Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/outfit.svg.192dpi.png")),
                     Act = () => _eui.OpenEui(new SetOutfitEui(GetNetEntity(args.Target)), player),
-                    Impact = LogImpact.Medium
+                    Impact = LogImpact.High
                 };
                 args.Verbs.Add(verb);
             }
