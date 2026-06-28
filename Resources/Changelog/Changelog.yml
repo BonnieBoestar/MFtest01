@@ -8019,3 +8019,12 @@ Entries:
   id: 6152
   time: '2026-06-28T04:14:38.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/911
+- author: Squagg
+  changes:
+    - type: Add
+      message: Added upgraded NCRMP riot-control and investigation equipment.
+    - type: Tweak
+      message: Rebalanced NCRMP armor and baton access for base defense.
+  id: 6153
+  time: '2026-06-28T04:17:26.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/905
