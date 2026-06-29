@@ -58,38 +58,39 @@
               amount: 5
             - !type:DeleteEntity 
 
-- type: constructionGraph
-  id: DecorationFlagYuma
-  start: start
-  graph:
-    - node: start
-      edges:
-        - to: FlagYuma
-          steps:
-            - material: WoodPlank
-              amount: 5
-              doAfter: 3
-            - material: Cloth
-              amount: 5
-              doAfter: 3
-          completed:
-            - !type:SnapToGrid
-              southRotation: true
-    - node: FlagYuma
-      entity: N14DecorationFlagYuma
-      edges:
-        - to: start
-          steps:
-            - tool: Prying
-              doAfter: 3
-          completed:
-            - !type:SpawnPrototype
-              prototype: MaterialWoodPlank1
-              amount: 5
-            - !type:SpawnPrototype
-              prototype: MaterialCloth1
-              amount: 5
-            - !type:DeleteEntity 
+# Misfits Change: No more constructing Yuma flag
+#- type: constructionGraph
+#  id: DecorationFlagYuma
+#  start: start
+#  graph:
+#    - node: start
+#      edges:
+#        - to: FlagYuma
+#          steps:
+#            - material: WoodPlank
+#              amount: 5
+#              doAfter: 3
+#            - material: Cloth
+#              amount: 5
+#              doAfter: 3
+#          completed:
+#            - !type:SnapToGrid
+#              southRotation: true
+#    - node: FlagYuma
+#      entity: N14DecorationFlagYuma
+#      edges:
+#        - to: start
+#          steps:
+#            - tool: Prying
+#              doAfter: 3
+#          completed:
+#            - !type:SpawnPrototype
+#              prototype: MaterialWoodPlank1
+#              amount: 5
+#            - !type:SpawnPrototype
+#              prototype: MaterialCloth1
+#              amount: 5
+#            - !type:DeleteEntity 
 
 - type: constructionGraph
   id: DecorationFlagBrotherhoodMidwest

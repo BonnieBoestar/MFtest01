@@ -91,16 +91,16 @@ job-description-ranger-veteran-n14 = Lead Ranger operations in the region, choos
 job-name-ranger-veteran = Veteran Ranger
 job-description-ranger-veteran = Lead Ranger operations in the region, choose your methods, and answer only to your mission and your code.
 
-# #Misfits Change - rename tribe role display names to Yuma variants without changing job IDs.
+# #Misfits Change - rename tribe role display names to Willowers variants without changing job IDs.
 # Tribal
-job-name-tribal = Yuma Tribal
-job-description-tribal = Maintain the Yuma Tribe's way of life in the wasteland at all costs. Security, crafting, homelife, you do it all.
-job-name-tribal-elder = Yuma Chieftan
-job-description-tribal-elder = Lead the Yuma Tribe through good times and bad times and maintain your beliefs.
-job-name-tribal-farmer = Yuma Farmer
-job-description-tribal-farmer = Produce food and goods for the Yuma Tribe to sustain your living.
-job-name-tribal-shaman = Yuma Shaman
-job-description-tribal-shaman = Produce medicines and compounds for the Yuma Tribe, as is tradition.
+job-name-tribal = Willowers Tribal
+job-description-tribal = Maintain the Willowers' way of life in the wasteland at all costs. Security, crafting, homelife, you do it all.
+job-name-tribal-elder = Willowers Chieftan
+job-description-tribal-elder = Lead the Willowers through good times and bad times and maintain your beliefs.
+job-name-tribal-farmer = Willowers Farmer
+job-description-tribal-farmer = Produce food and goods for the Willowers to sustain your living.
+job-name-tribal-shaman = Willowers Shaman
+job-description-tribal-shaman = Produce medicines and compounds for the Willowers, as is tradition.
 
 # Vault
 job-name-overseer = Vault Overseer

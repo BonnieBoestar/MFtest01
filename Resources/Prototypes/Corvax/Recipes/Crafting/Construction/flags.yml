@@ -31,22 +31,23 @@
   conditions:
     - !type:TileNotBlocked
 
-- type: construction
-  id: N14DecorationFlagYuma # Yuma Tribe
-  name: Yuma Tribe Flag
-  graph: DecorationFlagYuma
-  startNode: start
-  targetNode: FlagYuma
-  category: construction-category-furniture
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  hide: false
-  icon:
-    sprite: _Nuclear14/Structures/Decoration/flags.rsi
-    state: cornflag
-  conditions:
-    - !type:TileNotBlocked
+# Misfits Change: No more constructing Yuma flags
+#- type: construction
+#  id: N14DecorationFlagYuma # Yuma Tribe
+#  name: Yuma Tribe Flag
+#  graph: DecorationFlagYuma
+#  startNode: start
+#  targetNode: FlagYuma
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  hide: false
+#  icon:
+#    sprite: _Nuclear14/Structures/Decoration/flags.rsi
+#    state: cornflag
+#  conditions:
+#    - !type:TileNotBlocked
 
 - type: construction
   id: N14DecorationFlagBrotherhoodMidwest # MW Brotherhood

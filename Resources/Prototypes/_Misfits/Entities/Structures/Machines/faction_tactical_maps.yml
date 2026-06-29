@@ -1,0 +1,153 @@
+# #Misfits Add - Faction-specific tactical maps for each major faction.
+# Each map uses the correct ID card access level and tactical feed,
+# fixing the issue where Followers (and others) couldn't access maps
+# that were hardcoded to BOS access via N14BrotherhoodTacticalmap parent.
+#
+# Mappers: place these prototypes directly instead of N14BrotherhoodTacticalmap
+# when building faction-specific areas.
+
+# ─────────────────────────────────────────────
+# NCR Tactical Map
+# ─────────────────────────────────────────────
+- type: entity
+  parent: N14BrotherhoodTacticalmap
+  id: MisfitsNCRTacticalMap
+  name: NCR Tactical Map
+  description: An NCR tactical map used by officers to track troop movements and plan operations.
+  suffix: NCR, Mapping
+  components:
+  - type: WastelandMap
+    mapConfigId: Wendover
+    mapTitle: NCR Tactical Map
+    tacticalFeed: NCR
+  - type: OverwatchConsole
+    monitorTitle: overwatch-monitor-title-ncr
+    trackedTags:
+    - IdCardNCR
+  - type: AccessReader
+    access: [["NCR"]]
+  - type: ActivatableUIRequiresAccess
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MisfitsNCRTacticalMapBroken:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent: N14BrotherhoodTacticalmapBroken
+  id: MisfitsNCRTacticalMapBroken
+  name: Broken NCR Tactical Map
+  description: A damaged NCR tactical map, its screen flickering with static.
+  suffix: NCR, Broken
+  components:
+  - type: WastelandMap
+    mapConfigId: Wendover
+    mapTitle: NCR Tactical Map
+    tacticalFeed: NCR
+  - type: OverwatchConsole
+    monitorTitle: overwatch-monitor-title-ncr
+    trackedTags:
+    - IdCardNCR
+  - type: AccessReader
+    access: [["NCR"]]
+  - type: ActivatableUIRequiresAccess
+
+# ─────────────────────────────────────────────
+# Followers of the Apocalypse Tactical Map
+# ─────────────────────────────────────────────
+- type: entity
+  parent: N14BrotherhoodTacticalmap
+  id: MisfitsFollowersTacticalMap
+  name: Followers Tactical Map
+  description: A Followers tactical map used to coordinate relief efforts and track casualties across the wasteland.
+  suffix: Followers, Mapping
+  components:
+  - type: WastelandMap
+    mapConfigId: Wendover
+    mapTitle: Followers Tactical Map
+    tacticalFeed: Followers
+  - type: AccessReader
+    access: [["FotA"]]
+  - type: ActivatableUIRequiresAccess
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MisfitsFollowersTacticalMapBroken:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent: N14BrotherhoodTacticalmapBroken
+  id: MisfitsFollowersTacticalMapBroken
+  name: Broken Followers Tactical Map
+  description: A damaged Followers tactical map, its screen cracked and flickering.
+  suffix: Followers, Broken
+  components:
+  - type: WastelandMap
+    mapConfigId: Wendover
+    mapTitle: Followers Tactical Map
+    tacticalFeed: Followers
+  - type: AccessReader
+    access: [["FotA"]]
+  - type: ActivatableUIRequiresAccess
+
+# ─────────────────────────────────────────────
+# NCR Rangers Tactical Map
+# ─────────────────────────────────────────────
+- type: entity
+  parent: N14BrotherhoodTacticalmap
+  id: MisfitsRangersTacticalMap
+  name: Rangers Tactical Map
+  description: A secured NCR Ranger tactical map used for coordinating patrols and tracking threats.
+  suffix: Rangers, Mapping
+  components:
+  - type: WastelandMap
+    mapConfigId: Wendover
+    mapTitle: Rangers Tactical Map
+    tacticalFeed: NCR
+  - type: AccessReader
+    access: [["NCRRanger"]]
+  - type: ActivatableUIRequiresAccess
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MisfitsRangersTacticalMapBroken:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent: N14BrotherhoodTacticalmapBroken
+  id: MisfitsRangersTacticalMapBroken
+  name: Broken Rangers Tactical Map
+  description: A damaged Ranger tactical map, its display cracked and sparking.
+  suffix: Rangers, Broken
+  components:
+  - type: WastelandMap
+    mapConfigId: Wendover
+    mapTitle: Rangers Tactical Map
+    tacticalFeed: NCR
+  - type: AccessReader
+    access: [["NCRRanger"]]
+  - type: ActivatableUIRequiresAccess

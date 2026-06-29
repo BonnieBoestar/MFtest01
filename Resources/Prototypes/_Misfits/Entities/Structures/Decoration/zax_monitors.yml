@@ -1,0 +1,179 @@
+- type: entity
+  abstract: true
+  parent: BaseStructure
+  id: MisfitsZaxMonitorBase
+  name: Z.A.X monitor
+  description: A decorative Z.A.X-linked monitor. Its camera feed is wired into the Z.A.X. core.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wallmount
+  components:
+  - type: StationAiVision
+  - type: StationAiWhitelist
+  - type: WallMount
+    arc: 360
+  - type: InteractionOutline
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: _Misfits/Structures/Decoration/zax_monitors.rsi
+  - type: PointLight
+    radius: 1.2
+    energy: 0.55
+    color: "#4FB9F5"
+    castShadows: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.20,-0.10,0.25,0.35"
+        density: 60
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorStaticLeft
+  suffix: Static, Left
+  components:
+  - type: Sprite
+    layers:
+    - state: static_left_body
+    - state: static_left_glow
+      shader: unshaded
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorStaticRight
+  suffix: Static, Right
+  components:
+  - type: Sprite
+    layers:
+    - state: static_right_body
+    - state: static_right_glow
+      shader: unshaded
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorEye1Left
+  suffix: Eye 1, Left
+  components:
+  - type: Sprite
+    layers:
+    - state: eye1_left_body
+    - state: eye1_left_glow
+      shader: unshaded
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorEye1Right
+  suffix: Eye 1, Right
+  components:
+  - type: Sprite
+    layers:
+    - state: eye1_right_body
+    - state: eye1_right_glow
+      shader: unshaded
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorEye2Left
+  suffix: Eye 2, Left
+  components:
+  - type: Sprite
+    layers:
+    - state: eye2_left_body
+    - state: eye2_left_glow
+      shader: unshaded
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorEye2Right
+  suffix: Eye 2, Right
+  components:
+  - type: Sprite
+    layers:
+    - state: eye2_right_body
+    - state: eye2_right_glow
+      shader: unshaded
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorEye3Left
+  suffix: Eye 3, Left
+  components:
+  - type: Sprite
+    layers:
+    - state: eye3_left_body
+    - state: eye3_left_glow
+      shader: unshaded
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorEye3Right
+  suffix: Eye 3, Right
+  components:
+  - type: Sprite
+    layers:
+    - state: eye3_right_body
+    - state: eye3_right_glow
+      shader: unshaded
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorEye4Left
+  suffix: Eye 4, Left
+  components:
+  - type: Sprite
+    layers:
+    - state: eye4_left_body
+    - state: eye4_left_glow
+      shader: unshaded
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorEye4Right
+  suffix: Eye 4, Right
+  components:
+  - type: Sprite
+    layers:
+    - state: eye4_right_body
+    - state: eye4_right_glow
+      shader: unshaded
+
+- type: entity
+  parent: MisfitsZaxMonitorBase
+  id: MisfitsZaxMonitorTower
+  suffix: Tower
+  components:
+  - type: Sprite
+    sprite: _Misfits/Structures/Decoration/zax_monitor_tower.rsi
+    layers:
+    - state: tower_body
+    - state: tower_glow
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.20,-0.10,0.25,0.85"
+        density: 60
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer

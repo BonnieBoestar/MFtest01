@@ -704,9 +704,6 @@
             - !type:SpawnPrototype
               prototype: MaterialCloth1
               amount: 5
-            - !type:SpawnPrototype
-              prototype: HeadSkeleton
-              amount: 1
             - !type:DeleteEntity
               
               # Signs (like left and right wooden signs)

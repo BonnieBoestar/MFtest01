@@ -368,7 +368,7 @@
   placementMode: SnapgridCenter
 
 - type: construction
-  name: tribal banner
+  name: Willowers banner
   id: MisfitsDecorationFlagTribe
   graph: MisfitsFlagTribe
   startNode: start

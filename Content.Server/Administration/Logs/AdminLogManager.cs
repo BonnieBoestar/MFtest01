@@ -6,6 +6,7 @@ using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
+using Content.Shared.Chat;
 using Content.Shared.Database;
 using Prometheus;
 using Robust.Shared;
@@ -25,6 +26,7 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
     [Dependency] private readonly IDynamicTypeFactory _typeFactory = default!;
     [Dependency] private readonly IReflectionManager _reflection = default!;
     [Dependency] private readonly IDependencyCollection _dependencies = default!;
+    [Dependency] private readonly ISharedChatManager _chat = default!;
 
     public const string SawmillId = "admin.logs";
 
@@ -311,6 +313,8 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
             log.Players.Add(player);
         }
 
+        DoAdminAlerts(log);
+
         if (preRound)
         {
             _preRoundLogQueue.Enqueue(log);
@@ -320,6 +324,24 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
             _logQueue.Enqueue(log);
             CacheLog(log);
         }
+    }
+
+    // Keep live alerts for important admin actions, but suppress the projectile hit spam.
+    private void DoAdminAlerts(AdminLog log)
+    {
+        if (log.Impact < LogImpact.High)
+            return;
+
+        if (_runLevel == GameRunLevel.PreRoundLobby)
+            return;
+
+        if (log.Type == LogType.BulletHit &&
+            log.Message.StartsWith("Projectile ", StringComparison.Ordinal))
+        {
+            return;
+        }
+
+        _chat.SendAdminAlert(log.Message);
     }
 
     public override void Add(LogType type, LogImpact impact, ref LogStringHandler handler)

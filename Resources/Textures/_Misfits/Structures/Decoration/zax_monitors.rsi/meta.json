@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Created by beepbopbopedy.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "eye1_left"
+    },
+    {
+      "name": "eye1_left_body"
+    },
+    {
+      "name": "eye1_left_glow",
+      "delays": [
+        [
+          0.28,
+          0.28
+        ]
+      ]
+    },
+    {
+      "name": "eye1_right"
+    },
+    {
+      "name": "eye1_right_body"
+    },
+    {
+      "name": "eye1_right_glow",
+      "delays": [
+        [
+          0.28,
+          0.28
+        ]
+      ]
+    },
+    {
+      "name": "eye2_left"
+    },
+    {
+      "name": "eye2_left_body"
+    },
+    {
+      "name": "eye2_left_glow",
+      "delays": [
+        [
+          0.28,
+          0.28
+        ]
+      ]
+    },
+    {
+      "name": "eye2_right"
+    },
+    {
+      "name": "eye2_right_body"
+    },
+    {
+      "name": "eye2_right_glow",
+      "delays": [
+        [
+          0.28,
+          0.28
+        ]
+      ]
+    },
+    {
+      "name": "eye3_left"
+    },
+    {
+      "name": "eye3_left_body"
+    },
+    {
+      "name": "eye3_left_glow",
+      "delays": [
+        [
+          0.28,
+          0.28
+        ]
+      ]
+    },
+    {
+      "name": "eye3_right"
+    },
+    {
+      "name": "eye3_right_body"
+    },
+    {
+      "name": "eye3_right_glow",
+      "delays": [
+        [
+          0.28,
+          0.28
+        ]
+      ]
+    },
+    {
+      "name": "eye4_left"
+    },
+    {
+      "name": "eye4_left_body"
+    },
+    {
+      "name": "eye4_left_glow",
+      "delays": [
+        [
+          0.28,
+          0.28
+        ]
+      ]
+    },
+    {
+      "name": "eye4_right"
+    },
+    {
+      "name": "eye4_right_body"
+    },
+    {
+      "name": "eye4_right_glow",
+      "delays": [
+        [
+          0.28,
+          0.28
+        ]
+      ]
+    },
+    {
+      "name": "static_left"
+    },
+    {
+      "name": "static_left_body"
+    },
+    {
+      "name": "static_left_glow",
+      "delays": [
+        [
+          0.28,
+          0.28
+        ]
+      ]
+    },
+    {
+      "name": "static_right"
+    },
+    {
+      "name": "static_right_body"
+    },
+    {
+      "name": "static_right_glow",
+      "delays": [
+        [
+          0.28,
+          0.28
+        ]
+      ]
+    }
+  ]
+}

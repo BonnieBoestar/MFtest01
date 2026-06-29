@@ -1,5 +1,7 @@
 using Content.Server.Administration;
+using Content.Server.Administration.Logs;
 using Content.Shared.Administration;
+using Content.Shared.Database;
 using Content.Shared.Damage.Systems;
 using Robust.Shared.Console;
 
@@ -9,6 +11,7 @@ namespace Content.Server.Damage.Commands
     public sealed class GodModeCommand : IConsoleCommand
     {
         [Dependency] private readonly IEntityManager _entManager = default!;
+        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
         public string Command => "godmode";
         public string Description => "Makes your entity or another invulnerable to almost anything. May have irreversible changes.";
@@ -60,6 +63,11 @@ namespace Content.Server.Damage.Commands
             var enabled = godmodeSystem.ToggleGodmode(entity);
 
             var name = _entManager.GetComponent<MetaDataComponent>(entity).EntityName;
+
+            // #Misfits Add - Log godmode command usage for admin alert system
+            var execName = player?.Name ?? "An administrator";
+            _adminLogger.Add(LogType.Verb, LogImpact.Extreme,
+                $"{execName} executed the [godmode] command targeting {_entManager.ToPrettyString(entity)}");
 
             shell.WriteLine(enabled
                 ? $"Enabled godmode for entity {name} with id {entity}"

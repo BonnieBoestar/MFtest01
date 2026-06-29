@@ -336,8 +336,8 @@
 
 - type: entity
   id: PlayerStationAiEmpty
-  name: AI Core
-  description: The latest in Artificial Intelligences.
+  name: Z.A.X. Core
+  description: A pre-war Z.A.X. mainframe adapted as the station's central artificial intelligence core.
   parent:
   - BaseStructure
   - AiHolder
@@ -364,12 +364,10 @@
   - type: StationAiVision
   - type: InteractionOutline
   - type: Sprite
-    sprite: Mobs/Silicon/station_ai.rsi
+    sprite: _Misfits/Mobs/Silicon/zax_core.rsi
     layers:
-    - state: base
     - state: ai_empty
-      map: ["unshaded"]
-      shader: unshaded
+      map: ["core"]
   - type: Appearance
   - type: InteractionPopup
     interactSuccessString: petting-success-station-ai
@@ -380,7 +378,7 @@
   - type: GenericVisualizer
     visuals:
       enum.StationAiVisualState.Key:
-        unshaded:
+        core:
           Empty: { state: ai_empty }
           Occupied: { state: ai }
   - type: LanguageKnowledge
@@ -427,11 +425,10 @@
     containerId: station_ai_mind_slot
     job: StationAi
   - type: Sprite
-    sprite: Mobs/Silicon/station_ai.rsi
+    sprite: _Misfits/Mobs/Silicon/zax_core.rsi
     layers:
-    - state: base
     - state: ai
-      shader: unshaded
+      map: ["core"]
 
 # The actual brain inside the core
 - type: entity
