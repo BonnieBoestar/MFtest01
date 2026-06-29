@@ -8191,3 +8191,20 @@ Entries:
   id: 6164
   time: '2026-06-29T21:23:41.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/927
+- author: Operator
+  changes:
+    - type: Add
+      message: Move&Attack command for the ZAX
+    - type: Tweak
+      message: ZAX commands are more reliable
+    - type: Fix
+      message: Move in formation actually moves in formation
+    - type: Fix
+      message: ZAX units no longer attack each other
+    - type: Tweak
+      message: ZAX units carry vision&connection where they go now.
+    - type: Tweak
+      message: Faction cameras dont carry ZAX vision. ZAX has its own camera type now.
+  id: 6165
+  time: '2026-06-29T21:32:08.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/925
