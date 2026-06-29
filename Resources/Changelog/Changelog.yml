@@ -8180,3 +8180,14 @@ Entries:
   id: 6163
   time: '2026-06-29T18:50:47.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/929
+- author: Vixting
+  changes:
+    - type: Tweak
+      message: You can now recruit friednly mobs
+    - type: Fix
+      message: Fixed Legion charlie dog not being recruitable
+    - type: Fix
+      message: Fixed legion pet dog perk not spawning it with 8+ charisma
+  id: 6164
+  time: '2026-06-29T21:23:41.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/927
