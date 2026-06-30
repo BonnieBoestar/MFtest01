@@ -150,28 +150,6 @@
 
 # --- BoS Tier 3 Weapons (Paladin arsenal) ---
 - type: latheRecipe
-  id: N14BPBoSWeaponLaserRifleAuto
-  result: N14WeaponLaserRifleAuto
-  category: N14BlueprintBoSWeaponsT3
-  completetime: 16
-  requiresBlueprint: true
-  availableFaction:
-  - BrotherhoodOfSteel
-  materials:
-    Steel: 5500
-
-    Glass: 1500
-
-    Circuitry: 350
-
-    ScrapElectronic: 500
-
-    Plastic: 1000
-
-    N14Gold: 350
-
-
-- type: latheRecipe
   id: N14BPBoSWeaponPlasmaRifle
   result: N14WeaponPlasmaRifle
   category: N14BlueprintBoSWeaponsT3
