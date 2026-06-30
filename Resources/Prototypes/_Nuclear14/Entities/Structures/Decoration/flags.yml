@@ -226,9 +226,9 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Decoration/flags.rsi
     state: cornflag
-  - type: Construction # Forge-Change
-    graph: DecorationFlagYuma
-    node: FlagYuma
+#  - type: Construction # Forge-Change  # Misfits Change: commented out, this isn't constructable anymore
+#    graph: DecorationFlagYuma
+#    node: FlagYuma
 
 - type: entity
   parent: N14DecorationFlagFlammable

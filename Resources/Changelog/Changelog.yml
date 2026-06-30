@@ -7982,3 +7982,229 @@ Entries:
   id: 6150
   time: '2026-06-28T01:00:32.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/910
+- author: cythisiax
+  changes:
+    - type: Add
+      message: Ore Processor Reagents
+    - type: Add
+      message: >-
+        135% global speed cap coef. So, only 35% increased speed above base
+        MobHuman @100% value. 135% effective total movespeed.
+    - type: Fix
+      message: >-
+        [Ghost] not working for non aghost. [Ghost] (while in ghost) should work
+        for player ghosts via widget.
+  id: 6151
+  time: '2026-06-28T04:13:26.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/912
+- author: Operator
+  changes:
+    - type: Tweak
+      message: >-
+        Oilers fixed the eighties engines. They dont consume hundreds of gallons
+        of fuel anymore. They have 200u storage and consume it in around 25
+        minutes.
+    - type: Tweak
+      message: Oilers also added some armor plates. Their HP has been doubled to 500.
+    - type: Tweak
+      message: >-
+        They fixed the seatbelts, too. You can get off an exploding bike without
+        trying to 'pat it down'
+    - type: Tweak
+      message: >-
+        The gang finally stuffed some motorcycle manuals into their bike
+        flatpacks. Road rashes can complete their path up the chain.
+    - type: Fix
+      message: You cant bypass the refuel doafter with chem-transfers anymore.
+  id: 6152
+  time: '2026-06-28T04:14:38.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/911
+- author: Squagg
+  changes:
+    - type: Add
+      message: Added upgraded NCRMP riot-control and investigation equipment.
+    - type: Tweak
+      message: Rebalanced NCRMP armor and baton access for base defense.
+  id: 6153
+  time: '2026-06-28T04:17:26.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/905
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Cent needs 8 additional Opito hours to play the role.
+  id: 6154
+  time: '2026-06-28T15:08:16.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/915
+- author: JohnKieser
+  changes:
+    - type: Fix
+      message: >-
+        Converted all audio files to mono and to use the same bit and sampling
+        rate
+  id: 6155
+  time: '2026-06-28T21:35:36.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/916
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: Supermutants now have footstep sounds.
+    - type: Fix
+      message: EyeBot netSync point out by another contrib
+    - type: Fix
+      message: >-
+        Chinese helmet saying gives NVG, updated desc to say no longer has NVG.
+        Yuh.
+    - type: Fix
+      message: Nerfed Bighorner melee range from 4 > 1
+    - type: Fix
+      message: Riding/Mounted no longer allow you to dig graves.
+    - type: Fix
+      message: >-
+        TryGetActiveWarForOriginalParticipant (Yeah LOL) fixed identifying
+        methods of original war participants. Should no longer softlock raids.
+    - type: Add
+      message: >-
+        _adminLogger.Add(LogType.Verb, LogImpact.Extreme, "AdminName executed
+        the [Tricks Make Indestructible] verb targeting EntityName") example.
+        Plus more. Request by GalaxyCad. System already existed, updated
+        Intensity all from Lows > Med > Extreme.
+  id: 6156
+  time: '2026-06-28T21:36:19.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/913
+- author: paige404
+  changes:
+    - type: Tweak
+      message: >-
+        All physical damages can sever limbs now. This is good though, don't
+        worry. It's a good thing.
+  id: 6157
+  time: '2026-06-29T00:15:00.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/921
+- author: paige404
+  changes:
+    - type: Remove
+      message: Removed the Yuma, an out-of-place holdover from Corvax/N14.
+    - type: Add
+      message: >-
+        Added the Willowers, our own Misfits-specific Utah tribe. You may find
+        them very familiar.
+  id: 6158
+  time: '2026-06-29T00:21:40.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/920
+- author: Operator
+  changes:
+    - type: Add
+      message: Z.A.X. Core Sprites by beepbopbopedy
+    - type: Add
+      message: Z.A.X. Monitor sprites by beepbopbopedy
+    - type: Add
+      message: Z.A.X. Securitron sprites by beepbopbopedy
+    - type: Tweak
+      message: >-
+        Z.A.X. Securitrons have 100 more HP, and have 30% subcal reflect, + 10%
+        highcal reflect.
+  id: 6159
+  time: '2026-06-29T00:48:01.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/922
+- author: Bradysgaming
+  changes:
+    - type: Fix
+      message: Fixed C-27 Aggro with a pipboy.
+  id: 6160
+  time: '2026-06-29T02:22:13.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/924
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        Followers, Enclave, Rangers, NCR, Brotherhood individualized tacmaps w/
+        appropriate access. Mappers will need to re-map accordingly. example,
+        FoTA tacmap access defaults to BoS. Will no longer w/ proper mapped
+        proto.
+    - type: Add
+      message: auto map render on server start if map values/yaml change
+    - type: Fix
+      message: adminlog spam from Projectile Bullet
+    - type: Fix
+      message: SIlicons no longer have crit crawl
+  id: 6161
+  time: '2026-06-29T12:51:49.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/926
+- author: Sirius
+  changes:
+    - type: Add
+      message: >-
+        Mr. Lowe, impressed with Vault-14s performance recently, has used the
+        windfall their pockets are burdened with to provide the aging Vault with
+        a much-needed update to its infrastructure - Vault-14 now has a
+        Logistics department, complete with Cargo, Courier, and Salvage
+        services.
+    - type: Add
+      message: >-
+        The Cargo department, to fulfill its duties and obligations, has been
+        provided with a state-of-the-art cargo elevator. The elevator is capable
+        of being used by a patented ASRS terminal which has been provided to the
+        department and can handle sales and purchases for the Vault as a whole.
+        Don't think too hard about where it all goes and comes from.
+    - type: Tweak
+      message: >-
+        Reflecting on the failures of Vault-14 security in the past to protect
+        the reactor, it was decided that a new site for Vault-14's power supply
+        would be excavated beneath the rest of the Vault in a nearby cavern.
+        Less energy is needed for active cooling, and in the event of a
+        catastrophic failure, damage to the rest of the vault is minimized by
+        the Reactors distance from important infrastructure, as well as a robust
+        battery bank which can provide prolonged power until emergency power
+        generation can be hooked up to the grid.
+    - type: Tweak
+      message: >-
+        The Engineering Department has been moved across the hall. No expense
+        was spared in uprooting and moving the old, ragged atmospherics
+        facilities to make room for a brand-new Workshop.
+    - type: Tweak
+      message: >-
+        The waterworks in Vault-14 were lackluster, and prone to failure due to
+        aging infrastructure. A new water treatment facility was integrated into
+        the Vault and is fitted with state-of-the-art monitoring and control
+        systems to help maintain and provide potable water for residents of
+        Vault-14.
+  id: 6162
+  time: '2026-06-29T13:01:53.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/928
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        force pipboy validate through cardcomponent to be visible via overwatch.
+        If no pipboy, they no show up in roster list.
+  id: 6163
+  time: '2026-06-29T18:50:47.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/929
+- author: Vixting
+  changes:
+    - type: Tweak
+      message: You can now recruit friednly mobs
+    - type: Fix
+      message: Fixed Legion charlie dog not being recruitable
+    - type: Fix
+      message: Fixed legion pet dog perk not spawning it with 8+ charisma
+  id: 6164
+  time: '2026-06-29T21:23:41.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/927
+- author: Operator
+  changes:
+    - type: Add
+      message: Move&Attack command for the ZAX
+    - type: Tweak
+      message: ZAX commands are more reliable
+    - type: Fix
+      message: Move in formation actually moves in formation
+    - type: Fix
+      message: ZAX units no longer attack each other
+    - type: Tweak
+      message: ZAX units carry vision&connection where they go now.
+    - type: Tweak
+      message: Faction cameras dont carry ZAX vision. ZAX has its own camera type now.
+  id: 6165
+  time: '2026-06-29T21:32:08.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/925

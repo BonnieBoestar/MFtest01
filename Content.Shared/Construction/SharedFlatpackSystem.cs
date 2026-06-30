@@ -87,7 +87,12 @@ public abstract class SharedFlatpackSystem : EntitySystem
 
         if (_net.IsServer)
         {
-            var spawn = Spawn(comp.Entity, _map.GridTileToLocal(grid, gridComp, buildPos));
+            var spawnCoords = _map.GridTileToLocal(grid, gridComp, buildPos);
+            var spawn = Spawn(comp.Entity, spawnCoords);
+
+            foreach (var extraEntity in comp.ExtraEntities)
+                Spawn(extraEntity, spawnCoords);
+
             _adminLogger.Add(LogType.Construction, LogImpact.Low,
                 $"{ToPrettyString(args.User):player} unpacked {ToPrettyString(spawn):entity} at {xform.Coordinates} from {ToPrettyString(uid):entity}");
             QueueDel(uid);

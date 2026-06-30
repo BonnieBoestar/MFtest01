@@ -26,6 +26,12 @@ public sealed partial class FlatpackComponent : Component
     public EntProtoId? Entity;
 
     /// <summary>
+    /// Extra entities spawned on the same tile when this flatpack is unpacked.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public List<EntProtoId> ExtraEntities = new();
+
+    /// <summary>
     /// Sound effect played upon the object being unpacked.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]

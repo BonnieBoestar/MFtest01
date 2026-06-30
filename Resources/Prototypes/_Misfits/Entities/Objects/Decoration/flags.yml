@@ -1,7 +1,7 @@
 - type: entity 
   parent: N14DecorationFlagFlammable
   id: MisfitsDecorationFlagTribe
-  name: tribal banner
+  name: Willowers banner
   description: A banner depicting the tree of life.
   components:
   - type: Sprite
@@ -14,7 +14,7 @@
 - type: entity
   parent: N14DecorationFlagFlammable
   id: MisfitsDecorationFlagTribeSkull
-  name: tribal flag
+  name: Willowers flag
   description: A banner depicting the tree of life. A skull is planted on top.
   components:
   - type: Sprite
@@ -25,7 +25,7 @@
 - type: entity
   parent: BaseRock
   id: MisfitsDecorationStoneTribe
-  name: tribal painting
+  name: Willowers painting
   description: A stone painted with the tree of life.
   suffix: Mapping
   components:

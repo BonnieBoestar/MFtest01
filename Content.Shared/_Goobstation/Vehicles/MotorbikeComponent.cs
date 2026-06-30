@@ -19,13 +19,13 @@ public sealed partial class MotorbikeComponent : Component
     public ProtoId<ReagentPrototype> FuelReagent = "WeldingFuel";
 
     [DataField]
-    public FixedPoint2 FuelUsePerSecond = FixedPoint2.New(2.5f);
+    public FixedPoint2 FuelUsePerSecond = FixedPoint2.New(0.13f);
 
     [DataField]
-    public FixedPoint2 RefillAmount = FixedPoint2.New(100f);
+    public FixedPoint2 RefillAmount = FixedPoint2.New(200f);
 
     [DataField]
-    public FixedPoint2 MaxIntegrity = FixedPoint2.New(250f);
+    public FixedPoint2 MaxIntegrity = FixedPoint2.New(500f);
 
     [DataField]
     public TimeSpan RefillDelay = TimeSpan.FromSeconds(10);
@@ -52,7 +52,7 @@ public sealed partial class MotorbikeComponent : Component
     public SoundSpecifier FuseSound = new SoundPathSpecifier("/Audio/_Nuclear14/Weapons/Effects/Wpn_dynam_fuse.ogg");
 
     [ViewVariables]
-    public FixedPoint2 FuelAccumulator;
+    public float FuelAccumulator;
 
     [ViewVariables]
     public DoAfterId? RefuelDoAfter;

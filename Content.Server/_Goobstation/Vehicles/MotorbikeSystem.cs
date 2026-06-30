@@ -74,9 +74,9 @@ public sealed class MotorbikeSystem : EntitySystem
                 continue;
             }
 
-            var fuelToUse = motorbike.FuelUsePerSecond * frameTime + motorbike.FuelAccumulator;
-            var wholeFuel = FixedPoint2.New(MathF.Floor((float) fuelToUse));
-            motorbike.FuelAccumulator = fuelToUse - wholeFuel;
+            var fuelToUse = motorbike.FuelUsePerSecond.Float() * frameTime + motorbike.FuelAccumulator;
+            var wholeFuel = FixedPoint2.New(MathF.Floor(fuelToUse));
+            motorbike.FuelAccumulator = fuelToUse - wholeFuel.Float();
 
             if (wholeFuel <= FixedPoint2.Zero)
                 continue;

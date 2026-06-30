@@ -6,7 +6,7 @@
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-tribal-farmer
-  description: job-description-farmer
+  description: job-description-tribal-farmer  # Misfits Change
   playTimeTracker: TribalFarmer
   requirements:
     - !type:CharacterSpeciesRequirement

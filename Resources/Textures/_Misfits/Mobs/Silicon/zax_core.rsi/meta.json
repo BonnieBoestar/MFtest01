@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Created by beepbopbopedy.",
+  "size": {
+    "x": 96,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "ai_empty"
+    },
+    {
+      "name": "ai",
+      "delays": [
+        [
+          0.16,
+          1.6,
+          0.16,
+          1.6
+        ]
+      ]
+    }
+  ]
+}

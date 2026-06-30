@@ -18,23 +18,13 @@
   - type: ExplosionResistance
     worn: false
     damageCoefficient: 1.1
-  - type: Flammable
-    alwaysCombustible: true
-    canExtinguish: false
-    firestacksOnIgnite: 5
-    firestackFade: 0
-    damage:
-      types:
-        Heat: 1
   - type: SolutionContainerManager
     solutions:
       motorbikeFuel:
-        maxVol: 1500
+        maxVol: 200
         reagents:
         - ReagentId: WeldingFuel
-          Quantity: 1500
-  - type: RefillableSolution
-    solution: motorbikeFuel
+          Quantity: 200
   - type: ExaminableSolution
     solution: motorbikeFuel
   - type: Strap

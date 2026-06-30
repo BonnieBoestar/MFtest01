@@ -5,6 +5,8 @@
   id: MisfitsZaxUnitBase
   components:
   - type: ZaxUnit
+  - type: StationAiVision
+  - type: StationAiWhitelist
   - type: NpcFactionMember
     factions:
     - Wastelander
@@ -14,6 +16,16 @@
     blackboard:
       NavSmash: !type:Bool
         true
+      AggroVisionRadius: !type:Single
+        12
+      FollowCloseRange: !type:Single
+        0.75
+      FollowRange: !type:Single
+        0.75
+      FollowWaitMin: !type:Single
+        0.25
+      FollowWaitMax: !type:Single
+        0.6
 
 - type: entity
   parent: [N14MobRobotMrHandyClaw, MisfitsZaxUnitBase]
@@ -59,38 +71,65 @@
 
 - type: entity
   parent: [N14MobRobotSecuritronHostile, MisfitsZaxUnitBase]
-  id: N14MobZaxSecuritronGray
-  name: ZAX Securitron unit
-  description: A ZAX-linked gray Securitron chassis prepared for Station AI command.
-  suffix: ZAX, AI controllable, gray
-
-- type: entity
-  parent: [N14MobRobotSecuritronBlueHostile, MisfitsZaxUnitBase]
-  id: N14MobZaxSecuritronBlue
-  name: ZAX Securitron unit
-  description: A ZAX-linked blue Securitron chassis prepared for Station AI command.
-  suffix: ZAX, AI controllable, blue
-
-- type: entity
-  parent: [N14MobRobotSecuritronBrownHostile, MisfitsZaxUnitBase]
-  id: N14MobZaxSecuritronBrown
-  name: ZAX Securitron unit
-  description: A ZAX-linked brown Securitron chassis prepared for Station AI command.
-  suffix: ZAX, AI controllable, brown
-
-- type: entity
-  parent: [N14MobRobotSecuritronRedHostile, MisfitsZaxUnitBase]
-  id: N14MobZaxSecuritronRed
-  name: ZAX Securitron unit
-  description: A ZAX-linked red Securitron chassis prepared for Station AI command.
-  suffix: ZAX, AI controllable, red
-
-- type: entity
-  parent: [N14MobRobotSecuritronYellowHostile, MisfitsZaxUnitBase]
-  id: N14MobZaxSecuritronYellow
-  name: ZAX Securitron unit
-  description: A ZAX-linked yellow Securitron chassis prepared for Station AI command.
-  suffix: ZAX, AI controllable, yellow
+  id: N14MobZaxSecuritron
+  name: Z.A.X Securitron
+  description: A ZAX-linked Securitron chassis prepared for Station AI command.
+  suffix: ZAX, AI controllable
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Robots/zax_securitron.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Dead: HumanDead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          N14ScrapElectronic1:
+            min: 1
+            max: 3
+          N14MaterialCircuitry1:
+            min: 1
+            max: 3
+          N14Scrap1:
+            min: 1
+            max: 3
+          N14CurrencyPrewar:
+            min: 5
+            max: 25
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/AI/borg_death.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Reflect
+    reflects:
+    - SmallCaliber
+    - MediumCaliber
+    reflectProb: 0.30
+    reflectProbByType:
+      MediumCaliber: 0.10
+    innate: true
+    spread: 90
 
 - type: entity
   parent: [N14MobRobotAssaultronHostile, MisfitsZaxUnitBase]
