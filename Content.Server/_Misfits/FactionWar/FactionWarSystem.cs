@@ -1078,8 +1078,8 @@ public sealed class FactionWarSystem : EntitySystem
         // Drop all held weapons
         RaiseLocalEvent(surrEntity, new DropHandItemsEvent());
 
-        // Paralyze them (stun only) — they can still see, hear, and type in chat
-        _stun.TryStun(surrEntity, TimeSpan.FromHours(1), true);
+        // Paralyze them (stun only) - they can still see, hear, and type in chat
+        _stun.TryStun(surrEntity, TimeSpan.FromMinutes(15), true);
 
         // Broadcast updated participant info so overlays update
         BroadcastParticipants();
