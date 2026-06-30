@@ -97,6 +97,7 @@
           BoSScribe: [ 3, 3 ]  #Misfits Change /Add/
           BoSMidSquire: [ 3, 3 ]
           BoSInitiate: [ 3, 3 ]  #Misfits Change /Add/
+          BoSOffDuty: [4, 4] # Misfits Change - new off-duty BoS role for non-combatants and latejoiners
           Overseer: [ 1, 1 ]
           VaultDoctor: [ 2, 3 ]
           VaultDweller: [ 8, 10 ]
