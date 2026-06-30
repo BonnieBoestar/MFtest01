@@ -8208,3 +8208,20 @@ Entries:
   id: 6165
   time: '2026-06-29T21:32:08.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/925
+- author: cythjisiax
+  changes:
+    - type: Fix
+      message: suppress Entity Spawn/Tile Placement systems in chat
+    - type: Tweak
+      message: used microsoft paint on map .png to remove eye annoyances on render
+    - type: Add
+      message: >-
+        enclave recruit verb, stealth adds to EnclaveRecruit job for dept time
+        in Enclave
+    - type: Tweak
+      message: >-
+        Wastelander now 8H timelock requirement (server pTime), Townsperson new
+        default, unlimited slots
+  id: 6166
+  time: '2026-06-30T02:41:11.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/932
