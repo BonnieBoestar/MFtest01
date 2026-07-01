@@ -297,6 +297,11 @@ public sealed class FactionWarParticipantInfo
     public byte Side;
     public string WarKey = string.Empty;
     public bool Surrendered;
+    /// <summary>
+    /// #Misfits Add - Observer participants can see overlay tags but don't get one rendered on them.
+    /// Used by admins to monitor wars without appearing as [ALLY]/[ENEMY].
+    /// </summary>
+    public bool IsObserver;
 }
 
 /// <summary>
