@@ -12,8 +12,9 @@
   id: EngineerYellow
   color: "#ffff00cc" # vivid yellow at ~80% opacity
   users:
-  - cythisia
+  - Cythisia
   - Paige_404
+  - Bradysgaming
 
 # --- Admin Red ---
 # Uncomment if you want to override admin ghost color via this system too.
