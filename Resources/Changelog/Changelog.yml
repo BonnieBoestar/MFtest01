@@ -8316,3 +8316,58 @@ Entries:
   id: 6174
   time: '2026-07-01T01:38:32.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/941
+- author: cythisiax
+  changes:
+    - type: Add
+      message: 'RMC Flamer reference port. '
+    - type: Add
+      message: >-
+        Explosive flamers, weldingfuel, generators, and/or any containers
+        containing weldingfuel. Welcome to the trenches.
+    - type: Add
+      message: Whitelist Logging & Discord Channel Report
+    - type: Add
+      message: Confirmation menu for Whitelist Logging
+    - type: Add
+      message: Door Logger in Log tab F7 (Someone kills door = logged)
+    - type: Add
+      message: Custom ghost color via yaml and raw username adjustments.
+    - type: Add
+      message: >-
+        Brahdo/Brahmin when mounted & shot off of, can lose WASD input, and
+        chance of bucking off. Abysmal meta fixed.
+    - type: Add
+      message: >-
+        Legion Princeps Loadout gated behind 25 hours Vet Decani by Bill
+        Clinton/nope_no
+    - type: Add
+      message: >-
+        Morale Trooper Squad Lead (MSL) sprites & Loadout with trench shotty by
+        Pink109.
+    - type: Tweak
+      message: New/separate logs tab where > Logs | Door Log | Whitelist Log exists.
+    - type: Tweak
+      message: Missing something I know I am
+    - type: Tweak
+      message: NCRMP baton nerf
+    - type: Tweak
+      message: /surrender nerfed to 15 mins, option of Right click > Interact > Help Up
+    - type: Tweak
+      message: Followers FoTA Tacmap updated from displaying name to 'Missing Person'
+    - type: Tweak
+      message: Removed glow from combat aggro indicator.
+    - type: Tweak
+      message: >-
+        War System now has F7 > Loremaster > Admin Observe for war
+        [ALLY]/[ENEMY] tag.
+    - type: Tweak
+      message: Weather caching for draws. (Performance increase, marginal, but there)
+    - type: Tweak
+      message: C27 self heal from -0.3 to > -0.15
+    - type: Fix
+      message: Placement Suppress suppressed appropriately for ADMIN alerts
+    - type: Fix
+      message: Gravis timegate > 50 hours reduced to 20. Typo?
+  id: 6175
+  time: '2026-07-01T20:20:30.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/944
