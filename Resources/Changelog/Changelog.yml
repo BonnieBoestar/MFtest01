@@ -8390,3 +8390,14 @@ Entries:
   id: 6176
   time: '2026-07-01T20:22:12.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/946
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Locked Off duty BOS goobers in the outer bunker (dirt rooms and etc)
+    - type: Tweak
+      message: >-
+        Reworded Offduty bos description to reiterate the part where they should
+        not be fighting wars
+  id: 6177
+  time: '2026-07-01T21:07:22.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/948
