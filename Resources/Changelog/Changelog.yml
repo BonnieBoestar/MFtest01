@@ -8439,3 +8439,62 @@ Entries:
   id: 6181
   time: '2026-07-03T04:13:34.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/952
+- author: RedBookcase
+  changes:
+    - type: Add
+      message: >-
+        Brahmin Milk is now an inefficient anti-radiation medicine. Brahmin now
+        produce milk a bit more efficiently as well.
+    - type: Tweak
+      message: >-
+        Bitterdrink was easily mass produced with the same ingredients required
+        to make Stimpaks/Healing Powder and it was the most effective treatment
+        for poison/rads in the game. It can no longer be hand crafted and
+        instead requires you to boil a mixture of Brahmin Milk, Datura Extract,
+        and Pinyon Extract to be produced. It remains reasonably effective at
+        treating radiation and poison damage but does not excel at either
+        compared to Radaway/Antidote. It also makes you cough when you drink it
+        because that shit canonically tastes like ass.
+    - type: Tweak
+      message: >-
+        Basic Antidote no longer cures both radiation and poison damage, just
+        poison. Refined antidote treats poison more effectively and does a tiny
+        bit of radiation treatment as well. Swapped the recipes around - basic
+        antidote is made with scorpion tail and tarberries, while refined
+        antidote requires ethanol.
+    - type: Tweak
+      message: >-
+        Radaway and Diluted Radaway had their radiation treatment toned down
+        significantly. A full bag of Radaway was previously capable of treating
+        500 Rad damage - now it treats 200.
+    - type: Tweak
+      message: >-
+        People were previously using a mixture of Stimpak and Dirty Stimpak to
+        replicate the types of healing only achievable with Super Stimpaks.
+        Added a new reaction that causes Dirty Stimpak to contaminate regular
+        Stimpak fluid.
+    - type: Add
+      message: >-
+        Cleansing Powder was previously a 25u pill of pure Radaway, meaning it
+        was extremely efficient and completely negated any need for Radaway.
+        It's been made it's own reagent now which is far less effective at
+        treating Radiation poisoning and it'll make you drowsy. But it's better
+        than the alternative.
+    - type: Add
+      message: >-
+        Added a reaction for producing smelling salts with Ammonia and Table
+        Salt to allow low-tech groups to produce smelling salts.
+    - type: Add
+      message: >-
+        CHEMS! Added new recipes for making Buffout, Cateye, Fixer and Med-x.
+        Various minor chem tweaks, such as making Psycho cause random screaming
+        and giving Buffjet more of a purpose.
+    - type: Add
+      message: >-
+        Added an admin-only spawnable topical to treat extreme cases of
+        Malnutrition at lucky's request.
+    - type: Tweak
+      message: Various minor bugfixes/qol changes.
+  id: 6182
+  time: '2026-07-03T18:03:26.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/942
