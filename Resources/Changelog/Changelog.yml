@@ -8505,3 +8505,26 @@ Entries:
   id: 6183
   time: '2026-07-03T18:04:07.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/957
+- author: Jerryaqua
+  changes:
+    - type: Tweak
+      message: 'made 12.7 a unique and viable SMG round! '
+  id: 6184
+  time: '2026-07-04T05:15:15.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/958
+- author: Jerryaqua
+  changes:
+    - type: Tweak
+      message: NCRR/NCRA blueprints
+    - type: Tweak
+      message: 'Elite ranger helmets '
+  id: 6185
+  time: '2026-07-04T05:20:51.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/917
+- author: Bradysgaming
+  changes:
+    - type: Remove
+      message: Removed Space cleaner recipe.
+  id: 6186
+  time: '2026-07-04T05:39:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/959
