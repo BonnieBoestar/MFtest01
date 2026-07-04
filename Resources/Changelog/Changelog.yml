@@ -8512,3 +8512,12 @@ Entries:
   id: 6184
   time: '2026-07-04T05:15:15.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/958
+- author: Jerryaqua
+  changes:
+    - type: Tweak
+      message: NCRR/NCRA blueprints
+    - type: Tweak
+      message: 'Elite ranger helmets '
+  id: 6185
+  time: '2026-07-04T05:20:51.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/917
