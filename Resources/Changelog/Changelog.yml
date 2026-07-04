@@ -8521,3 +8521,10 @@ Entries:
   id: 6185
   time: '2026-07-04T05:20:51.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/917
+- author: Bradysgaming
+  changes:
+    - type: Remove
+      message: Removed Space cleaner recipe.
+  id: 6186
+  time: '2026-07-04T05:39:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/959
