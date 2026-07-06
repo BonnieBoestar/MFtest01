@@ -8557,3 +8557,10 @@ Entries:
   id: 6189
   time: '2026-07-05T18:22:09.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/960
+- author: Bradysgaming
+  changes:
+    - type: Fix
+      message: Fixed C-27's being able to play FOTA ( you get THREE roles thats it.)
+  id: 6190
+  time: '2026-07-06T02:27:47.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/973
