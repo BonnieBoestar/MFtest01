@@ -8564,3 +8564,22 @@ Entries:
   id: 6190
   time: '2026-07-06T02:27:47.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/973
+- author: Vixting
+  changes:
+    - type: Fix
+      message: Fixed mail units
+    - type: Add
+      message: Added vault mail
+    - type: Add
+      message: Added mail units to overseer, kitchen, security, engi
+    - type: Add
+      message: Reworked hydroponics to not be incredibly depressing
+    - type: Add
+      message: >-
+        Added conveyor belts to construction menu, can place them (can't craft
+        them)
+    - type: Add
+      message: Replace radiation suits with the new suit
+  id: 6191
+  time: '2026-07-06T16:41:15.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/936
