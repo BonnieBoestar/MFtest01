@@ -1,4 +1,5 @@
 using Content.Shared.Administration.Logs;
+using Content.Shared._Misfits.RCD;
 using Content.Shared._Misfits.Silicon;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
@@ -513,6 +514,7 @@ public class RCDSystem : EntitySystem
         {
             case RcdMode.ConstructTile:
                 _mapSystem.SetTile(mapGridData.GridUid, mapGridData.Component, mapGridData.Position, new Tile(_tileDefMan[component.CachedPrototype.Prototype].TileId));
+                MarkNoDropRcdTile(component.CachedPrototype, mapGridData);
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {mapGridData.GridUid} {mapGridData.Position} to {component.CachedPrototype.Prototype}");
                 break;
 
@@ -612,6 +614,22 @@ public class RCDSystem : EntitySystem
         }
 
         return Loc.GetString(proto.SetName);
+    }
+
+    private void MarkNoDropRcdTile(RCDPrototype proto, MapGridData mapGridData)
+    {
+        if (proto.Mode != RcdMode.ConstructTile ||
+            proto.Prototype == null ||
+            !IsWastelandRcdCategory(proto.Category))
+            return;
+
+        var comp = EnsureComp<RCDNoDropTileComponent>(mapGridData.GridUid);
+        comp.Tiles[mapGridData.Position] = proto.Prototype;
+    }
+
+    private static bool IsWastelandRcdCategory(string category)
+    {
+        return category is "WastelandDoors" or "WastelandWallsAndFlooring";
     }
 
     #endregion

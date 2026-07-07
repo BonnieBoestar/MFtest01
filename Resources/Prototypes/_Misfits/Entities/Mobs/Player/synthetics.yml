@@ -719,7 +719,7 @@
       - SemiAuto
   - type: AssaultronBeamCharge
     chargeDuration: 2
-    cooldownDuration: 45
+    cooldownDuration: 180
     chargeEmoteLocale: assaultron-tesla-charge-emote
     fireEmoteLocale: assaultron-tesla-fire-emote
     fireDrainCharge: 0
