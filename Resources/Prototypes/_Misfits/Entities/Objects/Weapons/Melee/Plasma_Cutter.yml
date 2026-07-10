@@ -56,7 +56,6 @@
     damage:
       types:
         Blunt: 4.5
-    embedOnThrow: false
   - type: Item
     size: Small
     sprite: _Misfits/Objects/Weapons/Melee/PlasmaCutter-inhands.rsi
