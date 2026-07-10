@@ -8766,3 +8766,44 @@ Entries:
   id: 6207
   time: '2026-07-10T22:40:28.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/997
+- author: Lucky
+  changes:
+    - type: Add
+      message: '[Legion] A Priestess of Mars house has been added.'
+    - type: Tweak
+      message: >-
+        [Legion] The entire area above the Tree of Mars has been restricted from
+        slave access.
+    - type: Add
+      message: >-
+        [Legion] A second, access locked slave area above the medical area has
+        been added.
+    - type: Tweak
+      message: '[Legion] Medbay has been slightly expanded.'
+    - type: Tweak
+      message: '[NCR] Prison has been reworked.'
+    - type: Add
+      message: '[NCR] The MPs have now access to a court.'
+    - type: Add
+      message: '[NCR] Troopers can finally shower.'
+    - type: Tweak
+      message: >-
+        [Brotherhood] Scribes can now see into the medbay. Paladins, please stop
+        chugging down antidote.
+    - type: Fix
+      message: '[Brotherhood] The brig is FINALLY access locked.'
+    - type: Add
+      message: '[Tribal] The tribe has moved above cazador valley.'
+    - type: Tweak
+      message: '[80s] Front area has been reworked.'
+    - type: Tweak
+      message: '[Dungeon] The quarry has been expanded upon.'
+    - type: Tweak
+      message: >-
+        [Dungeon] The sewer network near Town has been expanded upon, with two
+        large POIs inside it.
+    - type: Fix
+      message: The correct rocks will spawn now in the new mines.
+  id: 6208
+  time: '2026-07-10T22:43:10.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1002
