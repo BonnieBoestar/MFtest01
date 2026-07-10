@@ -69,12 +69,23 @@ namespace Content.Server.NPC.Systems
         /// BELOW ARE ALL PUBLIC METHODS TO INTERFACE WITH NPCS!
         /// </summary>
         /// mostly used by just HTN
-
+        /// TODO: maybe have other system handle this
         public void OnPlayerNPCAttach(EntityUid uid, HTNComponent component, PlayerAttachedEvent args)
         {
-            SleepNPC(uid, component);
-        }
+            // Misfit change:
 
+            SleepNPC(uid, component);
+            // [hotfix]TEMP!!!: player pets without proximityComp couldn't move without this
+            // anything with htn being possessed get sound/movement no matter what
+            // I didnt modify SleepNPC itself to not affect performance with
+            // an additional comp look up and check
+            // Super temp until I can refactor NPCs, their comps, yaml, ect...
+            EnsureComp<InputMoverComponent>(uid);
+            _emitSound.SetEnabled((uid, (SpamEmitSoundComponent?) null), true);
+            _ambient.SetAmbience(uid, true);
+
+        }
+        // todo: maybe have other system handle this
         public void OnPlayerNPCDetach(EntityUid uid, HTNComponent component, PlayerDetachedEvent args)
         {
             if (_mobState.IsIncapacitated(uid) || TerminatingOrDeleted(uid))
@@ -152,7 +163,9 @@ namespace Content.Server.NPC.Systems
 
             // Misfit end:
         }
-        //
+        // TODO: on refactor make methods better convey what they do exactly
+        // ie... like a removeAI() for player possesion or just make that be handled by seperate system
+        // or just have this strictly be FOR NPCS AKA NON-PLAYABLE CHARACTERS
         public void SleepNPC(EntityUid uid, HTNComponent? component = null, bool removeSound = true)
         {
             if (!Resolve(uid, ref component, false))
