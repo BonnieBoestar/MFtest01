@@ -8976,3 +8976,12 @@ Entries:
   id: 6223
   time: '2026-07-14T20:25:26.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1023
+- author: Squagg
+  changes:
+    - type: Tweak
+      message: >-
+        Super mutants can now safely eat raw meat, organs, and brains, and gain
+        nutrition from them.
+  id: 6224
+  time: '2026-07-14T22:41:18.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1024
