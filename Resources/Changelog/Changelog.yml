@@ -8953,3 +8953,12 @@ Entries:
   id: 6220
   time: '2026-07-14T01:58:56.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1014
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Locked Plasma cutter to Head Paladin (As intended)
+    - type: Tweak
+      message: Removed faction lock for longsword in loadout
+  id: 6221
+  time: '2026-07-14T02:10:52.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1015
